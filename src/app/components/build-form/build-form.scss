@@ -1,0 +1,14 @@
+@use "@angular/material" as mat;
+@use "../../../styles/mixins" as mixin;
+
+.section {
+  display: flex;
+}
+
+.section__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+  padding: 15px;
+  gap: 15px;
+}

@@ -1,25 +1,15 @@
 @use "@angular/material" as mat;
 
 html {
-  color-scheme: light;
+  color-scheme: light dark;
   @include mat.theme(
     (
-      color: mat.$violet-palette,
+      //color: mat.$violet-palette,
+      color: mat.$magenta-palette,
       typography: Roboto,
-      density: 0,
+      density: 0
     )
   );
-
-  &.dark-mode {
-    color-scheme: dark;
-    @include mat.theme(
-      (
-        color: mat.$magenta-palette,
-        typography: Roboto,
-        density: 0,
-      )
-    );
-  }
 }
 
 body {

@@ -1,7 +1,20 @@
-<mat-grid-list cols="2" rowHeight="2:1">
+<section class="section">
+  <div class="section__toolbar">
+    @for(tool of formBuilderService.buildingTools; track tool.name) {
+    <app-control-tool
+      class="section__tool"
+      [tool]="tool"
+      (onToolClick)="addFormField($event)"
+    />
+    }
+  </div>
+  <div class="section__builder"></div>
+</section>
+
+<!-- <mat-grid-list cols="2" rowHeight="2:1">
   @for(tool of formBuilderService.buildingTools; track tool.name) {
   <mat-grid-tile>
     <app-control-tool [tool]="tool" (onToolClick)="addFormField($event)" />
   </mat-grid-tile>
   }
-</mat-grid-list>
+</mat-grid-list> -->
