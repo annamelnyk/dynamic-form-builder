@@ -1,8 +1,14 @@
-<header>
-  <h1>Dynamic Form Builder</h1>
-  <div class="controls">
-    <button>Preview From</button>
-
+<mat-toolbar class="header">
+  <h1 class="header__title">
+    <mat-icon
+      class="header__title__icon mr-10"
+      aria-hidden="false"
+      aria-label="home icon"
+      fontIcon="home"
+    ></mat-icon>
+    Dynamic Form Builder
+  </h1>
+  <div class="header__controls">
     <mat-button-toggle-group
       [formControl]="theme"
       (change)="setSelectedTheme(theme)"
@@ -16,6 +22,4 @@
       }
     </mat-button-toggle-group>
   </div>
-
-  <h2>{{this.theme.value?.name}}</h2>
-</header>
+</mat-toolbar>

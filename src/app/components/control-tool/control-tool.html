@@ -1,0 +1,12 @@
+<mat-card
+  class="control-card"
+  appearance="outlined"
+  (click)="onToolClickHandler(tool())"
+>
+  <mat-card-content>
+    <div class="control__icon__outer">
+      <mat-icon>{{tool().icon}}</mat-icon>
+    </div>
+    <p class="control__name">{{tool().name | titlecase}}</p>
+  </mat-card-content>
+</mat-card>

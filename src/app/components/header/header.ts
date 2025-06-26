@@ -4,10 +4,16 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 
 import { AppTheme, Theme } from '../../services/theme';
+import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-header',
-  imports: [MatButtonToggleModule, MatIconModule, ReactiveFormsModule],
+  imports: [
+    MatButtonToggleModule,
+    MatIconModule,
+    MatToolbar,
+    ReactiveFormsModule,
+  ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })

@@ -1,0 +1,30 @@
+@use "@angular/material" as mat;
+@use "../../../styles/mixins" as mixin;
+
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: var(--mat-sys-on-primary),
+    )
+  );
+
+  @include mat.icon-button-overrides(
+    (
+      icon-color: var(--mat-sys-on-primary),
+    )
+  );
+}
+
+.header__title {
+  @include mixin.flex-center;
+  @include mixin.title;
+}
+
+.header__title__icon {
+  height: 100%;
+  width: auto;
+}

@@ -1,3 +1,47 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
+@use "./variables" as *;
 
 @include mat.core();
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin font-light {
+  font-weight: $font-weigth-light;
+}
+
+@mixin font-normal {
+  font-weight: $font-weigth-normal;
+}
+
+@mixin font-bold {
+  font-weight: $font-weigth-bold;
+}
+
+@mixin title {
+  @include font-bold;
+  font-size: 3rem;
+}
+
+@mixin sub-title {
+  @include font-bold;
+  font-size: 3rem;
+}
+
+@mixin medium-text {
+  @include font-bold;
+  font-size: 2rem;
+}
+
+@mixin normalText {
+  @include font-normal;
+  font-size: 1.6rem;
+}
+
+@mixin smallText {
+  @include font-light;
+  font-size: 1.2rem;
+}
