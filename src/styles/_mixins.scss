@@ -36,12 +36,12 @@
   font-size: 2rem;
 }
 
-@mixin normalText {
+@mixin normal-text {
   @include font-normal;
   font-size: 1.6rem;
 }
 
-@mixin smallText {
+@mixin smal-text {
   @include font-light;
   font-size: 1.2rem;
 }

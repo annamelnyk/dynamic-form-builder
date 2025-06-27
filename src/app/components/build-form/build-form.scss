@@ -8,7 +8,29 @@
 .section__toolbar {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   width: 40%;
+  height: max-content;
   padding: 15px;
   gap: 15px;
+}
+
+.section__form {
+  width: 100%;
+  padding: 15px;
+}
+
+.form__card {
+  width: 75%;
+  min-height: 50rem;
+}
+
+.form__card__header {
+  padding: 0;
+  flex-direction: column;
+}
+
+.form__field {
+  width: 100%;
+  @include mixin.normal-text;
 }
