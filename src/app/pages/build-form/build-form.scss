@@ -20,14 +20,22 @@
 
 .form__card {
   min-height: 50rem;
+  overflow: hidden;
 }
 
 .form__card__header {
   padding: 0;
   flex-direction: column;
+  border-bottom: 1px solid var(--mat-sys-primary);
+  background-color: var(--mat-sys-on-primary);
 }
 
-.form__field {
-  width: 100%;
-  @include mixin.normal-text;
+.form__header_field {
+  padding: 16px;
+  @include mixin.medium-text;
+
+  &:last-child {
+    padding-bottom: 50px;
+    @include mixin.normal-text;
+  }
 }
