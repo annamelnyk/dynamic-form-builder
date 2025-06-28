@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { BuildForm } from './components/build-form/build-form';
+import { BuildForm } from './pages/build-form/build-form';
 
 export const routes: Routes = [
   {

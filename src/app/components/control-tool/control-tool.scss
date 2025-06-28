@@ -1,9 +1,11 @@
 @use "@angular/material" as mat;
 @use "../../../styles/mixins" as mixin;
 
-.control-card {
+.control__card {
   width: 16rem;
   height: 16rem;
+  //width: 50%;
+  //height: 50%;
   cursor: pointer;
   @include mixin.flex-center;
   @include mixin.medium-text;

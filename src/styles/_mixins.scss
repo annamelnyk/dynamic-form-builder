@@ -26,11 +26,6 @@
   font-size: 3rem;
 }
 
-@mixin sub-title {
-  @include font-bold;
-  font-size: 3rem;
-}
-
 @mixin medium-text {
   @include font-bold;
   font-size: 2rem;

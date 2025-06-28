@@ -1,0 +1,24 @@
+@use "@angular/material" as mat;
+@use "../../../styles/mixins" as mixin;
+
+.card___toolbar__header,
+.card___toolbar__content {
+  width: 100%;
+}
+
+.card__toolbar__title {
+  @include mixin.medium-text;
+  text-align: center;
+  padding-bottom: 15px;
+  width: 100%;
+}
+
+.card___toolbar__content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+
+.control__tool {
+}

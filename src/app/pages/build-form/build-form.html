@@ -1,33 +1,25 @@
 <section class="section">
   <div class="section__toolbar">
-    @for(tool of formBuilderService.buildingTools; track tool.name) {
-    <app-control-tool
-      class="section__tool"
-      [tool]="tool"
-      (onToolClick)="addFormField($event)"
+    <app-toolbar
+      [buildingTools]="formBuilderService.buildingTools"
+      (onSelectTool)="addFormField($event)"
     />
-    }
   </div>
   <div class="section__form">
     <mat-card class="form__card" appearance="outlined">
       <mat-card-header class="form__card__header">
+        <!-- !!!!!!!!! -->
+        <div contenteditable="true">I'm Editable. Edit me!</div>
+
         <mat-form-field class="form__field">
           <input matInput placeholder="Enter Form Title" value="" />
         </mat-form-field>
 
         <mat-form-field class="form__field">
-          <textarea matInput placeholder="Enter form description"> </textarea>
+          <input matInput placeholder="Enter Form Description" value="" />
         </mat-form-field>
       </mat-card-header>
       <mat-card-content> </mat-card-content>
     </mat-card>
   </div>
 </section>
-
-<!-- <mat-grid-list cols="2" rowHeight="2:1">
-  @for(tool of formBuilderService.buildingTools; track tool.name) {
-  <mat-grid-tile>
-    <app-control-tool [tool]="tool" (onToolClick)="addFormField($event)" />
-  </mat-grid-tile>
-  }
-</mat-grid-list> -->

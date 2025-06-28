@@ -6,16 +6,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { FormBuilderI, FormBuilderService } from '../../services/form-builder';
-import { ControlTool } from '../control-tool/control-tool';
+import { Toolbar } from '../../components/toolbar/toolbar';
+
 @Component({
   selector: 'app-build-form',
   imports: [
-    ControlTool,
     MatGridListModule,
     MatCardModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    Toolbar,
   ],
   templateUrl: './build-form.html',
   styleUrl: './build-form.scss',
