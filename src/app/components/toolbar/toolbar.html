@@ -3,12 +3,16 @@
     <h2 class="card__toolbar__title">Add Form Elements</h2>
   </mat-card-header>
   <mat-card-content class="card___toolbar__content">
-    @for(tool of buildingTools(); track tool.name) {
-    <app-control-tool
-      class="control__tool"
-      [tool]="tool"
-      (onToolClick)="onSelectToolHandler($event)"
-    />
-    }
+    <mat-grid-list cols="2" rowHeight="1:1">
+      @for(tool of buildingTools(); track tool.name) {
+      <mat-grid-tile>
+        <app-control-tool
+          class="control__tool"
+          [tool]="tool"
+          (onToolClick)="onSelectToolHandler($event)"
+        />
+      </mat-grid-tile>
+      }
+    </mat-grid-list>
   </mat-card-content>
 </mat-card>

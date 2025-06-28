@@ -7,8 +7,10 @@
 
 .section__toolbar {
   width: 45%;
+  min-width: 50rem;
   height: max-content;
   padding: 15px;
+  gap: 50px;
 }
 
 .section__form {
@@ -17,7 +19,6 @@
 }
 
 .form__card {
-  width: 75%;
   min-height: 50rem;
 }
 
