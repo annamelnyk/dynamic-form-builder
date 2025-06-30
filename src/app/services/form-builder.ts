@@ -1,8 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+
+import { FieldType } from '../editable-form-field/editable-form-field';
 
 export interface FormBuilderI {
   icon: string;
-  name: string;
+  name: FieldType;
+}
+export interface GeneratedFormFieldI {
+  type: FieldType;
+  label: string; // must contain uuid?
 }
 
 @Injectable({
@@ -10,10 +16,15 @@ export interface FormBuilderI {
 })
 export class FormBuilderService {
   buildingTools: FormBuilderI[] = [
-    { icon: 'text_fields', name: 'text' },
-    { icon: 'local_parking', name: 'paragraph' },
-    { icon: 'check_box', name: 'checkbox' },
-    { icon: 'checklist', name: 'select' },
+    { icon: 'text_fields', name: FieldType.Input },
+    { icon: 'local_parking', name: FieldType.Textarea },
+    { icon: 'check_box', name: FieldType.Checkbox },
+    { icon: 'checklist', name: FieldType.Select },
   ];
-  constructor() {}
+
+  generatedFormFiledsList = signal<GeneratedFormFieldI[]>([]);
+
+  addNewFormField(formField: GeneratedFormFieldI) {
+    this.generatedFormFiledsList.update((prevList) => [...prevList, formField]);
+  }
 }

@@ -7,7 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 
 import { FormBuilderI, FormBuilderService } from '../../services/form-builder';
 import { Toolbar } from '../../components/toolbar/toolbar';
-import { EditableFormField } from '../../editable-form-field/editable-form-field';
+import {
+  EditableFormField,
+  FieldType,
+} from '../../editable-form-field/editable-form-field';
 
 @Component({
   selector: 'app-build-form',
@@ -25,8 +28,13 @@ import { EditableFormField } from '../../editable-form-field/editable-form-field
 })
 export class BuildForm {
   formBuilderService = inject(FormBuilderService);
+  FieldType = FieldType;
 
   addFormField(formFieldType: FormBuilderI) {
     console.log({ formFieldType });
+    this.formBuilderService.addNewFormField({
+      type: formFieldType.name,
+      label: '',
+    });
   }
 }

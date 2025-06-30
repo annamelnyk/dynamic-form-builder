@@ -2,8 +2,7 @@
 @use "../../styles/mixins" as mixin;
 
 .field__outer {
-  padding-left: 4rem;
-  padding-bottom: 4rem;
+  padding: 0 10px 40px 40px;
 }
 
 .field__header {
@@ -13,6 +12,8 @@
 .field__controls-aside {
   position: absolute;
   cursor: pointer;
+  left: -40px;
+  top: 20px;
 }
 
 .field__controls-title {

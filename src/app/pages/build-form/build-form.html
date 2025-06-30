@@ -15,7 +15,10 @@
         </div>
       </mat-card-header>
       <mat-card-content>
-        <app-editable-form-field />
+        @for (formField of formBuilderService.generatedFormFiledsList(); track
+        $index) {
+        <app-editable-form-field [fieldType]="formField.type" />
+        }
       </mat-card-content>
     </mat-card>
   </div>
