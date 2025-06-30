@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 
@@ -17,6 +17,8 @@ export enum FieldType {
 })
 export class EditableFormField {
   fieldType = input.required<FieldType>();
+  isFirst = input<boolean>(false);
+  isLast = input<boolean>(false);
   //formField = input.required<FormControl>();
 
   title = computed(() => `New ${this.fieldType()} Field`);

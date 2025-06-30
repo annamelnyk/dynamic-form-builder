@@ -38,3 +38,7 @@
     @include mixin.normal-text;
   }
 }
+
+.form__card__content {
+  padding: 0;
+}

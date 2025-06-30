@@ -1,11 +1,16 @@
-<div class="field__outer">
+<div class="field__outer" [class.is-last]="isLast()">
   <div class="field__header">
     <div class="field__controls-aside">
-      <div class="mb-xs">
-        <mat-icon class="field__controls-arrow up">arrow_upward_alt</mat-icon>
+      <div class="mb-small">
+        <mat-icon class="field__controls-arrow up" [class.disabled]="isFirst()"
+          >arrow_upward_alt</mat-icon
+        >
       </div>
       <div>
-        <mat-icon class="field__controls-arrow down">
+        <mat-icon
+          class="field__controls-arrow down"
+          [class.disabled]="isLast()"
+        >
           arrow_downward_alt
         </mat-icon>
       </div>
