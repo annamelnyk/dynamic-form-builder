@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { Header } from './components/header/header';
-import { BuildForm } from './pages/build-form/build-form';
-import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, BuildForm, MatGridListModule],
+  imports: [RouterOutlet, Header, MatGridListModule],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

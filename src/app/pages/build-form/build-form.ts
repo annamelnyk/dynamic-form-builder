@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { FormBuilderI, FormBuilderService } from '../../services/form-builder';
 import { Toolbar } from '../../components/toolbar/toolbar';
+import { EditableFormField } from '../../editable-form-field/editable-form-field';
 
 @Component({
   selector: 'app-build-form',
@@ -17,6 +18,7 @@ import { Toolbar } from '../../components/toolbar/toolbar';
     MatFormFieldModule,
     MatInputModule,
     Toolbar,
+    EditableFormField,
   ],
   templateUrl: './build-form.html',
   styleUrl: './build-form.scss',

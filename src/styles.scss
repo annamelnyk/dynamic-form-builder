@@ -15,6 +15,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -22,18 +26,40 @@ body {
 }
 
 //helpers
-.mr-10 {
+.mr-xs {
+  margin-right: 0.5rem;
+}
+
+.ml-xs {
+  margin-left: 0.5rem;
+}
+
+.mt-xs {
+  margin-top: 0.5rem;
+}
+
+.mb-xs {
+  margin-bottom: 0.5rem;
+}
+
+.mr-small {
   margin-right: 1rem;
 }
 
-.ml-10 {
+.ml-small {
   margin-left: 1rem;
 }
 
-.mr-15 {
+.mr-medium {
   margin-right: 1.5rem;
 }
 
-.ml-15 {
+.ml-medium {
   margin-left: 1.5rem;
+}
+
+[contenteditable] {
+  &:focus {
+    outline: none;
+  }
 }
