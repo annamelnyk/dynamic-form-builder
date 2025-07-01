@@ -7,6 +7,7 @@ export interface FormBuilderI {
   name: FieldType;
 }
 export interface GeneratedFormFieldI {
+  id: string;
   type: FieldType;
   label: string; // must contain uuid?
 }
@@ -25,6 +26,11 @@ export class FormBuilderService {
   generatedFormFiledsList = signal<GeneratedFormFieldI[]>([]);
 
   addNewFormField(formField: GeneratedFormFieldI) {
-    this.generatedFormFiledsList.update((prevList) => [...prevList, formField]);
+    this.generatedFormFiledsList.update((prevList) => [
+      ...prevList,
+      {
+        ...formField,
+      },
+    ]);
   }
 }

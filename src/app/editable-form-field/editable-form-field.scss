@@ -20,7 +20,8 @@
   top: 20px;
 }
 
-.field__controls-title {
+.field__controls-label {
+  margin: 2rem 0;
   @include mixin.medium-text;
 }
 

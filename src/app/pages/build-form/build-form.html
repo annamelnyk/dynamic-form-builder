@@ -18,7 +18,7 @@
         @for (formField of formBuilderService.generatedFormFiledsList(); track
         $index; let first = $first; let last = $last) {
         <app-editable-form-field
-          [fieldType]="formField.type"
+          [formField]="formField"
           [isFirst]="first"
           [isLast]="last"
         />
