@@ -15,7 +15,11 @@
         </mat-icon>
       </div>
     </div>
-    <label [for]="id" class="field__controls-label" contenteditable
+    <label
+      [for]="id"
+      class="field__controls-label"
+      contenteditable
+      (input)="updateTitle($event)"
       >{{title()}}</label
     >
     <div class="field__controls-end">
