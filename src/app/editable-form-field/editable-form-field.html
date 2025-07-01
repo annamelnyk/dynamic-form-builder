@@ -18,8 +18,12 @@
     <h3 class="field__controls-title" contenteditable>{{title()}}</h3>
     <div class="field__controls-end">
       <div class="field__controls-required">
-        <input type="checkbox" id="required" name="required" />
-        <label for="required" class="ml-xs">Required</label>
+        <input
+          type="checkbox"
+          id="required-{{uniqueID}}"
+          name="required-{{uniqueID}}"
+        />
+        <label for="required-{{uniqueID}}" class="ml-xs">Required</label>
       </div>
       <div class="field__controls-remove">
         <mat-icon>delete_forever</mat-icon>
