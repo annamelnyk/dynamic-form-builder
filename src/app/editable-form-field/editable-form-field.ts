@@ -4,6 +4,7 @@ import {
   inject,
   input,
   linkedSignal,
+  OnInit,
   signal,
 } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,19 +29,13 @@ export enum FieldType {
   templateUrl: './editable-form-field.html',
   styleUrl: './editable-form-field.scss',
 })
-export class EditableFormField {
+export class EditableFormField implements OnInit {
   formBuilderService = inject(FormBuilderService);
 
-  formFieldId = input.required<string>();
+  formField = input.required<GeneratedFormFieldI>();
+
   isFirst = input<boolean>(false);
   isLast = input<boolean>(false);
-
-  formField = computed<GeneratedFormFieldI>(
-    () =>
-      this.formBuilderService
-        .generatedFormFiledsList()
-        .find((f) => f.id === this.formFieldId()) as GeneratedFormFieldI
-  );
 
   title = computed(
     () => this.formField().label || `New ${this.formField().type} Field`
@@ -49,5 +44,22 @@ export class EditableFormField {
 
   get id(): string {
     return this.formField().id;
+  }
+
+  ngOnInit(): void {}
+
+  onTitleChange(e: Event) {
+    const value = (e.target as HTMLElement).innerText;
+    console.log('Changed value:', value);
+    this.formBuilderService.generatedFormFiledsList.update((prevValue) => {
+      const updatedFormField = {
+        ...this.formField(),
+        label: value,
+      };
+
+      return prevValue.map((value) =>
+        value.id === this.formField().id ? updatedFormField : value
+      );
+    });
   }
 }
