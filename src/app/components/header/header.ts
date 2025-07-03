@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AppTheme, Theme } from '../../services/theme';
 import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
+import { OnWindowScroll } from '../../directives/on-window-scroll';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
     MatIconModule,
     MatToolbar,
     ReactiveFormsModule,
+    OnWindowScroll,
   ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
