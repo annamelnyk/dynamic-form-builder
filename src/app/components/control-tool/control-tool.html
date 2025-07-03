@@ -4,9 +4,11 @@
   (click)="onToolClickHandler(tool())"
 >
   <mat-card-content>
-    <div class="control__icon__outer">
-      <mat-icon>{{tool().icon}}</mat-icon>
+    <div class="card__content__outer flex items-center">
+      <div class="control__icon__outer">
+        <mat-icon>{{tool().icon}}</mat-icon>
+      </div>
+      <p class="control__name">{{tool().name | titlecase}}</p>
     </div>
-    <p class="control__name">{{tool().name | titlecase}}</p>
   </mat-card-content>
 </mat-card>

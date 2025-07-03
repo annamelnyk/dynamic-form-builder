@@ -7,18 +7,17 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
-import { v4 as uuidv4 } from 'uuid';
+
 import {
-  FormBuilderI,
   FormBuilderService,
   GeneratedFormFieldI,
-} from '../services/form-builder';
+} from '../../services/form-builder';
 
 export enum FieldType {
-  Input = 'Input',
+  Input = 'Text Input',
   Textarea = 'Textarea',
   Select = 'Select',
   Checkbox = 'Checkbox',
@@ -34,6 +33,8 @@ export class EditableFormField implements OnInit {
 
   formField = input.required<GeneratedFormFieldI>();
 
+  //label = new FormControl(this.formField().label);
+
   isFirst = input<boolean>(false);
   isLast = input<boolean>(false);
 
@@ -48,18 +49,5 @@ export class EditableFormField implements OnInit {
 
   ngOnInit(): void {}
 
-  onTitleChange(e: Event) {
-    const value = (e.target as HTMLElement).innerText;
-    console.log('Changed value:', value);
-    this.formBuilderService.generatedFormFiledsList.update((prevValue) => {
-      const updatedFormField = {
-        ...this.formField(),
-        label: value,
-      };
-
-      return prevValue.map((value) =>
-        value.id === this.formField().id ? updatedFormField : value
-      );
-    });
-  }
+  onTitleChange(e: Event) {}
 }

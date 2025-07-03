@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@use "../../styles/mixins" as mixin;
+@use "../../../styles/mixins" as mixin;
 
 .field__outer {
   padding: 0 26px 40px 56px;
@@ -44,7 +44,6 @@
 
 .field__controls-remove {
   cursor: pointer;
-  margin-left: 15px;
 }
 
 .field__controls-required {

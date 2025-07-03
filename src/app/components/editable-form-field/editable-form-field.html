@@ -1,7 +1,7 @@
 <div class="field__outer" [class.is-last]="isLast()">
   <div class="field__header">
     <div class="field__controls-aside">
-      <div class="mb-small">
+      <div class="mb-10">
         <mat-icon class="field__controls-arrow up" [class.disabled]="isFirst()"
           >arrow_upward_alt</mat-icon
         >
@@ -25,9 +25,9 @@
     <div class="field__controls-end">
       <div class="field__controls-required">
         <input type="checkbox" id="required-{{id}}" name="required-{{id}}" />
-        <label for="required-{{id}}" class="ml-xs">Required</label>
+        <label for="required-{{id}}" class="ml-2">Required</label>
       </div>
-      <div class="field__controls-remove">
+      <div class="field__controls-remove ml-5">
         <mat-icon>delete_forever</mat-icon>
       </div>
     </div>
