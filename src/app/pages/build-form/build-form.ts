@@ -8,10 +8,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { FormBuilderI, FormBuilderService } from '../../services/form-builder';
 import { Toolbar } from '../../components/toolbar/toolbar';
-import {
-  EditableFormField,
-  FieldType,
-} from '../../editable-form-field/editable-form-field';
+import { FieldType } from '../../editable-form-field/editable-form-field';
+import { FormCanvas } from '../../components/form-canvas/form-canvas';
 
 @Component({
   selector: 'app-build-form',
@@ -22,7 +20,7 @@ import {
     MatFormFieldModule,
     MatInputModule,
     Toolbar,
-    EditableFormField,
+    FormCanvas,
   ],
   templateUrl: './build-form.html',
   styleUrl: './build-form.scss',
