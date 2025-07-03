@@ -2,6 +2,10 @@
 @use "./styles/mixins";
 @use "./styles/tailwind.css";
 
+:root {
+  --h-header: 65px;
+}
+
 html {
   font-size: 10px;
   height: 100%;
