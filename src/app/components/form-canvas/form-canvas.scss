@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@use "../../../styles/mixins" as mixin;
+@use "mixins" as *;
 
 .form__card {
   overflow: hidden;
@@ -14,11 +14,11 @@
 
 .form__header_field {
   padding: 16px;
-  @include mixin.medium-text;
+  @include medium-text;
 
   &:last-child {
     padding-bottom: 50px;
-    @include mixin.normal-text;
+    @include normal-text;
   }
 }
 

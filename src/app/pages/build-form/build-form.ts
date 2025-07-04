@@ -6,10 +6,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { v4 as uuidv4 } from 'uuid';
 
-import { FormBuilderI, FormBuilderService } from '../../services/form-builder';
-import { Toolbar } from '../../components/toolbar/toolbar';
-import { FieldType } from '../../components/editable-form-field/editable-form-field';
-import { FormCanvas } from '../../components/form-canvas/form-canvas';
+import {
+  FormBuilderI,
+  FormBuilderService,
+} from '@services/form-builder/form-builder';
+import { Toolbar } from '@components/toolbar/toolbar';
+import { FieldType } from '@components/editable-form-field/editable-form-field';
+import { FormCanvas } from '@components/form-canvas/form-canvas';
 
 @Component({
   selector: 'app-build-form',

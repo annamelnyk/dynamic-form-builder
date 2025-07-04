@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@use "../../../styles/mixins" as mixin;
+@use "mixins" as *;
 
 mat-toolbar {
   display: flex;
@@ -27,8 +27,8 @@ mat-toolbar {
 }
 
 .header__title {
-  @include mixin.flex-center;
-  @include mixin.title;
+  @include flex-center;
+  @include title;
 }
 
 .header__title__icon {

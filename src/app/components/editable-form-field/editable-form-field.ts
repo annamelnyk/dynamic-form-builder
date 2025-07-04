@@ -14,7 +14,7 @@ import { MatIcon } from '@angular/material/icon';
 import {
   FormBuilderService,
   GeneratedFormFieldI,
-} from '../../services/form-builder';
+} from '@services/form-builder/form-builder';
 
 export enum FieldType {
   Input = 'Text Input',

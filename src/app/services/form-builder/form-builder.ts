@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 
-import { FieldType } from '../components/editable-form-field/editable-form-field';
+import { FieldType } from '@components/editable-form-field/editable-form-field';
 
 export interface FormBuilderI {
   icon: string;

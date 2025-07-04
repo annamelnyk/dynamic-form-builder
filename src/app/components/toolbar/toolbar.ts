@@ -2,8 +2,8 @@ import { Component, input, output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 
-import { ControlTool } from '../control-tool/control-tool';
-import { FormBuilderI } from '../../services/form-builder';
+import { ControlTool } from '@components/control-tool/control-tool';
+import { FormBuilderI } from '@services/form-builder/form-builder';
 
 @Component({
   selector: 'app-toolbar',

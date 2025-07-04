@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
-import { FormBuilderService } from '../../services/form-builder';
-import { EditableFormField } from '../editable-form-field/editable-form-field';
+import { FormBuilderService } from '@services/form-builder/form-builder';
+import { EditableFormField } from '@components/editable-form-field/editable-form-field';
 
 @Component({
   selector: 'app-form-canvas',

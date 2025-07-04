@@ -3,9 +3,9 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 
-import { AppTheme, Theme } from '../../services/theme';
+import { AppTheme, Theme } from '@services/theme';
 import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
-import { OnWindowScroll } from '../../directives/on-window-scroll';
+import { OnWindowScroll } from '@directives/on-window-scroll';
 
 @Component({
   selector: 'app-header',

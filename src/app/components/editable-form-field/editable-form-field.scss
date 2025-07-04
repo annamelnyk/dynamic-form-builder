@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@use "../../../styles/mixins" as mixin;
+@use "mixins" as *;
 
 .field__outer {
   padding: 0 26px 40px 56px;
@@ -22,7 +22,7 @@
 
 .field__controls-label {
   margin: 2rem 0;
-  @include mixin.medium-text;
+  @include medium-text;
 }
 
 .field__controls-arrow {
@@ -39,7 +39,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @include mixin.normal-text;
+  @include normal-text;
 }
 
 .field__controls-remove {

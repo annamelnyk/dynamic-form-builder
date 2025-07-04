@@ -1,8 +1,8 @@
 @use "@angular/material" as mat;
-@use "../../../styles/mixins" as mixin;
+@use "mixins" as *;
 
 .card__toolbar__title {
-  @include mixin.medium-text;
+  @include medium-text;
   text-align: center;
   padding-bottom: 15px;
   width: 100%;
