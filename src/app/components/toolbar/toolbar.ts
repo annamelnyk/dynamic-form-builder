@@ -3,7 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { ControlTool } from '@components/control-tool/control-tool';
-import { FormBuilderI } from '@services/form-builder/form-builder';
+import { FormFieldDefinition } from '@model/form-fields';
 
 @Component({
   selector: 'app-toolbar',
@@ -12,11 +12,11 @@ import { FormBuilderI } from '@services/form-builder/form-builder';
   styleUrl: './toolbar.scss',
 })
 export class Toolbar {
-  buildingTools = input<FormBuilderI[]>([]);
+  buildingTools = input<FormFieldDefinition[]>([]);
 
-  onSelectTool = output<FormBuilderI>();
+  onSelectTool = output<FormFieldDefinition>();
 
-  onSelectToolHandler(e: FormBuilderI) {
+  onSelectToolHandler(e: FormFieldDefinition) {
     this.onSelectTool.emit(e);
   }
 }

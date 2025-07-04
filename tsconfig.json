@@ -8,7 +8,8 @@
       "@components/*": ["app/components/*"],
       "@pages/*": ["app/pages/*"],
       "@directives/*": ["app/directives/*"],
-      "@services/*": ["app/services/*"]
+      "@services/*": ["app/services/*"],
+      "@model/*": ["app/model/*"]
     },
     "strict": true,
     "noImplicitOverride": true,

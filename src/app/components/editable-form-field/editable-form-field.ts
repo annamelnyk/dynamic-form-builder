@@ -10,18 +10,10 @@ import {
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
+import { GeneratedFormFieldI } from '@model/form-fields';
 
-import {
-  FormBuilderService,
-  GeneratedFormFieldI,
-} from '@services/form-builder/form-builder';
+import { FormBuilderService } from '@services/form-builder/form-builder';
 
-export enum FieldType {
-  Input = 'Text Input',
-  Textarea = 'Textarea',
-  Select = 'Select',
-  Checkbox = 'Checkbox',
-}
 @Component({
   selector: 'app-editable-form-field',
   imports: [MatFormFieldModule, MatIcon, ReactiveFormsModule],

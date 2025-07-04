@@ -2,8 +2,7 @@ import { TitleCasePipe } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-
-import { FormBuilderI } from '@services/form-builder/form-builder';
+import { FormFieldDefinition } from '@model/form-fields';
 
 @Component({
   selector: 'app-control-tool',
@@ -12,10 +11,10 @@ import { FormBuilderI } from '@services/form-builder/form-builder';
   styleUrl: './control-tool.scss',
 })
 export class ControlTool {
-  tool = input.required<FormBuilderI>();
-  onToolClick = output<FormBuilderI>();
+  tool = input.required<FormFieldDefinition>();
+  onToolClick = output<FormFieldDefinition>();
 
-  onToolClickHandler(e: FormBuilderI) {
+  onToolClickHandler(e: FormFieldDefinition) {
     this.onToolClick.emit(e);
   }
 }

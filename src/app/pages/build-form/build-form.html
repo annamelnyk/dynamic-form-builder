@@ -5,7 +5,7 @@
   <section class="flex gap-5 px-2 mb-10">
     <app-toolbar
       class="w-200"
-      [buildingTools]="formBuilderService.buildingTools"
+      [buildingTools]="fieldTypesService.getAllFormFieldDefinitions()"
       (onSelectTool)="addFormField($event)"
     />
     <app-form-canvas class="flex-2/3" />
