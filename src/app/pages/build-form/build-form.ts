@@ -11,6 +11,7 @@ import { Toolbar } from '@components/toolbar/toolbar';
 import { FormCanvas } from '@components/form-canvas/form-canvas';
 import { FieldType, FormFieldDefinition } from '@model/form-fields';
 import { FieldTypesService } from '@services/field-types/field-types';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-build-form',
@@ -22,6 +23,7 @@ import { FieldTypesService } from '@services/field-types/field-types';
     MatInputModule,
     Toolbar,
     FormCanvas,
+    DragDropModule,
   ],
   templateUrl: './build-form.html',
   styleUrl: './build-form.scss',

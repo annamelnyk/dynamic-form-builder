@@ -5,21 +5,23 @@
       Form Description
     </div>
   </mat-card-header>
-  <mat-card-content
-    id="fields-added-to-form"
-    class="form__card__content"
-    cdkDropList
-    [cdkDropListData]="formBuilderService.generatedFormFiledsList()"
-  >
-    @if(!formBuilderService.generatedFormFiledsList().length) {
-    <p class="subheader tracking-wide">Form fields will be displayed here</p>
-    } @for (formField of formBuilderService.generatedFormFiledsList(); track
-    $index; let first = $first; let last = $last) {
-    <app-editable-form-field
-      [formField]="formField"
-      [isFirst]="first"
-      [isLast]="last"
-    />
-    }
+  <mat-card-content>
+    <div
+      cdkDropList
+      (cdkDropListDropped)="onFieldTypeDropped($event)"
+      class="form__card__content"
+      [cdkDropListData]="formBuilderService.generatedFormFiledsList()"
+    >
+      @if(!formBuilderService.generatedFormFiledsList().length) {
+      <p class="subheader tracking-wide">Form fields will be displayed here</p>
+      } @for (formField of formBuilderService.generatedFormFiledsList(); track
+      $index; let first = $first; let last = $last) {
+      <app-editable-form-field
+        [formField]="formField"
+        [isFirst]="first"
+        [isLast]="last"
+      />
+      }
+    </div>
   </mat-card-content>
 </mat-card>

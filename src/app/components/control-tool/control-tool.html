@@ -3,6 +3,7 @@
   appearance="outlined"
   (click)="onToolClickHandler(tool())"
   cdkDrag
+  [cdkDragData]="tool()"
 >
   <mat-card-content>
     <div class="card__content__outer flex items-center">
@@ -12,4 +13,5 @@
       <p class="control__name">{{tool().label | titlecase}}</p>
     </div>
   </mat-card-content>
+  <div *cdkDragPlaceholder></div>
 </mat-card>

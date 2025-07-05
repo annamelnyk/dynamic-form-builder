@@ -28,13 +28,8 @@ export class Toolbar {
     this.onSelectTool.emit(e);
   }
 
-  onFieldDrop(event: CdkDragDrop<FormFieldDefinition[]>) {
-    console.log(event);
-
-    this.formBuilderService.addNewFormField(
-      this.formBuilderService.generateFormField(
-        this.buildingTools()[event.currentIndex]
-      )
-    );
+  onFieldExit(event: CdkDragDrop<FormFieldDefinition[]>): FormFieldDefinition {
+    console.log('exit', event);
+    return this.buildingTools()[event.currentIndex];
   }
 }
