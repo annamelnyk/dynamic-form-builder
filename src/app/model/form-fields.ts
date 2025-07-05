@@ -1,13 +1,13 @@
 export enum FieldType {
-  Text = 'Text Input',
-  Textarea = 'Textarea',
-  Select = 'Select',
-  Checkbox = 'Checkbox',
+  Text = 'text input',
+  Textarea = 'textarea',
+  Select = 'select',
+  Checkbox = 'checkbox',
 }
 
 export interface FormFieldDefinition {
   icon: string;
-  name: FieldType;
+  type: FieldType;
   label: string;
 }
 

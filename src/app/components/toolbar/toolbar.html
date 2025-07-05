@@ -2,8 +2,14 @@
   <mat-card-header class="card__toolbar__header">
     <h2 class="card__toolbar__title">Add Form Elements</h2>
   </mat-card-header>
-  <mat-card-content>
-    @for(tool of buildingTools(); track tool.name) {
+  <mat-card-content
+    cdkDropList
+    cdkDropListSortingDisabled="true"
+    [cdkDropListData]="buildingTools()"
+    [cdkDropListConnectedTo]="['fields-added-to-form']"
+    (cdkDropListDropped)="onFieldDrop($event)"
+  >
+    @for(tool of buildingTools(); track tool.type) {
     <div class="mb-5">
       <app-control-tool
         [tool]="tool"

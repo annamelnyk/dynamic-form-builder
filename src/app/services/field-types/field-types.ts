@@ -4,25 +4,25 @@ import { FieldType, FormFieldDefinition } from '@model/form-fields';
 
 const TEXT_FORM_DEFINITION = {
   icon: 'text_fields',
-  name: FieldType.Text,
+  type: FieldType.Text,
   label: FieldType.Text,
 };
 
 const TEXTAREA_FORM_DEFINITION = {
   icon: 'local_parking',
-  name: FieldType.Textarea,
+  type: FieldType.Textarea,
   label: FieldType.Textarea,
 };
 
 const SELECT_FORM_DEFINITION = {
   icon: 'checklist',
-  name: FieldType.Select,
+  type: FieldType.Select,
   label: FieldType.Select,
 };
 
 const CHECKBOX_FORM_DEFINITION = {
   icon: 'check_box',
-  name: FieldType.Checkbox,
+  type: FieldType.Checkbox,
   label: FieldType.Checkbox,
 };
 

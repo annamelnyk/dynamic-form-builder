@@ -33,10 +33,8 @@ export class BuildForm {
 
   addFormField(formFieldType: FormFieldDefinition) {
     console.log({ formFieldType });
-    this.formBuilderService.addNewFormField({
-      id: uuidv4(),
-      type: formFieldType.name,
-      label: '',
-    });
+    this.formBuilderService.addNewFormField(
+      this.formBuilderService.generateFormField(formFieldType)
+    );
   }
 }

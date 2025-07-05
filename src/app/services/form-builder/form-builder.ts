@@ -1,5 +1,7 @@
 import { Injectable, signal } from '@angular/core';
-import { GeneratedFormFieldI } from '@model/form-fields';
+import { v4 as uuidv4 } from 'uuid';
+
+import { FormFieldDefinition, GeneratedFormFieldI } from '@model/form-fields';
 
 @Injectable({
   providedIn: 'root',
@@ -14,5 +16,13 @@ export class FormBuilderService {
         ...formField,
       },
     ]);
+  }
+
+  generateFormField(formFieldType: FormFieldDefinition): GeneratedFormFieldI {
+    return {
+      id: uuidv4(),
+      type: formFieldType.type,
+      label: '',
+    };
   }
 }
