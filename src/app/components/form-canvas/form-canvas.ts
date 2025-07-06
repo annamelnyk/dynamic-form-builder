@@ -18,12 +18,12 @@ export class FormCanvas {
   fieldTypesService = inject(FieldTypesService);
 
   onFieldTypeDropped(event: CdkDragDrop<any>) {
+    console.log('dropped', event.previousContainer.data);
     console.log('dropped', event);
+    console.log('dropped', event.item.data);
 
-    // this.formBuilderService.addNewFormField(
-    //   this.formBuilderService.generateFormField(
-    //     this.buildingTools()[event.currentIndex]
-    //   )
-    // );
+    this.formBuilderService.addNewFormField(
+      this.formBuilderService.generateFormField(event.item.data)
+    );
   }
 }

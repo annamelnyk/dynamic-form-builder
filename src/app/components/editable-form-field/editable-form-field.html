@@ -20,7 +20,7 @@
       class="field__controls-label"
       contenteditable
       (input)="onTitleChange($event)"
-      >{{title()}}</label
+      >{{formField().label | titlecase}}</label
     >
     <div class="field__controls-end">
       <div class="field__controls-required">
@@ -37,7 +37,7 @@
       [id]="id"
       class="field__controls-input"
       type="text"
-      [placeholder]="placeholder()"
+      [placeholder]="placeholder() | titlecase"
     />
   </div>
   <div class="field__fooler"></div>

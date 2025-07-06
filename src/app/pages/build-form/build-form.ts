@@ -4,7 +4,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { v4 as uuidv4 } from 'uuid';
 
 import { FormBuilderService } from '@services/form-builder/form-builder';
 import { Toolbar } from '@components/toolbar/toolbar';

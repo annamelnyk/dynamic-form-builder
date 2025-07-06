@@ -1,3 +1,4 @@
+import { TitleCasePipe } from '@angular/common';
 import {
   Component,
   computed,
@@ -16,7 +17,7 @@ import { FormBuilderService } from '@services/form-builder/form-builder';
 
 @Component({
   selector: 'app-editable-form-field',
-  imports: [MatFormFieldModule, MatIcon, ReactiveFormsModule],
+  imports: [MatFormFieldModule, MatIcon, ReactiveFormsModule, TitleCasePipe],
   templateUrl: './editable-form-field.html',
   styleUrl: './editable-form-field.scss',
 })
@@ -30,10 +31,7 @@ export class EditableFormField implements OnInit {
   isFirst = input<boolean>(false);
   isLast = input<boolean>(false);
 
-  title = computed(
-    () => this.formField().label || `New ${this.formField().type} Field`
-  );
-  placeholder = computed(() => `Enter ${this.title()}`);
+  placeholder = computed(() => `Enter ${this.formField().label}`);
 
   get id(): string {
     return this.formField().id;
