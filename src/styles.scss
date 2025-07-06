@@ -20,3 +20,12 @@ body {
   padding: 2rem 0;
   text-align: center;
 }
+
+.cdk-drop-list-dragging {
+  .field__outer,
+  .subheader {
+    background-color: --alpha(var(--mat-sys-on-primary) / 50%);
+    border: 1px solid var(--mat-sys-primary);
+    border-radius: 5px;
+  }
+}
