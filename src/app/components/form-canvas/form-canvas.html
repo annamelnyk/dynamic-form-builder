@@ -13,7 +13,7 @@
       [cdkDropListData]="formBuilderService.generatedFormFiledsList()"
     >
       @if(!formBuilderService.generatedFormFiledsList().length) {
-      <p class="subheader tracking-wide transition-all">
+      <p class="subheader tracking-wide transition-all mt-8">
         Form fields will be displayed here
       </p>
       } @for (formField of formBuilderService.generatedFormFiledsList(); track
