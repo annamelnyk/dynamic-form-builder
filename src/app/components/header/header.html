@@ -1,25 +1,29 @@
 <mat-toolbar class="header transition-shadow" appOnWindowScroll>
-  <div class="header__title font-mono">
-    <mat-icon
-      class="header__title__icon mr-5"
-      aria-hidden="false"
-      aria-label="home icon"
-      fontIcon="home"
-    ></mat-icon>
-    Form Builder
-  </div>
-  <div class="header__controls">
-    <mat-button-toggle-group
-      [formControl]="theme"
-      (change)="setSelectedTheme(theme)"
-      aria-label="App theme"
-      hideSingleSelectionIndicator="true"
-    >
-      @for (theme of themeService.getThemes(); track theme.name) {
-      <mat-button-toggle [value]="theme">
-        <mat-icon class="theme-icon">{{ theme.icon }}</mat-icon>
-      </mat-button-toggle>
-      }
-    </mat-button-toggle-group>
+  <div class="container">
+    <div class="header__outer">
+      <div class="header__title font-mono">
+        <mat-icon
+          class="header__title__icon mr-5"
+          aria-hidden="false"
+          aria-label="home icon"
+          fontIcon="home"
+        ></mat-icon>
+        Form Builder
+      </div>
+      <div class="header__controls">
+        <mat-button-toggle-group
+          [formControl]="theme"
+          (change)="setSelectedTheme(theme)"
+          aria-label="App theme"
+          hideSingleSelectionIndicator="true"
+        >
+          @for (theme of themeService.getThemes(); track theme.name) {
+          <mat-button-toggle [value]="theme">
+            <mat-icon class="theme-icon">{{ theme.icon }}</mat-icon>
+          </mat-button-toggle>
+          }
+        </mat-button-toggle-group>
+      </div>
+    </div>
   </div>
 </mat-toolbar>

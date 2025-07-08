@@ -2,10 +2,6 @@
 @use "mixins" as *;
 
 mat-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
   @include mat.toolbar-overrides(
     (
       container-background-color: var(--mat-sys-on-primary),
@@ -24,6 +20,12 @@ mat-toolbar {
   position: fixed;
   top: 0;
   z-index: 5;
+}
+
+.header__outer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header__title {
