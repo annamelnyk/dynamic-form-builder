@@ -9,7 +9,7 @@ export interface FormFieldDefinition {
   icon: string;
   type: FieldType;
   label: string;
-  required: boolean;
+  //required: boolean;
 }
 
 export interface GeneratedFormFieldI {

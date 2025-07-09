@@ -32,10 +32,8 @@ export class BuildForm {
   formBuilderService = inject(FormBuilderService);
   FieldType = FieldType;
 
-  addFormField(formFieldType: FormFieldDefinition) {
-    console.log({ formFieldType });
-    this.formBuilderService.addNewFormField(
-      this.formBuilderService.generateFormField(formFieldType)
-    );
+  addFormField(formField: FormFieldDefinition) {
+    console.log({ formField });
+    this.formBuilderService.addFormFieldToFromFieldDefinitionsList(formField);
   }
 }

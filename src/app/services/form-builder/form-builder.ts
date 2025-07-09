@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 
 import { FormFieldDefinition, GeneratedFormFieldI } from '@model/form-fields';
 
@@ -6,23 +6,33 @@ import { FormFieldDefinition, GeneratedFormFieldI } from '@model/form-fields';
   providedIn: 'root',
 })
 export class FormBuilderService {
-  generatedFormFiledsList = signal<GeneratedFormFieldI[]>([]);
+  //generatedFormFiledsList = signal<GeneratedFormFieldI[]>([]);
+  formFieldDefinitionsList = signal<FormFieldDefinition[]>([]);
+  generatedFormFiledsList = computed<GeneratedFormFieldI[]>(() =>
+    this.formFieldDefinitionsList().map((formField: FormFieldDefinition) =>
+      this.generateFormField(formField)
+    )
+  );
 
-  addNewFormField(formField: GeneratedFormFieldI) {
-    this.generatedFormFiledsList.update((prevList) => [
-      ...prevList,
-      {
-        ...formField,
-      },
-    ]);
-  }
+  // addNewFormField(formField: GeneratedFormFieldI) {
+  //   this.generatedFormFiledsList.update((prevList) => [
+  //     ...prevList,
+  //     {
+  //       ...formField,
+  //     },
+  //   ]);
+  // }
 
   generateFormField(formFieldType: FormFieldDefinition): GeneratedFormFieldI {
     return {
       id: crypto.randomUUID(),
       type: formFieldType.type,
       label: formFieldType.label,
-      required: formFieldType.required,
+      required: false,
     };
+  }
+
+  addFormFieldToFromFieldDefinitionsList(field: FormFieldDefinition) {
+    this.formFieldDefinitionsList.update((prevList) => [...prevList, field]);
   }
 }

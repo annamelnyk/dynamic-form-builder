@@ -21,9 +21,10 @@ export class FormCanvas {
     console.log('dropped', event.previousContainer.data);
     console.log('dropped', event);
     console.log('dropped', event.item.data);
+    console.log('dropped index', event.currentIndex);
 
-    this.formBuilderService.addNewFormField(
-      this.formBuilderService.generateFormField(event.item.data)
+    this.formBuilderService.addFormFieldToFromFieldDefinitionsList(
+      event.item.data
     );
   }
 }

@@ -1,17 +1,15 @@
-<mat-card
-  class="card__toolbar"
-  appearance="outlined"
-  cdkDropList
-  cdkDropListSortingDisabled="true"
-  [cdkDropListData]="buildingTools()"
-  (cdkDropListDropped)="onFieldExit($event)"
->
+<mat-card class="card__toolbar" appearance="outlined">
   <mat-card-header class="card__toolbar__header">
     <h2 class="card__toolbar__title">Add Form Elements</h2>
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content
+    cdkDropList
+    cdkDropListSortingDisabled="true"
+    [cdkDropListData]="buildingTools()"
+    (cdkDropListDropped)="onFieldExit($event)"
+  >
     @for(tool of buildingTools(); track tool.type) {
-    <div class="mb-5">
+    <div class="mb-5" cdkDrag>
       <app-control-tool
         [tool]="tool"
         (onToolClick)="onSelectToolHandler($event)"
