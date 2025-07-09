@@ -10,7 +10,7 @@
       cdkDropList
       (cdkDropListDropped)="onFieldTypeDropped($event)"
       class="form__card__content"
-      [cdkDropListData]="formBuilderService.generatedFormFiledsList()"
+      [cdkDropListData]="formBuilderService.formFieldDefinitionsList()"
     >
       @if(!formBuilderService.generatedFormFiledsList().length) {
       <li class="subheader tracking-wide transition-all mt-8">

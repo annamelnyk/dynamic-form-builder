@@ -6,28 +6,24 @@ const TEXT_FORM_DEFINITION = {
   icon: 'text_fields',
   type: FieldType.Text,
   label: `New ${FieldType.Text} field`,
-  required: false,
 };
 
 const TEXTAREA_FORM_DEFINITION = {
   icon: 'local_parking',
   type: FieldType.Textarea,
   label: `New ${FieldType.Textarea} field`,
-  required: false,
 };
 
 const SELECT_FORM_DEFINITION = {
   icon: 'checklist',
   type: FieldType.Select,
   label: `New ${FieldType.Select} field`,
-  required: false,
 };
 
 const CHECKBOX_FORM_DEFINITION = {
   icon: 'check_box',
   type: FieldType.Checkbox,
   label: `New ${FieldType.Checkbox} field`,
-  required: false,
 };
 
 @Injectable({
