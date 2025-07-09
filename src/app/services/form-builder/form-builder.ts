@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, Injectable, linkedSignal, signal } from '@angular/core';
 
 import { FormFieldDefinition, GeneratedFormFieldI } from '@model/form-fields';
 
@@ -6,11 +6,10 @@ import { FormFieldDefinition, GeneratedFormFieldI } from '@model/form-fields';
   providedIn: 'root',
 })
 export class FormBuilderService {
-  //generatedFormFiledsList = signal<GeneratedFormFieldI[]>([]);
   buildedFormFieldDefinitionsList = signal<FormFieldDefinition[]>([]);
-  generatedFormFiledsList = computed<GeneratedFormFieldI[]>(() =>
-    this.buildedFormFieldDefinitionsList().map(
-      (formField: FormFieldDefinition) => this.generateFormField(formField)
+  generatedFormFiledsList = linkedSignal<GeneratedFormFieldI[]>(() =>
+    this.buildedFormFieldDefinitionsList().map((formField) =>
+      this.generateFormField(formField as FormFieldDefinition & { id: string })
     )
   );
 
@@ -23,19 +22,37 @@ export class FormBuilderService {
   //   ]);
   // }
 
-  generateFormField(formFieldType: FormFieldDefinition): GeneratedFormFieldI {
+  generateFormField(
+    formFieldType: FormFieldDefinition & { id: string }
+  ): GeneratedFormFieldI {
     return {
-      id: crypto.randomUUID(),
+      id: formFieldType.id,
       type: formFieldType.type,
       label: formFieldType.label,
       required: false,
     };
   }
 
-  addFormFieldToFromFieldDefinitionsList(field: FormFieldDefinition) {
-    this.buildedFormFieldDefinitionsList.update((prevList) => [
-      ...prevList,
-      field,
-    ]);
+  addFormFieldToFromFieldDefinitionsList(
+    field: FormFieldDefinition,
+    indexOfInsertedField: number | null = null
+  ) {
+    const formFieldDefinitionContainsID = {
+      ...field,
+      id: crypto.randomUUID(),
+    } as FormFieldDefinition & { id: string };
+
+    this.buildedFormFieldDefinitionsList.update((prevList) => {
+      if (
+        typeof indexOfInsertedField === 'number' &&
+        !isNaN(indexOfInsertedField)
+      ) {
+        prevList.splice(indexOfInsertedField, 0, formFieldDefinitionContainsID);
+
+        return [...prevList];
+      }
+
+      return [...prevList, formFieldDefinitionContainsID];
+    });
   }
 }

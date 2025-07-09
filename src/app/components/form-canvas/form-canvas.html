@@ -7,8 +7,9 @@
   </mat-card-header>
   <mat-card-content>
     <ul
-      cdkDropList
       class="form__card__content"
+      cdkDropList
+      cdkDropListSortingDisabled="true"
       [cdkDropListData]="formBuilderService.buildedFormFieldDefinitionsList()"
       (cdkDropListDropped)="onFieldTypeDropped($event)"
     >
@@ -18,7 +19,7 @@
       </li>
       } @else { @for (formField of formBuilderService.generatedFormFiledsList();
       track $index; let first = $first; let last = $last) {
-      <li>
+      <li cdkDrag>
         <app-editable-form-field
           [formField]="formField"
           [isFirst]="first"

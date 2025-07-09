@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormBuilderService } from '@services/form-builder/form-builder';
 import { Toolbar } from '@components/toolbar/toolbar';
 import { FormCanvas } from '@components/form-canvas/form-canvas';
-import { FieldType, FormFieldDefinition } from '@model/form-fields';
+import { FormFieldDefinition } from '@model/form-fields';
 import { FieldTypesService } from '@services/field-types/field-types';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -30,7 +30,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 export class BuildForm {
   fieldTypesService = inject(FieldTypesService);
   formBuilderService = inject(FormBuilderService);
-  FieldType = FieldType;
 
   addFormField(formField: FormFieldDefinition) {
     console.log({ formField });

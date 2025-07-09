@@ -17,14 +17,15 @@ export class FormCanvas {
   formBuilderService = inject(FormBuilderService);
   fieldTypesService = inject(FieldTypesService);
 
-  onFieldTypeDropped(event: CdkDragDrop<FormFieldDefinition[]>) {
+  onFieldTypeDropped(event: CdkDragDrop<any[]>) {
     // console.log('dropped', event.previousContainer.data);
-    // console.log('dropped', event);
+    console.log('dropped', event);
     // console.log('dropped', event.item.data);
-    console.log('dropped index', event.currentIndex);
+    // console.log('dropped index', event.currentIndex);
 
     this.formBuilderService.addFormFieldToFromFieldDefinitionsList(
-      event.item.data
+      event.item.data,
+      event.currentIndex
     );
   }
 }
