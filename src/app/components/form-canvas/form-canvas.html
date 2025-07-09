@@ -8,9 +8,9 @@
   <mat-card-content>
     <ul
       cdkDropList
-      (cdkDropListDropped)="onFieldTypeDropped($event)"
       class="form__card__content"
-      [cdkDropListData]="formBuilderService.formFieldDefinitionsList()"
+      [cdkDropListData]="formBuilderService.buildedFormFieldDefinitionsList()"
+      (cdkDropListDropped)="onFieldTypeDropped($event)"
     >
       @if(!formBuilderService.generatedFormFiledsList().length) {
       <li class="subheader tracking-wide transition-all mt-8">

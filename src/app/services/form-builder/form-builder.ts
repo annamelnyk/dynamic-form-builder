@@ -7,10 +7,10 @@ import { FormFieldDefinition, GeneratedFormFieldI } from '@model/form-fields';
 })
 export class FormBuilderService {
   //generatedFormFiledsList = signal<GeneratedFormFieldI[]>([]);
-  formFieldDefinitionsList = signal<FormFieldDefinition[]>([]);
+  buildedFormFieldDefinitionsList = signal<FormFieldDefinition[]>([]);
   generatedFormFiledsList = computed<GeneratedFormFieldI[]>(() =>
-    this.formFieldDefinitionsList().map((formField: FormFieldDefinition) =>
-      this.generateFormField(formField)
+    this.buildedFormFieldDefinitionsList().map(
+      (formField: FormFieldDefinition) => this.generateFormField(formField)
     )
   );
 
@@ -33,6 +33,9 @@ export class FormBuilderService {
   }
 
   addFormFieldToFromFieldDefinitionsList(field: FormFieldDefinition) {
-    this.formFieldDefinitionsList.update((prevList) => [...prevList, field]);
+    this.buildedFormFieldDefinitionsList.update((prevList) => [
+      ...prevList,
+      field,
+    ]);
   }
 }

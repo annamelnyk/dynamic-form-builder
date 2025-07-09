@@ -18,9 +18,9 @@ export class FormCanvas {
   fieldTypesService = inject(FieldTypesService);
 
   onFieldTypeDropped(event: CdkDragDrop<FormFieldDefinition[]>) {
-    console.log('dropped', event.previousContainer.data);
-    console.log('dropped', event);
-    console.log('dropped', event.item.data);
+    // console.log('dropped', event.previousContainer.data);
+    // console.log('dropped', event);
+    // console.log('dropped', event.item.data);
     console.log('dropped index', event.currentIndex);
 
     this.formBuilderService.addFormFieldToFromFieldDefinitionsList(
