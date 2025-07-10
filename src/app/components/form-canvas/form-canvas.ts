@@ -6,6 +6,7 @@ import { FormBuilderService } from '@services/form-builder/form-builder';
 import { EditableFormField } from '@components/editable-form-field/editable-form-field';
 import { FormFieldDefinition } from '@model/form-fields';
 import { FieldTypesService } from '@services/field-types/field-types';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-form-canvas',

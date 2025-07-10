@@ -3,8 +3,10 @@
     <h2 class="card__toolbar__title">Add Form Elements</h2>
   </mat-card-header>
   <mat-card-content
+    id="toolbar-list"
     cdkDropList
     cdkDropListSortingDisabled="true"
+    cdkDropListConnectedTo="['form-fields-list']"
     [cdkDropListData]="buildingTools()"
     (cdkDropListDropped)="onFieldExit($event)"
   >
