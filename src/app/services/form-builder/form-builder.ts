@@ -1,15 +1,19 @@
 import { computed, Injectable, linkedSignal, signal } from '@angular/core';
 
-import { FormFieldDefinition, GeneratedFormFieldI } from '@model/form-fields';
+import {
+  FormFieldDefinition,
+  FormFieldDefinitionValue,
+  GeneratedFormFieldI,
+} from '@model/form-fields';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormBuilderService {
-  buildedFormFieldDefinitionsList = signal<FormFieldDefinition[]>([]);
+  buildedFormFieldDefinitionsList = signal<FormFieldDefinitionValue[]>([]);
   generatedFormFiledsList = linkedSignal<GeneratedFormFieldI[]>(() =>
     this.buildedFormFieldDefinitionsList().map((formField) =>
-      this.generateFormField(formField as FormFieldDefinition & { id: string })
+      this.generateFormField(formField)
     )
   );
 
@@ -23,7 +27,7 @@ export class FormBuilderService {
   // }
 
   generateFormField(
-    formFieldType: FormFieldDefinition & { id: string }
+    formFieldType: FormFieldDefinitionValue
   ): GeneratedFormFieldI {
     return {
       id: formFieldType.id,
@@ -37,10 +41,11 @@ export class FormBuilderService {
     field: FormFieldDefinition,
     indexOfInsertedField: number | null = null
   ) {
-    const formFieldDefinitionContainsID = {
+    const formFieldDefinitionContainsID: FormFieldDefinitionValue = {
       ...field,
+      required: false,
       id: crypto.randomUUID(),
-    } as FormFieldDefinition & { id: string };
+    };
 
     this.buildedFormFieldDefinitionsList.update((prevList) => {
       if (
