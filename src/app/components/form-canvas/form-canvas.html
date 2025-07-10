@@ -7,11 +7,8 @@
   </mat-card-header>
   <mat-card-content>
     <ul
-      id="form-fields-list"
       class="form__card__content"
       cdkDropList
-      cdkDropListSortingDisabled="true"
-      [cdkDropListConnectedTo]="['toolbar-list']"
       [cdkDropListData]="formBuilderService.buildedFormFieldDefinitionsList()"
       (cdkDropListDropped)="onFieldTypeDropped($event)"
     >
@@ -20,12 +17,15 @@
         Form fields will be displayed here
       </li>
       } @else { @for (formField of formBuilderService.generatedFormFiledsList();
-      track $index; let first = $first; let last = $last) {
-      <li cdkDrag>
+      track formField.id; let index = $index; let first = $first; let last =
+      $last) {
+      <li cdkDrag [cdkDragDisabled]="true">
         <app-editable-form-field
           [formField]="formField"
           [isFirst]="first"
           [isLast]="last"
+          (onMoveUp)="moveFieldPosition(index, index - 1)"
+          (onMoveDown)="moveFieldPosition(index, index + 1)"
         />
         <ng-template cdkDragPlaceholder>
           <div class="drag__drop__placeholder"></div>

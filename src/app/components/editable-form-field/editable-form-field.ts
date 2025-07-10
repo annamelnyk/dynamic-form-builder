@@ -6,12 +6,13 @@ import {
   input,
   linkedSignal,
   OnInit,
+  output,
   signal,
 } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
-import { GeneratedFormFieldI } from '@model/form-fields';
+import { FormFieldDefinition, GeneratedFormFieldI } from '@model/form-fields';
 
 import { FormBuilderService } from '@services/form-builder/form-builder';
 
@@ -26,7 +27,8 @@ export class EditableFormField implements OnInit {
 
   formField = input.required<GeneratedFormFieldI>();
 
-  //label = new FormControl(this.formField().label);
+  onMoveUp = output<Event>();
+  onMoveDown = output<Event>();
 
   isFirst = input<boolean>(false);
   isLast = input<boolean>(false);
@@ -40,4 +42,12 @@ export class EditableFormField implements OnInit {
   ngOnInit(): void {}
 
   onTitleChange(e: Event) {}
+
+  onClickMoveUp(e: Event) {
+    this.onMoveUp.emit(e);
+  }
+
+  onClickMoveDown(e: Event) {
+    this.onMoveDown.emit(e);
+  }
 }

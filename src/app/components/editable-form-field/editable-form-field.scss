@@ -30,9 +30,11 @@
 }
 
 .field__controls-arrow {
+  cursor: pointer;
+
   &.disabled {
     opacity: 0.26;
-    cursor: default;
+    cursor: not-allowed;
   }
 }
 

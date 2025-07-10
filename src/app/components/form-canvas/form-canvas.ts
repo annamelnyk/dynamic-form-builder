@@ -1,6 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  DragDropModule,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 
 import { FormBuilderService } from '@services/form-builder/form-builder';
 import { EditableFormField } from '@components/editable-form-field/editable-form-field';
@@ -28,5 +32,10 @@ export class FormCanvas {
       event.item.data,
       event.currentIndex
     );
+  }
+
+  moveFieldPosition(fromIndex: number, toIndex: number) {
+    console.log('clicked!');
+    this.formBuilderService.moveFromFieldDefinitionPosition(fromIndex, toIndex);
   }
 }

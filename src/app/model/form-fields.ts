@@ -12,6 +12,14 @@ export interface FormFieldDefinition {
   //required: boolean;
 }
 
+export interface FormFieldDefinitionValue {
+  id: string;
+  icon: string;
+  type: FieldType;
+  label: string;
+  required: boolean;
+}
+
 export interface GeneratedFormFieldI {
   id: string;
   type: FieldType;

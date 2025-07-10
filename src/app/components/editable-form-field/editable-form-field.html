@@ -2,7 +2,10 @@
   <div class="field__header">
     <div class="field__controls-aside">
       <div class="mb-10">
-        <mat-icon class="field__controls-arrow up" [class.disabled]="isFirst()"
+        <mat-icon
+          class="field__controls-arrow up"
+          [class.disabled]="isFirst()"
+          (click)="onClickMoveUp($event)"
           >arrow_upward_alt</mat-icon
         >
       </div>
@@ -10,6 +13,7 @@
         <mat-icon
           class="field__controls-arrow down"
           [class.disabled]="isLast()"
+          (click)="onClickMoveDown($event)"
         >
           arrow_downward_alt
         </mat-icon>

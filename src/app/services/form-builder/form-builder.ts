@@ -55,4 +55,18 @@ export class FormBuilderService {
       return [...prevList, formFieldDefinitionContainsID];
     });
   }
+
+  moveFromFieldDefinitionPosition(fromIndex: number, toIndex: number) {
+    const formFieldToBeReplaced = {
+      ...this.buildedFormFieldDefinitionsList()[fromIndex],
+    };
+
+    const updatedOrder = this.buildedFormFieldDefinitionsList().filter(
+      (f) => f.id !== formFieldToBeReplaced.id
+    );
+
+    updatedOrder.splice(toIndex, 0, formFieldToBeReplaced);
+
+    this.buildedFormFieldDefinitionsList.set([...updatedOrder]);
+  }
 }
