@@ -22,7 +22,11 @@
   }
 }
 
-.form__card__content {
-  //padding: 16px 0;
+.form__card__list {
+  margin-top: 16px;
   min-height: 70px;
+}
+
+.form__card__item:not(:last-child) {
+  margin-bottom: 16px;
 }
