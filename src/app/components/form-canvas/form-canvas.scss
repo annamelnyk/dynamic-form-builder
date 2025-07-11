@@ -6,7 +6,6 @@
 }
 
 .form__card__header {
-  //padding: 0;
   flex-direction: column;
   border-bottom: 1px solid var(--mat-sys-primary);
   background-color: var(--mat-sys-on-primary);
@@ -22,9 +21,8 @@
   }
 }
 
-.form__card__list {
-  margin-top: 16px;
-  min-height: 70px;
+.form__card__content {
+  padding-top: 16px;
 }
 
 .form__card__item:not(:last-child) {
