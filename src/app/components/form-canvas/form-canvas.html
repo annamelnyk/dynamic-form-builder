@@ -11,13 +11,12 @@
       [cdkDropListData]="formBuilderService.buildedFormFieldDefinitionsList()"
       (cdkDropListDropped)="onFieldTypeDropped($event)"
     >
-      @if(!formBuilderService.generatedFormFiledsList().length) {
+      @if(!formBuilderService.formFieldsList().length) {
       <li class="subheader tracking-wide transition-all">
         Form fields will be displayed here
       </li>
-      } @else { @for (formField of formBuilderService.generatedFormFiledsList();
-      track formField.id; let index = $index; let first = $first; let last =
-      $last) {
+      } @else { @for (formField of formBuilderService.formFieldsList(); track
+      formField.id; let index = $index; let first = $first; let last = $last) {
       <li cdkDrag [cdkDragDisabled]="true" class="form__card__item">
         <app-editable-form-field
           [formField]="formField"
