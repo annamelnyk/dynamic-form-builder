@@ -27,21 +27,25 @@ body {
   text-align: center;
 }
 
+.shadow {
+  @include shadow;
+}
+
 .cdk-drop-list-dragging {
   .field__outer:hover,
   .subheader {
     background-color: var(--mat-sys-on-primary);
     border: 1px solid var(--mat-sys-primary);
-    border-radius: 5px;
-    transform: scale(0.95);
+    border-radius: var(--mat-sys-corner-small);
+    transform: scale(0.98);
   }
 }
 
 .cdk-drag-placeholder {
   height: 75px;
   margin: 16px auto;
-  border: 1px dashed var(--mat-sys-primary);
-  background-color: var(--mat-sys-on-primary);
-  border-radius: 5px;
+  border: 1px dashed var(--mat-sys-on-tertiary);
+  background-color: var(--mat-sys-tertiary);
+  border-radius: var(--mat-sys-corner-medium);
   transition: height 0.2s ease-in;
 }

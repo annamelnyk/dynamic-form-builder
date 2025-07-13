@@ -15,10 +15,17 @@ import { MatIcon } from '@angular/material/icon';
 import { FormFieldDefinition, GeneratedFormFieldI } from '@model/form-fields';
 
 import { FormBuilderService } from '@services/form-builder/form-builder';
+import { MatCard, MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-editable-form-field',
-  imports: [MatFormFieldModule, MatIcon, ReactiveFormsModule, TitleCasePipe],
+  imports: [
+    MatFormFieldModule,
+    MatIcon,
+    ReactiveFormsModule,
+    TitleCasePipe,
+    MatCardModule,
+  ],
   templateUrl: './editable-form-field.html',
   styleUrl: './editable-form-field.scss',
 })
