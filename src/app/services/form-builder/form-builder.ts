@@ -17,15 +17,6 @@ export class FormBuilderService {
     )
   );
 
-  // addNewFormField(formField: GeneratedFormFieldI) {
-  //   this.generatedFormFiledsList.update((prevList) => [
-  //     ...prevList,
-  //     {
-  //       ...formField,
-  //     },
-  //   ]);
-  // }
-
   generateFormField(
     formFieldType: FormFieldDefinitionValue
   ): GeneratedFormFieldI {
@@ -73,5 +64,11 @@ export class FormBuilderService {
     updatedOrder.splice(toIndex, 0, formFieldToBeReplaced);
 
     this.buildedFormFieldDefinitionsList.set([...updatedOrder]);
+  }
+
+  removeFormFieldDefinition(id: string) {
+    this.buildedFormFieldDefinitionsList.update((prevList) =>
+      prevList.filter((f) => f.id !== id)
+    );
   }
 }
