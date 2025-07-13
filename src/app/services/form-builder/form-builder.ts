@@ -17,6 +17,8 @@ export class FormBuilderService {
     )
   );
 
+  formFieldsList = this.generatedFormFiledsList.asReadonly();
+
   generateFormField(
     formFieldType: FormFieldDefinitionValue
   ): GeneratedFormFieldI {
@@ -69,6 +71,12 @@ export class FormBuilderService {
   removeFormFieldDefinition(id: string) {
     this.buildedFormFieldDefinitionsList.update((prevList) =>
       prevList.filter((f) => f.id !== id)
+    );
+  }
+
+  toggleRequiredField(id: string) {
+    this.buildedFormFieldDefinitionsList.update((prevList) =>
+      prevList.map((f) => (f.id === id ? { ...f, required: !f.required } : f))
     );
   }
 }

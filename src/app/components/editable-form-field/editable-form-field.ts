@@ -50,8 +50,4 @@ export class EditableFormField implements OnInit {
   onClickMoveDown(e: Event) {
     this.onMoveDown.emit(e);
   }
-
-  removeFieldHandler() {
-    this.formBuilderService.removeFormFieldDefinition(this.formField().id);
-  }
 }

@@ -28,11 +28,20 @@
     >
     <div class="field__controls-end">
       <div class="field__controls-required">
-        <input type="checkbox" id="required-{{id}}" name="required-{{id}}" />
+        <input
+          type="checkbox"
+          id="required-{{id}}"
+          name="required-{{id}}"
+          [checked]="formField().required"
+          (change)="formBuilderService.toggleRequiredField(formField().id)"
+        />
         <label for="required-{{id}}" class="ml-2">Required</label>
       </div>
       <div class="field__controls-remove ml-5">
-        <mat-icon (click)="removeFieldHandler()">delete_forever</mat-icon>
+        <mat-icon
+          (click)="this.formBuilderService.removeFormFieldDefinition(formField().id)"
+          >delete_forever</mat-icon
+        >
       </div>
     </div>
   </div>
