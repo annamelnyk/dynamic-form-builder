@@ -9,14 +9,17 @@
 }
 
 @mixin font-light {
+  font-family: inherit;
   font-weight: 300;
 }
 
 @mixin font-normal {
+  font-family: inherit;
   font-weight: 400;
 }
 
 @mixin font-bold {
+  font-family: inherit;
   font-weight: 600;
 }
 
@@ -35,7 +38,7 @@
   font-size: 1.6rem;
 }
 
-@mixin smal-text {
+@mixin small-text {
   @include font-light;
   font-size: 1.2rem;
 }

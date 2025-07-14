@@ -12,10 +12,10 @@ import {
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormFieldDefinition, GeneratedFormFieldI } from '@model/form-fields';
 
 import { FormBuilderService } from '@services/form-builder/form-builder';
-import { MatCard, MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-editable-form-field',
@@ -24,7 +24,7 @@ import { MatCard, MatCardModule } from '@angular/material/card';
     MatIcon,
     ReactiveFormsModule,
     TitleCasePipe,
-    MatCardModule,
+    MatCheckboxModule,
   ],
   templateUrl: './editable-form-field.html',
   styleUrl: './editable-form-field.scss',

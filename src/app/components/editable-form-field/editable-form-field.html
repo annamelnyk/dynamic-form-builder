@@ -28,14 +28,14 @@
     >
     <div class="field__controls-end">
       <div class="field__controls-required">
-        <input
-          type="checkbox"
+        <mat-checkbox
+          class="field__controls-label"
           id="required-{{id}}"
           name="required-{{id}}"
           [checked]="formField().required"
           (change)="formBuilderService.toggleRequiredField(formField().id)"
-        />
-        <label for="required-{{id}}" class="ml-2">Required</label>
+          >Required</mat-checkbox
+        >
       </div>
       <div class="field__controls-remove ml-5">
         <mat-icon

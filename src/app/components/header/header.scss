@@ -16,6 +16,7 @@ mat-toolbar {
 }
 
 .header {
+  font-family: inherit;
   height: var(--h-header);
   position: fixed;
   top: 0;

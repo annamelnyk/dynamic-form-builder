@@ -12,7 +12,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, monospace;
 }
 
 .container {
@@ -48,4 +48,8 @@ body {
   background-color: var(--mat-sys-tertiary);
   border-radius: var(--mat-sys-corner-medium);
   transition: height 0.2s ease-in;
+}
+
+mat-checkbox .mdc-label {
+  @include normal-text;
 }
