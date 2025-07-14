@@ -13,9 +13,11 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { FormFieldDefinition, GeneratedFormFieldI } from '@model/form-fields';
+import { FieldType, GeneratedFormFieldI } from '@model/form-fields';
 
 import { FormBuilderService } from '@services/form-builder/form-builder';
+import { FieldInput } from '@components/field-types/field-input/field-input';
+import { Checkbox } from '@components/field-types/checkbox/checkbox';
 
 @Component({
   selector: 'app-editable-form-field',
@@ -25,6 +27,8 @@ import { FormBuilderService } from '@services/form-builder/form-builder';
     ReactiveFormsModule,
     TitleCasePipe,
     MatCheckboxModule,
+    FieldInput,
+    Checkbox,
   ],
   templateUrl: './editable-form-field.html',
   styleUrl: './editable-form-field.scss',
@@ -33,14 +37,12 @@ export class EditableFormField implements OnInit {
   formBuilderService = inject(FormBuilderService);
 
   formField = input.required<GeneratedFormFieldI>();
-
+  isFirst = input<boolean>(false);
+  isLast = input<boolean>(false);
   onMoveUp = output<Event>();
   onMoveDown = output<Event>();
 
-  isFirst = input<boolean>(false);
-  isLast = input<boolean>(false);
-
-  placeholder = computed(() => `Enter ${this.formField().label}`);
+  FieldType = FieldType;
 
   get id(): string {
     return this.formField().id;

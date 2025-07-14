@@ -46,12 +46,11 @@
     </div>
   </div>
   <div class="field__body">
-    <input
-      [id]="id"
-      class="field__controls-input"
-      type="text"
-      [placeholder]="placeholder() | titlecase"
-    />
+    @switch (formField().type) { @case (FieldType.Text) {
+    <app-field-input [formField]="formField()" />
+    } @case (FieldType.Checkbox) {
+    <app-checkbox [formField]="formField()" />
+    } }
   </div>
   <div class="field__footer"></div>
 </div>
