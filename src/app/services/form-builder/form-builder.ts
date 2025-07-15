@@ -3,7 +3,6 @@ import { computed, Injectable, linkedSignal, signal } from '@angular/core';
 import {
   FormFieldDefinition,
   FormFieldDefinitionValue,
-  GeneratedFormFieldI,
 } from '@model/form-fields';
 
 @Injectable({
@@ -11,24 +10,7 @@ import {
 })
 export class FormBuilderService {
   buildedFormFieldDefinitionsList = signal<FormFieldDefinitionValue[]>([]);
-  generatedFormFiledsList = linkedSignal<GeneratedFormFieldI[]>(() =>
-    this.buildedFormFieldDefinitionsList().map((formField) =>
-      this.generateFormField(formField)
-    )
-  );
-
-  formFieldsList = this.generatedFormFiledsList.asReadonly();
-
-  generateFormField(
-    formFieldType: FormFieldDefinitionValue
-  ): GeneratedFormFieldI {
-    return {
-      id: formFieldType.id,
-      type: formFieldType.type,
-      label: formFieldType.label,
-      required: false,
-    };
-  }
+  formFieldsList = this.buildedFormFieldDefinitionsList.asReadonly();
 
   addFormFieldToFromFieldDefinitionsList(
     field: FormFieldDefinition,

@@ -1,3 +1,5 @@
+import { Type } from '@angular/core';
+
 export enum FieldType {
   Text = 'text input',
   Textarea = 'textarea',
@@ -9,20 +11,10 @@ export interface FormFieldDefinition {
   icon: string;
   type: FieldType;
   label: string;
-  //required: boolean;
+  component: Type<unknown> | null;
 }
 
-export interface FormFieldDefinitionValue {
+export interface FormFieldDefinitionValue extends FormFieldDefinition {
   id: string;
-  icon: string;
-  type: FieldType;
-  label: string;
-  required: boolean;
-}
-
-export interface GeneratedFormFieldI {
-  id: string;
-  type: FieldType;
-  label: string; // must contain uuid?
   required: boolean;
 }

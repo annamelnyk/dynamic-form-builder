@@ -1,4 +1,4 @@
-import { TitleCasePipe } from '@angular/common';
+import { NgComponentOutlet, TitleCasePipe } from '@angular/common';
 import {
   Component,
   computed,
@@ -13,11 +13,9 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { FieldType, GeneratedFormFieldI } from '@model/form-fields';
+import { FieldType, FormFieldDefinitionValue } from '@model/form-fields';
 
 import { FormBuilderService } from '@services/form-builder/form-builder';
-import { FieldInput } from '@components/field-types/field-input/field-input';
-import { Checkbox } from '@components/field-types/checkbox/checkbox';
 
 @Component({
   selector: 'app-editable-form-field',
@@ -27,8 +25,7 @@ import { Checkbox } from '@components/field-types/checkbox/checkbox';
     ReactiveFormsModule,
     TitleCasePipe,
     MatCheckboxModule,
-    FieldInput,
-    Checkbox,
+    NgComponentOutlet,
   ],
   templateUrl: './editable-form-field.html',
   styleUrl: './editable-form-field.scss',
@@ -36,7 +33,7 @@ import { Checkbox } from '@components/field-types/checkbox/checkbox';
 export class EditableFormField implements OnInit {
   formBuilderService = inject(FormBuilderService);
 
-  formField = input.required<GeneratedFormFieldI>();
+  formField = input.required<FormFieldDefinitionValue>();
   isFirst = input<boolean>(false);
   isLast = input<boolean>(false);
   onMoveUp = output<Event>();

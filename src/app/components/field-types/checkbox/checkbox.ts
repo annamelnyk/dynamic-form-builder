@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { GeneratedFormFieldI } from '@model/form-fields';
+import { FormFieldDefinitionValue } from '@model/form-fields';
 
 @Component({
   selector: 'app-checkbox',
@@ -9,5 +9,5 @@ import { GeneratedFormFieldI } from '@model/form-fields';
   styleUrl: './checkbox.scss',
 })
 export class Checkbox {
-  formField = input.required<GeneratedFormFieldI>();
+  formField = input.required<FormFieldDefinitionValue>();
 }

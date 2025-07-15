@@ -46,11 +46,10 @@
     </div>
   </div>
   <div class="field__body">
-    @switch (formField().type) { @case (FieldType.Text) {
-    <app-field-input [formField]="formField()" />
-    } @case (FieldType.Checkbox) {
-    <app-checkbox [formField]="formField()" />
-    } }
+    <ng-container
+      [ngComponentOutlet]="formField().component"
+      [ngComponentOutletInputs]="{formField: formField()}"
+    ></ng-container>
   </div>
   <div class="field__footer"></div>
 </div>
