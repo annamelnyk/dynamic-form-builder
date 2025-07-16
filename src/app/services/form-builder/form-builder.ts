@@ -3,6 +3,7 @@ import { computed, Injectable, linkedSignal, signal } from '@angular/core';
 import {
   FormFieldDefinition,
   FormFieldDefinitionValue,
+  Mode,
 } from '@model/form-fields';
 
 @Injectable({
@@ -20,6 +21,7 @@ export class FormBuilderService {
       ...field,
       required: false,
       id: crypto.randomUUID(),
+      mode: Mode.Edit,
     };
 
     this.buildedFormFieldDefinitionsList.update((prevList) => {

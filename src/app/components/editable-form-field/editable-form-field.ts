@@ -56,4 +56,13 @@ export class EditableFormField implements OnInit {
   onClickMoveDown(e: Event) {
     this.onMoveDown.emit(e);
   }
+
+  onRemoveField(e: Event) {
+    e.stopPropagation();
+    this.formBuilderService.removeFormFieldDefinition(this.formField().id);
+  }
+
+  onChangeRequired() {
+    this.formBuilderService.toggleRequiredField(this.formField().id);
+  }
 }

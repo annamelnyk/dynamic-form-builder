@@ -3,7 +3,7 @@ import { Component, computed, input } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { FormFieldDefinitionValue } from '@model/form-fields';
+import { FormFieldDefinitionValue, Mode } from '@model/form-fields';
 
 @Component({
   selector: 'app-field-input',
@@ -15,4 +15,5 @@ export class FieldInput {
   formField = input.required<FormFieldDefinitionValue>();
 
   placeholder = computed(() => `Enter ${this.formField().label}`);
+  Mode = Mode;
 }

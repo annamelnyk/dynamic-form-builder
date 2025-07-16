@@ -1,5 +1,7 @@
 <mat-form-field class="w-full">
+  @if(formField().mode === Mode.Preview) {
   <mat-label>{{formField().label}}</mat-label>
+  }
   <input
     matInput
     [id]="formField().id"

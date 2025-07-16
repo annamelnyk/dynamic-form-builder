@@ -33,15 +33,12 @@
           id="required-{{id}}"
           name="required-{{id}}"
           [checked]="formField().required"
-          (change)="formBuilderService.toggleRequiredField(formField().id)"
+          (change)="onChangeRequired()"
           >Required</mat-checkbox
         >
       </div>
       <button mat-icon-button class="field__controls-remove ml-5">
-        <mat-icon
-          (click)="this.formBuilderService.removeFormFieldDefinition(formField().id)"
-          >delete</mat-icon
-        >
+        <mat-icon (click)="onRemoveField($event)">delete</mat-icon>
       </button>
     </div>
   </div>

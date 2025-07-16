@@ -1,5 +1,10 @@
 import { Type } from '@angular/core';
 
+export enum Mode {
+  Edit = 'edit',
+  Preview = 'preview',
+}
+
 export enum FieldType {
   Text = 'text input',
   Textarea = 'textarea',
@@ -17,4 +22,5 @@ export interface FormFieldDefinition {
 export interface FormFieldDefinitionValue extends FormFieldDefinition {
   id: string;
   required: boolean;
+  mode: Mode;
 }

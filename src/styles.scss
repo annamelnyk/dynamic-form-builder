@@ -50,6 +50,12 @@ body {
   transition: height 0.2s ease-in;
 }
 
-mat-checkbox .mdc-label {
+mat-checkbox .mdc-label,
+mat-label {
   @include normal-text;
+}
+
+// Style to fix the weird border with angular material
+.mdc-notched-outline__notch {
+  border-right: none !important;
 }
