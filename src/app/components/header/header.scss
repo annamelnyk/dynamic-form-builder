@@ -29,7 +29,8 @@ mat-toolbar {
   justify-content: space-between;
 }
 
-.header__title {
+.header__title,
+.header__link {
   @include flex-center;
   @include title;
 }

@@ -2,13 +2,14 @@
   <div class="container">
     <div class="header__outer">
       <div class="header__title">
-        <mat-icon
-          class="header__title__icon mr-5"
-          aria-hidden="false"
-          aria-label="home icon"
-          fontIcon="home"
-        ></mat-icon>
-        Form Builder
+        @if(router.url === '/') {
+        <ng-template [ngTemplateOutlet]="headerIcon"></ng-template>
+        Form Builder }@else {
+        <a routerLink="/" class="header__link">
+          <ng-template [ngTemplateOutlet]="headerIcon"></ng-template>
+          Form Builder
+        </a>
+        }
       </div>
       <div class="header__controls">
         <mat-button-toggle-group
@@ -27,3 +28,12 @@
     </div>
   </div>
 </mat-toolbar>
+
+<ng-template #headerIcon>
+  <mat-icon
+    class="header__title__icon mr-5"
+    aria-hidden="false"
+    aria-label="home icon"
+    fontIcon="home"
+  ></mat-icon>
+</ng-template>
