@@ -1,0 +1,10 @@
+@use "mixins" as *;
+
+.button-outer {
+  padding-top: 3rem;
+  @include flex-center;
+}
+
+button {
+  @include medium-text;
+}

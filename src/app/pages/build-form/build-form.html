@@ -2,8 +2,17 @@
   <p class="subheader tracking-wide">
     Create responsive forms with Angular Material and TailwindCSS
   </p>
+  @if (router.url === '/' && !formBuilderService.formBuilderActivated()) {
   <div class="button-outer">
-    <a matButton="elevated" [routerLink]="['/edit']">Build Form</a>
+    <button
+      matFab
+      extended
+      (click)="activateFormBuilder()"
+      class="animate-bounce"
+    >
+      Build Form
+    </button>
   </div>
+  }
   <router-outlet></router-outlet>
 </div>

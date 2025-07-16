@@ -23,7 +23,7 @@ body {
 
 .subheader {
   @include medium-text;
-  padding: 2rem 0;
+  padding: 3rem 0;
   text-align: center;
 }
 
@@ -38,6 +38,12 @@ body {
     border: 1px solid var(--mat-sys-primary);
     border-radius: var(--mat-sys-corner-small);
     transform: scale(0.98);
+  }
+
+  &.empty-list {
+    .subheader {
+      display: none;
+    }
   }
 }
 
