@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIcon } from '@angular/material/icon';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FieldType, FormFieldDefinitionValue } from '@model/form-fields';
 
@@ -21,7 +21,7 @@ import { FormBuilderService } from '@services/form-builder/form-builder';
   selector: 'app-editable-form-field',
   imports: [
     MatFormFieldModule,
-    MatIcon,
+    MatIconModule,
     ReactiveFormsModule,
     TitleCasePipe,
     MatCheckboxModule,

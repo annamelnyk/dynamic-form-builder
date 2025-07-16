@@ -1,15 +1,15 @@
 <div class="field__outer transition-all">
   <div class="field__header">
     <div class="field__controls-aside">
-      <div>
+      <button mat-icon-button>
         <mat-icon
           class="field__controls-arrow up"
           [class.disabled]="isFirst()"
           (click)="onClickMoveUp($event)"
           >arrow_upward_alt</mat-icon
         >
-      </div>
-      <div>
+      </button>
+      <button mat-icon-button>
         <mat-icon
           class="field__controls-arrow down"
           [class.disabled]="isLast()"
@@ -17,7 +17,7 @@
         >
           arrow_downward_alt
         </mat-icon>
-      </div>
+      </button>
     </div>
     <label
       [for]="id"
@@ -37,12 +37,12 @@
           >Required</mat-checkbox
         >
       </div>
-      <div class="field__controls-remove ml-5">
+      <button mat-icon-button class="field__controls-remove ml-5">
         <mat-icon
           (click)="this.formBuilderService.removeFormFieldDefinition(formField().id)"
-          >delete_forever</mat-icon
+          >delete</mat-icon
         >
-      </div>
+      </button>
     </div>
   </div>
   <div class="field__body">

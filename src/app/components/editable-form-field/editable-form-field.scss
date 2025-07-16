@@ -2,7 +2,7 @@
 @use "mixins" as *;
 
 .field__outer {
-  padding: 0 26px 40px 56px;
+  padding: 20px 26px 20px 56px;
   border: 1px solid var(--mat-sys-outline-variant);
   background-color: var(--mat-sys-on-primary);
   border-radius: var(--mat-sys-corner-medium);
@@ -15,17 +15,21 @@
 
 .field__header {
   position: relative;
+  margin-bottom: 10px;
 }
 
 .field__controls-aside {
   position: absolute;
   cursor: pointer;
   left: -40px;
-  top: 20px;
+  top: 0;
+
+  button {
+    display: block;
+  }
 }
 
 .field__controls-label {
-  margin: 2rem 0;
   @include medium-text;
 }
 
