@@ -10,7 +10,6 @@ import {
   providedIn: 'root',
 })
 export class FormBuilderService {
-  formBuilderActivated = signal<boolean>(false);
   buildedFormFieldDefinitionsList = signal<FormFieldDefinitionValue[]>([]);
   formFieldsList = this.buildedFormFieldDefinitionsList.asReadonly();
 

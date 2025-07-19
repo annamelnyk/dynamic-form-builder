@@ -61,6 +61,10 @@ mat-label {
   @include normal-text;
 }
 
+mat-button-toggle {
+  @include normal-text;
+}
+
 // Style to fix the weird border with angular material
 .mdc-notched-outline__notch {
   border-right: none !important;

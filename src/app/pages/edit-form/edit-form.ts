@@ -11,6 +11,7 @@ import { Toolbar } from '@components/toolbar/toolbar';
 import { FormCanvas } from '@components/form-canvas/form-canvas';
 import { FormFieldDefinition } from '@model/form-fields';
 import { FieldTypesService } from '@services/field-types/field-types';
+import { FormModeSwitcher } from '@components/form-mode-switcher/form-mode-switcher';
 
 @Component({
   selector: 'app-edit-form',
@@ -23,6 +24,7 @@ import { FieldTypesService } from '@services/field-types/field-types';
     Toolbar,
     FormCanvas,
     DragDropModule,
+    FormModeSwitcher,
   ],
   templateUrl: './edit-form.html',
   styleUrl: './edit-form.scss',

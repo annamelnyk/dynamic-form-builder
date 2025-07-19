@@ -1,6 +1,6 @@
 @use "mixins" as *;
 
-.button-outer {
+.button__outer {
   padding-top: 3rem;
   @include flex-center;
 }
