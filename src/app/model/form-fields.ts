@@ -19,7 +19,18 @@ export interface FormFieldDefinition {
   component: Type<unknown> | null;
 }
 
-export interface FormFieldDefinitionValue extends FormFieldDefinition {
+export interface FormFieldSelectOption {
+  option: string;
+  selected: boolean;
+}
+
+export interface FormFieldSelect extends FormFieldDefinition {
+  options?: FormFieldSelectOption[];
+}
+
+export interface FormFieldDefinitionValue
+  extends FormFieldDefinition,
+    FormFieldSelect {
   id: string;
   required: boolean;
   mode: Mode;

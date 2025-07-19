@@ -1,6 +1,7 @@
 import { computed, Injectable, linkedSignal, signal } from '@angular/core';
 
 import {
+  FieldType,
   FormFieldDefinition,
   FormFieldDefinitionValue,
   Mode,
@@ -23,6 +24,12 @@ export class FormBuilderService {
       id: crypto.randomUUID(),
       mode: Mode.Edit,
     };
+
+    if (field.type === FieldType.Select) {
+      formFieldDefinitionContainsID.options = [
+        { option: 'test', selected: true },
+      ];
+    }
 
     this.buildedFormFieldDefinitionsList.update((prevList) => {
       if (

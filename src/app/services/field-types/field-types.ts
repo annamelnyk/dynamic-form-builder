@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Checkbox } from '@components/field-types/checkbox/checkbox';
 import { FieldInput } from '@components/field-types/field-input/field-input';
+import { Select } from '@components/field-types/select/select';
 
 import { FieldType, FormFieldDefinition } from '@model/form-fields';
 
@@ -22,7 +23,7 @@ const SELECT_FORM_DEFINITION = {
   icon: 'checklist',
   type: FieldType.Select,
   label: `New ${FieldType.Select} field`,
-  component: null,
+  component: Select,
 };
 
 const CHECKBOX_FORM_DEFINITION = {

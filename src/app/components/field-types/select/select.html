@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-label>{{formField().label}}</mat-label>
+  <mat-select>
+    @for (selection of formField().options; track selection.option) {
+    <mat-option [value]="selection.option">{{selection.option}}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
