@@ -1,4 +1,11 @@
+@use "@angular/material" as mat;
+@use "mixins" as *;
+
 .form__mode__outer {
   text-align: center;
   margin-bottom: 3rem;
+}
+
+mat-button-toggle {
+  @include normal-text;
 }
