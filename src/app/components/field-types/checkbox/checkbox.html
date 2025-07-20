@@ -1,3 +1,7 @@
-<mat-checkbox [required]="formField().required"
-  >{{formField().label}}</mat-checkbox
->
+<div [formGroup]="form()">
+  <mat-checkbox
+    [required]="formField().required"
+    [formControlName]="formField().id"
+    >{{formField().label}}</mat-checkbox
+  >
+</div>

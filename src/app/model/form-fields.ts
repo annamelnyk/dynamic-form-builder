@@ -16,6 +16,7 @@ export interface FormFieldDefinition {
   icon: string;
   type: FieldType;
   label: string;
+  value?: string;
   component: Type<unknown>;
 }
 
@@ -33,5 +34,5 @@ export interface FormFieldDefinitionValue
     FormFieldSelect {
   id: string;
   required: boolean;
-  mode: Mode;
+  mode: Mode; //TODO: get rid
 }

@@ -9,12 +9,11 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FieldType, FormFieldDefinitionValue } from '@model/form-fields';
-
 import { FormBuilderService } from '@services/form-builder/form-builder';
 
 @Component({
@@ -33,6 +32,7 @@ import { FormBuilderService } from '@services/form-builder/form-builder';
 export class EditableFormField implements OnInit {
   formBuilderService = inject(FormBuilderService);
 
+  form = input.required<FormGroup>();
   formField = input.required<FormFieldDefinitionValue>();
   isFirst = input<boolean>(false);
   isLast = input<boolean>(false);

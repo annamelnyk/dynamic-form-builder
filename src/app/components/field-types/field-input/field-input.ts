@@ -1,6 +1,6 @@
 import { TitleCasePipe } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -18,6 +18,7 @@ import { FormFieldDefinitionValue, Mode } from '@model/form-fields';
   styleUrl: './field-input.scss',
 })
 export class FieldInput {
+  form = input.required<FormGroup>();
   formField = input.required<FormFieldDefinitionValue>();
 
   placeholder = computed(() => `Enter ${this.formField().label}`);

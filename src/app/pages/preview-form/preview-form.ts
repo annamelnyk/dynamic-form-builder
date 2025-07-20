@@ -5,7 +5,7 @@ import { FormCanvas } from '@components/form-canvas/form-canvas';
 
 @Component({
   selector: 'app-preview-form',
-  imports: [FormModeSwitcher, FieldInput, FormCanvas],
+  imports: [FormModeSwitcher],
   templateUrl: './preview-form.html',
   styleUrl: './preview-form.scss',
 })
