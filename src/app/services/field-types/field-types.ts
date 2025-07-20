@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Checkbox } from '@components/field-types/checkbox/checkbox';
 import { FieldInput } from '@components/field-types/field-input/field-input';
 import { Select } from '@components/field-types/select/select';
+import { Textarea } from '@components/field-types/textarea/textarea';
 
 import { FieldType, FormFieldDefinition } from '@model/form-fields';
 
@@ -16,7 +17,7 @@ const TEXTAREA_FORM_DEFINITION = {
   icon: 'local_parking',
   type: FieldType.Textarea,
   label: `New ${FieldType.Textarea} field`,
-  component: null,
+  component: Textarea,
 };
 
 const SELECT_FORM_DEFINITION = {

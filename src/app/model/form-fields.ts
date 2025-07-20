@@ -16,7 +16,7 @@ export interface FormFieldDefinition {
   icon: string;
   type: FieldType;
   label: string;
-  component: Type<unknown> | null;
+  component: Type<unknown>;
 }
 
 export interface FormFieldSelectOption {
