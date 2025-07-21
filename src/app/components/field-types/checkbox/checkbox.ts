@@ -13,4 +13,5 @@ import { FormFieldDefinitionValue } from '@model/form-fields';
 export class Checkbox {
   form = input.required<FormGroup>();
   formField = input.required<FormFieldDefinitionValue>();
+  
 }
