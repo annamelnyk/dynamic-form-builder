@@ -2,13 +2,14 @@
   <div class="container">
     <div class="header__outer">
       <div class="header__title">
-        @if(router.url === '/') {
-        <ng-template [ngTemplateOutlet]="headerIcon"></ng-template>
-        Form Builder }@else {
-        <a routerLink="/" class="header__link">
+        @if (router.url === '/') {
           <ng-template [ngTemplateOutlet]="headerIcon"></ng-template>
           Form Builder
-        </a>
+        } @else {
+          <a routerLink="/" class="header__link">
+            <ng-template [ngTemplateOutlet]="headerIcon"></ng-template>
+            Form Builder
+          </a>
         }
       </div>
       <div>
@@ -19,9 +20,9 @@
           hideSingleSelectionIndicator="true"
         >
           @for (theme of themeService.getThemes(); track theme.name) {
-          <mat-button-toggle [value]="theme">
-            <mat-icon class="theme-icon">{{ theme.icon }}</mat-icon>
-          </mat-button-toggle>
+            <mat-button-toggle [value]="theme">
+              <mat-icon class="theme-icon">{{ theme.icon }}</mat-icon>
+            </mat-button-toggle>
           }
         </mat-button-toggle-group>
       </div>
