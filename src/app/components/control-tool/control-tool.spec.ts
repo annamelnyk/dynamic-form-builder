@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ControlTool } from './control-tool';
+import { ControlTool } from './control-tool'
 
 describe('ControlTool', () => {
-  let component: ControlTool;
-  let fixture: ComponentFixture<ControlTool>;
+  let component: ControlTool
+  let fixture: ComponentFixture<ControlTool>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ControlTool]
-    })
-    .compileComponents();
+      imports: [ControlTool],
+    }).compileComponents()
 
-    fixture = TestBed.createComponent(ControlTool);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(ControlTool)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

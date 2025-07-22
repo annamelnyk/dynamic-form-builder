@@ -1,5 +1,5 @@
-@use "@angular/material" as mat;
-@use "mixins" as *;
+@use '@angular/material' as mat;
+@use 'mixins' as *;
 
 mat-toolbar {
   @include mat.toolbar-overrides(

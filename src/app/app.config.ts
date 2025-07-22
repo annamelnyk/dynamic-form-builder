@@ -2,12 +2,12 @@ import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
-} from '@angular/core';
+} from '@angular/core'
 
-import { provideRouter } from '@angular/router';
+import { provideRouter } from '@angular/router'
 
-import { routes } from './app.routes';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { routes } from './app.routes'
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,4 +23,4 @@ export const appConfig: ApplicationConfig = {
       },
     },
   ],
-};
+}

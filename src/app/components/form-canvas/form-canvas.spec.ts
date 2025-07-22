@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { FormCanvas } from './form-canvas';
+import { FormCanvas } from './form-canvas'
 
 describe('FormCanvas', () => {
-  let component: FormCanvas;
-  let fixture: ComponentFixture<FormCanvas>;
+  let component: FormCanvas
+  let fixture: ComponentFixture<FormCanvas>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormCanvas]
-    })
-    .compileComponents();
+      imports: [FormCanvas],
+    }).compileComponents()
 
-    fixture = TestBed.createComponent(FormCanvas);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(FormCanvas)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

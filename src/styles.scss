@@ -1,6 +1,6 @@
-@use "themes";
-@use "mixins" as *;
-@use "tailwind";
+@use 'themes';
+@use 'mixins' as *;
+@use 'tailwind';
 
 :root {
   --h-header: 65px;

@@ -24,14 +24,14 @@
       class="field__controls-label"
       contenteditable
       (input)="onTitleChange($event)"
-      >{{formField().label | titlecase}}</label
+      >{{ formField().label | titlecase }}</label
     >
     <div class="field__controls-end">
       <div class="field__controls-required">
         <mat-checkbox
           class="field__controls-label"
-          id="required-{{id}}"
-          name="required-{{id}}"
+          id="required-{{ id }}"
+          name="required-{{ id }}"
           [checked]="formField().required"
           (change)="onChangeRequired()"
           >Required</mat-checkbox
@@ -45,7 +45,7 @@
   <div class="field__body">
     <ng-container
       [ngComponentOutlet]="formField().component"
-      [ngComponentOutletInputs]="{form: form(),formField: formField()}"
+      [ngComponentOutletInputs]="{ form: form(), formField: formField() }"
     ></ng-container>
   </div>
   <div class="field__footer"></div>

@@ -8,13 +8,10 @@
     [cdkDropListData]="buildingTools()"
     (cdkDropListDropped)="onFieldExit($event)"
   >
-    @for(tool of buildingTools(); track tool.type) {
-    <div class="mb-5" cdkDrag>
-      <app-control-tool
-        [tool]="tool"
-        (onToolClick)="onSelectToolHandler($event)"
-      />
-    </div>
+    @for (tool of buildingTools(); track tool.type) {
+      <div class="mb-5" cdkDrag>
+        <app-control-tool [tool]="tool" (onToolClick)="onSelectToolHandler($event)" />
+      </div>
     }
   </mat-card-content>
 </mat-card>

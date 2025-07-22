@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { PreviewForm } from './preview-form';
+import { PreviewForm } from './preview-form'
 
 describe('PreviewForm', () => {
-  let component: PreviewForm;
-  let fixture: ComponentFixture<PreviewForm>;
+  let component: PreviewForm
+  let fixture: ComponentFixture<PreviewForm>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PreviewForm]
-    })
-    .compileComponents();
+      imports: [PreviewForm],
+    }).compileComponents()
 
-    fixture = TestBed.createComponent(PreviewForm);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(PreviewForm)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

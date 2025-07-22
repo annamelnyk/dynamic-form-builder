@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing'
 
-import { FormFieldControl } from './form-field-control';
+import { FormFieldControl } from './form-field-control'
 
 describe('FormFieldControl', () => {
-  let service: FormFieldControl;
+  let service: FormFieldControl
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(FormFieldControl);
-  });
+    TestBed.configureTestingModule({})
+    service = TestBed.inject(FormFieldControl)
+  })
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+    expect(service).toBeTruthy()
+  })
+})

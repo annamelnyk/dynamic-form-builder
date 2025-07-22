@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { FieldInput } from './field-input';
+import { FieldInput } from './field-input'
 
 describe('FieldInput', () => {
-  let component: FieldInput;
-  let fixture: ComponentFixture<FieldInput>;
+  let component: FieldInput
+  let fixture: ComponentFixture<FieldInput>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FieldInput]
-    })
-    .compileComponents();
+      imports: [FieldInput],
+    }).compileComponents()
 
-    fixture = TestBed.createComponent(FieldInput);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(FieldInput)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

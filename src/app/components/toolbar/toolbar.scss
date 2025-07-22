@@ -1,5 +1,5 @@
-@use "@angular/material" as mat;
-@use "mixins" as *;
+@use '@angular/material' as mat;
+@use 'mixins' as *;
 
 .card__toolbar__title {
   @include medium-text;

@@ -1,4 +1,4 @@
-import { Type } from '@angular/core';
+import { Type } from '@angular/core'
 
 export enum Mode {
   Edit = 'edit',
@@ -13,26 +13,24 @@ export enum FieldType {
 }
 
 export interface FormFieldDefinition {
-  icon: string;
-  type: FieldType;
-  label: string;
-  value?: string;
-  component: Type<unknown>;
+  icon: string
+  type: FieldType
+  label: string
+  value?: string
+  component: Type<unknown>
 }
 
 export interface FormFieldSelectOption {
-  option: string;
-  selected: boolean;
+  option: string
+  selected: boolean
 }
 
 export interface FormFieldSelect extends FormFieldDefinition {
-  options?: FormFieldSelectOption[];
+  options?: FormFieldSelectOption[]
 }
 
-export interface FormFieldDefinitionValue
-  extends FormFieldDefinition,
-    FormFieldSelect {
-  id: string;
-  required: boolean;
-  mode: Mode; //TODO: get rid
+export interface FormFieldDefinitionValue extends FormFieldDefinition, FormFieldSelect {
+  id: string
+  required: boolean
+  mode: Mode //TODO: get rid
 }

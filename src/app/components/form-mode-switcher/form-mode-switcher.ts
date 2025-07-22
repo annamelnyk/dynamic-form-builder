@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { Router, RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core'
+import { FormControl, ReactiveFormsModule } from '@angular/forms'
+import { MatButtonToggleModule } from '@angular/material/button-toggle'
+import { Router, RouterLink } from '@angular/router'
 
 @Component({
   selector: 'app-form-mode-switcher',
@@ -10,11 +10,11 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './form-mode-switcher.scss',
 })
 export class FormModeSwitcher {
-  router = inject(Router);
+  router = inject(Router)
 
-  currentRoute = new FormControl('');
+  currentRoute = new FormControl('')
 
   ngOnInit(): void {
-    this.currentRoute.setValue(this.router.url);
+    this.currentRoute.setValue(this.router.url)
   }
 }
