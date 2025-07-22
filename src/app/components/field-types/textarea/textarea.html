@@ -1,4 +1,4 @@
-<mat-form-field class="w-full" [formGroup]="form()">
+<mat-form-field class="w-full field__input" [formGroup]="form()">
   @if (formField().mode === Mode.Preview) {
     <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
   }

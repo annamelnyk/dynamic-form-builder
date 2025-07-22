@@ -57,7 +57,7 @@ body {
 }
 
 mat-checkbox .mdc-label,
-mat-label {
+mat-form-field.field__input {
   @include normal-text;
 }
 
