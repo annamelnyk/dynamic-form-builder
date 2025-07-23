@@ -42,6 +42,12 @@
   }
 }
 
+.field__controls-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .field__header,
 .field__controls-end,
 .field__controls-remove,

@@ -2,6 +2,7 @@ import { NgComponentOutlet, TitleCasePipe } from '@angular/common'
 import {
   Component,
   computed,
+  DestroyRef,
   inject,
   input,
   linkedSignal,
@@ -9,13 +10,15 @@ import {
   output,
   signal,
 } from '@angular/core'
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatFormFieldModule } from '@angular/material/form-field'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { MatInputModule } from '@angular/material/input'
+import { debounceTime } from 'rxjs/operators'
 import { MatIcon, MatIconModule } from '@angular/material/icon'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { FieldType, FormFieldDefinitionValue } from '@model/form-fields'
 import { FormBuilderService } from '@services/form-builder/form-builder'
-import { MatInputModule } from '@angular/material/input'
 
 @Component({
   selector: 'app-editable-form-field',
@@ -33,6 +36,8 @@ import { MatInputModule } from '@angular/material/input'
 })
 export class EditableFormField implements OnInit {
   formBuilderService = inject(FormBuilderService)
+  ngFormBuilder = inject(FormBuilder)
+  destroyRef = inject(DestroyRef)
 
   form = input.required<FormGroup>()
   formField = input.required<FormFieldDefinitionValue>()
@@ -42,12 +47,23 @@ export class EditableFormField implements OnInit {
   onMoveDown = output<Event>()
 
   FieldType = FieldType
+  controlsForm!: FormGroup
 
   get id(): string {
     return this.formField().id
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.controlsForm = this.ngFormBuilder.group({
+      label: [this.formField()?.label ?? ''],
+      required: [this.formField()?.required ?? ''],
+    })
+
+    this.controlsForm.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(values => {
+      console.log('value updated ', values)
+      this.formBuilderService.updateFormField(this.formField().id, values)
+    })
+  }
 
   onTitleChange(e: Event) {}
 
@@ -62,13 +78,5 @@ export class EditableFormField implements OnInit {
   onRemoveField(e: Event) {
     e.stopPropagation()
     this.formBuilderService.removeFormFieldDefinition(this.formField().id)
-  }
-
-  onChangeRequired() {
-    this.formBuilderService.toggleRequiredField(this.formField().id)
-  }
-
-  onChangeFieldLabel(e: any) {
-    console.log(e)
   }
 }

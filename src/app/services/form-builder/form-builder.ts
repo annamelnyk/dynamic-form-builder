@@ -53,9 +53,9 @@ export class FormBuilderService {
     this.buildedFormFieldDefinitionsList.update(prevList => prevList.filter(f => f.id !== id))
   }
 
-  toggleRequiredField(id: string) {
+  updateFormField(id: string, values: Partial<FormFieldDefinitionValue>) {
     this.buildedFormFieldDefinitionsList.update(prevList =>
-      prevList.map(f => (f.id === id ? { ...f, required: !f.required } : f)),
+      prevList.map(f => (f.id === id ? { ...f, ...values } : f)),
     )
   }
 }

@@ -20,29 +20,24 @@
       </button>
     </div>
 
-    <mat-form-field appearance="outline" class="w-full field__input mr-3">
-      <input
-        matInput
-        class="field__controls-input"
-        type="text"
-        [value]="formField().label | titlecase"
-        (change)="onChangeFieldLabel($event)"
-      />
-    </mat-form-field>
-    <div class="field__controls-end">
-      <div class="field__controls-required">
-        <mat-checkbox
-          class="field__controls-label"
-          id="required-{{ id }}"
-          name="required-{{ id }}"
-          [checked]="formField().required"
-          (change)="onChangeRequired()"
-          >Required</mat-checkbox
-        >
+    <div [formGroup]="controlsForm" class="field__controls-form">
+      <mat-form-field appearance="outline" class="w-full field__input mr-3">
+        <input matInput class="field__controls-input" type="text" formControlName="label" />
+      </mat-form-field>
+      <div class="field__controls-end">
+        <div class="field__controls-required">
+          <mat-checkbox
+            class="field__controls-label"
+            id="required-{{ id }}"
+            name="required-{{ id }}"
+            formControlName="required"
+            >Required</mat-checkbox
+          >
+        </div>
+        <button mat-icon-button class="field__controls-remove ml-5">
+          <mat-icon (click)="onRemoveField($event)">delete</mat-icon>
+        </button>
       </div>
-      <button mat-icon-button class="field__controls-remove ml-5">
-        <mat-icon (click)="onRemoveField($event)">delete</mat-icon>
-      </button>
     </div>
   </div>
   <div class="field__body">
