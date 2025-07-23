@@ -15,11 +15,13 @@ import { MatIcon, MatIconModule } from '@angular/material/icon'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { FieldType, FormFieldDefinitionValue } from '@model/form-fields'
 import { FormBuilderService } from '@services/form-builder/form-builder'
+import { MatInputModule } from '@angular/material/input'
 
 @Component({
   selector: 'app-editable-form-field',
   imports: [
     MatFormFieldModule,
+    MatInputModule,
     MatIconModule,
     ReactiveFormsModule,
     TitleCasePipe,
@@ -64,5 +66,9 @@ export class EditableFormField implements OnInit {
 
   onChangeRequired() {
     this.formBuilderService.toggleRequiredField(this.formField().id)
+  }
+
+  onChangeFieldLabel(e: any) {
+    console.log(e)
   }
 }

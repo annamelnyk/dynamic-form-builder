@@ -1,8 +1,10 @@
 <mat-form-field [formGroup]="form()" class="field__input">
   <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
-  <mat-select [formControlName]="formField().id">
+  <mat-select [formControlName]="formField().id" [id]="formField().id" class="field__select">
     @for (selection of formField().options; track selection.option) {
-      <mat-option [value]="selection.option">{{ selection.option }}</mat-option>
+      <mat-option class="field__select__option" [value]="selection.option">{{
+        selection.option
+      }}</mat-option>
     }
   </mat-select>
 </mat-form-field>

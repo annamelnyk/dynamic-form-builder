@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+@use 'mixins' as *;
+
+.field__select {
+  @include mat.select-overrides(
+    (
+      trigger-text-size: 1.6rem,
+      trigger-text-font: inherit,
+      trigger-text-weight: 400,
+    )
+  );
+}

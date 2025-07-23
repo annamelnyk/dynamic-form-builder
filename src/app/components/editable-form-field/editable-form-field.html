@@ -19,13 +19,16 @@
         </mat-icon>
       </button>
     </div>
-    <label
-      [for]="id"
-      class="field__controls-label"
-      contenteditable
-      (input)="onTitleChange($event)"
-      >{{ formField().label | titlecase }}</label
-    >
+
+    <mat-form-field appearance="outline" class="w-full field__input mr-3">
+      <input
+        matInput
+        class="field__controls-input"
+        type="text"
+        [value]="formField().label | titlecase"
+        (change)="onChangeFieldLabel($event)"
+      />
+    </mat-form-field>
     <div class="field__controls-end">
       <div class="field__controls-required">
         <mat-checkbox
