@@ -1,7 +1,6 @@
 <mat-form-field class="w-full field__input" [formGroup]="form()">
-  @if (formField().mode === Mode.Preview) {
-    <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
-  }
+  <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
+
   <input
     matInput
     [id]="formField().id"
@@ -10,6 +9,5 @@
     [placeholder]="placeholder() | titlecase"
     [required]="formField().required"
     [formControlName]="formField().id"
-    [disabled]="formField().mode === Mode.Edit"
   />
 </mat-form-field>

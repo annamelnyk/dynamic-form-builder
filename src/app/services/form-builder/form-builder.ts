@@ -18,7 +18,6 @@ export class FormBuilderService {
       ...field,
       required: false,
       id: crypto.randomUUID(),
-      mode: Mode.Edit,
     }
 
     if (field.type === FieldType.Select) {

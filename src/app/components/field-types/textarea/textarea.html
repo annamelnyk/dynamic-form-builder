@@ -1,7 +1,6 @@
 <mat-form-field class="w-full field__input" [formGroup]="form()">
-  @if (formField().mode === Mode.Preview) {
-    <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
-  }
+  <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
+
   <textarea
     [formControlName]="formField().id"
     matInput

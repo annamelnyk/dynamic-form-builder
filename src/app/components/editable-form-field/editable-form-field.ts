@@ -47,8 +47,6 @@ export class EditableFormField implements OnInit {
   onMoveUp = output<Event>()
   onMoveDown = output<Event>()
 
-  placeholder = computed(() => `Enter ${this.label}`)
-
   FieldType = FieldType
   controlsForm!: FormGroup
 
@@ -73,7 +71,7 @@ export class EditableFormField implements OnInit {
 
   ngOnInit(): void {
     this.controlsForm = this.ngFormBuilder.group({
-      label: [''],
+      label: [this.label],
       required: [this.required],
     })
 

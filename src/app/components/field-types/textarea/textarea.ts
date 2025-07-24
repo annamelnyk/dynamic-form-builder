@@ -14,6 +14,6 @@ import { FormFieldDefinitionValue, Mode } from '@model/form-fields'
 export class Textarea {
   form = input.required<FormGroup>()
   formField = input.required<FormFieldDefinitionValue>()
-  placeholder = input.required<string>()
+  placeholder = computed(() => `Enter ${this.formField().label}`)
   Mode = Mode
 }

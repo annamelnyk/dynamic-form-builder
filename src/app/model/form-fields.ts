@@ -29,8 +29,19 @@ export interface FormFieldSelect extends FormFieldDefinition {
   options?: FormFieldSelectOption[]
 }
 
-export interface FormFieldDefinitionValue extends FormFieldDefinition, FormFieldSelect {
+export interface FormFieldCheckboxOption {
+  choice: string
+  checked: boolean
+}
+
+export interface FormFieldCheckbox extends FormFieldDefinition {
+  choices?: FormFieldCheckboxOption[]
+}
+
+export interface FormFieldDefinitionValue
+  extends FormFieldDefinition,
+    FormFieldSelect,
+    FormFieldCheckbox {
   id: string
   required: boolean
-  mode: Mode //TODO: get rid
 }
