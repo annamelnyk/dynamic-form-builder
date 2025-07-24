@@ -1,20 +1,18 @@
 import { Component, inject } from '@angular/core'
-import { FormControl, ReactiveFormsModule } from '@angular/forms'
+import { TitleCasePipe } from '@angular/common'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
-import { Router, RouterLink } from '@angular/router'
+import { RouterLink } from '@angular/router'
+import { Mode } from '@model/form-fields'
+import { BuildMode } from '@services/build-mode/build-mode'
 
 @Component({
   selector: 'app-form-mode-switcher',
-  imports: [MatButtonToggleModule, RouterLink, ReactiveFormsModule],
+  imports: [MatButtonToggleModule, RouterLink, TitleCasePipe],
   templateUrl: './form-mode-switcher.html',
   styleUrl: './form-mode-switcher.scss',
 })
 export class FormModeSwitcher {
-  router = inject(Router)
+  buildModeService = inject(BuildMode)
 
-  currentRoute = new FormControl('')
-
-  ngOnInit(): void {
-    this.currentRoute.setValue(this.router.url)
-  }
+  Mode = Mode
 }

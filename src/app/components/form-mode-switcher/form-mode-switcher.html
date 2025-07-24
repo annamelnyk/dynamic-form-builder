@@ -1,6 +1,10 @@
 <div class="form__mode__outer">
-  <mat-button-toggle-group [formControl]="currentRoute" aria-label="Form mode">
-    <mat-button-toggle value="/edit" [routerLink]="['../edit']">Edit </mat-button-toggle>
-    <mat-button-toggle value="/preview" [routerLink]="['../preview']">Preview </mat-button-toggle>
+  <mat-button-toggle-group aria-label="Form mode" [value]="buildModeService.mode()">
+    <mat-button-toggle [value]="Mode.Edit" [routerLink]="[`../${Mode.Edit}`]"
+      >{{ Mode.Edit | titlecase }}
+    </mat-button-toggle>
+    <mat-button-toggle [value]="Mode.Preview" [routerLink]="[`../${Mode.Preview}`]"
+      >{{ Mode.Preview | titlecase }}
+    </mat-button-toggle>
   </mat-button-toggle-group>
 </div>
