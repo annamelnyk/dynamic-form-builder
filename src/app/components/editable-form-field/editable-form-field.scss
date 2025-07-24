@@ -70,8 +70,8 @@
   }
 }
 
-// .field__controls-input {
-//   width: 100%;
-//   display: inline-block;
-//   padding: 10px 15px;
-// }
+.field__controls-input {
+  &:focus {
+    outline: none;
+  }
+}

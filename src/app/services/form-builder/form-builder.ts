@@ -1,4 +1,5 @@
-import { computed, Injectable, linkedSignal, signal } from '@angular/core'
+import { computed, inject, Injectable, linkedSignal, signal } from '@angular/core'
+import { Router } from '@angular/router'
 
 import { FieldType, FormFieldDefinition, FormFieldDefinitionValue, Mode } from '@model/form-fields'
 
@@ -55,7 +56,15 @@ export class FormBuilderService {
 
   updateFormField(id: string, values: Partial<FormFieldDefinitionValue>) {
     this.buildedFormFieldDefinitionsList.update(prevList =>
-      prevList.map(f => (f.id === id ? { ...f, ...values } : f)),
+      prevList.map(f =>
+        f.id === id
+          ? {
+              ...f,
+              ...values,
+              //label: values.label?.length ? values.label : f.label,
+            }
+          : f,
+      ),
     )
   }
 }

@@ -7,7 +7,7 @@ import { FormFieldDefinitionValue } from '@model/form-fields'
   providedIn: 'root',
 })
 export class FormFieldControl {
-  toFromGroup(formFields: FormFieldDefinitionValue[]) {
+  toFormGroup(formFields: FormFieldDefinitionValue[]) {
     const group: any = {}
     formFields.forEach(f => {
       const fieldValue = f?.value ?? ''

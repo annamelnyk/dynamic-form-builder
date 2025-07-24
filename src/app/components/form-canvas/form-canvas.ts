@@ -20,7 +20,7 @@ export class FormCanvas {
   formFieldControlService = inject(FormFieldControl)
 
   form = computed<FormGroup>(() =>
-    this.formFieldControlService.toFromGroup(this.formBuilderService.formFieldsList()),
+    this.formFieldControlService.toFormGroup(this.formBuilderService.formFieldsList()),
   )
 
   payload = ''

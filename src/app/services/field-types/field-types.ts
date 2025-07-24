@@ -6,28 +6,28 @@ import { Textarea } from '@components/field-types/textarea/textarea'
 
 import { FieldType, FormFieldDefinition } from '@model/form-fields'
 
-const TEXT_FORM_DEFINITION = {
+const TEXT_FORM_DEFINITION: FormFieldDefinition = {
   icon: 'text_fields',
   type: FieldType.Text,
   label: `New ${FieldType.Text} field`,
   component: FieldInput,
 }
 
-const TEXTAREA_FORM_DEFINITION = {
+const TEXTAREA_FORM_DEFINITION: FormFieldDefinition = {
   icon: 'local_parking',
   type: FieldType.Textarea,
   label: `New ${FieldType.Textarea} field`,
   component: Textarea,
 }
 
-const SELECT_FORM_DEFINITION = {
+const SELECT_FORM_DEFINITION: FormFieldDefinition = {
   icon: 'checklist',
   type: FieldType.Select,
   label: `New ${FieldType.Select} field`,
   component: Select,
 }
 
-const CHECKBOX_FORM_DEFINITION = {
+const CHECKBOX_FORM_DEFINITION: FormFieldDefinition = {
   icon: 'check_box',
   type: FieldType.Checkbox,
   label: `New ${FieldType.Checkbox} field`,
@@ -47,6 +47,10 @@ export class FieldTypesService {
 
   getAllFormFieldDefinitions(): FormFieldDefinition[] {
     return [...this.fieldTypes.values()]
+  }
+
+  getFormFieldDefinitions(type: FieldType): FormFieldDefinition | undefined {
+    return this.fieldTypes.get(type)
   }
 
   // getAllFormFieldTypes(): MapIterator<FieldType> {

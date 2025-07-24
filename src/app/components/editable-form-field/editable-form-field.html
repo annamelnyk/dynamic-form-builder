@@ -21,9 +21,13 @@
     </div>
 
     <div [formGroup]="controlsForm" class="field__controls-form">
-      <mat-form-field appearance="outline" class="w-full field__input mr-3">
-        <input matInput class="field__controls-input" type="text" formControlName="label" />
-      </mat-form-field>
+      <input
+        matInput
+        class="w-full field__controls-input"
+        type="text"
+        [placeholder]="label"
+        formControlName="label"
+      />
       <div class="field__controls-end">
         <div class="field__controls-required">
           <mat-checkbox
@@ -43,7 +47,11 @@
   <div class="field__body">
     <ng-container
       [ngComponentOutlet]="formField().component"
-      [ngComponentOutletInputs]="{ form: form(), formField: formField() }"
+      [ngComponentOutletInputs]="{
+        form: form(),
+        formField: formField(),
+        placeholder: placeholder(),
+      }"
     ></ng-container>
   </div>
   <div class="field__footer"></div>

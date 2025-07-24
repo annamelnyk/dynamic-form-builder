@@ -10,5 +10,6 @@
     [placeholder]="placeholder() | titlecase"
     [required]="formField().required"
     [formControlName]="formField().id"
+    [disabled]="formField().mode === Mode.Edit"
   />
 </mat-form-field>

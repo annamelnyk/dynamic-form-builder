@@ -1,4 +1,4 @@
-import { NgComponentOutlet, TitleCasePipe } from '@angular/common'
+import { NgComponentOutlet } from '@angular/common'
 import {
   Component,
   computed,
@@ -14,11 +14,11 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angul
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatInputModule } from '@angular/material/input'
-import { debounceTime } from 'rxjs/operators'
 import { MatIcon, MatIconModule } from '@angular/material/icon'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { FieldType, FormFieldDefinitionValue } from '@model/form-fields'
 import { FormBuilderService } from '@services/form-builder/form-builder'
+import { FieldTypesService } from '@services/field-types/field-types'
 
 @Component({
   selector: 'app-editable-form-field',
@@ -27,7 +27,7 @@ import { FormBuilderService } from '@services/form-builder/form-builder'
     MatInputModule,
     MatIconModule,
     ReactiveFormsModule,
-    TitleCasePipe,
+
     MatCheckboxModule,
     NgComponentOutlet,
   ],
@@ -36,6 +36,7 @@ import { FormBuilderService } from '@services/form-builder/form-builder'
 })
 export class EditableFormField implements OnInit {
   formBuilderService = inject(FormBuilderService)
+  fieldTypesService = inject(FieldTypesService)
   ngFormBuilder = inject(FormBuilder)
   destroyRef = inject(DestroyRef)
 
@@ -46,6 +47,8 @@ export class EditableFormField implements OnInit {
   onMoveUp = output<Event>()
   onMoveDown = output<Event>()
 
+  placeholder = computed(() => `Enter ${this.label}`)
+
   FieldType = FieldType
   controlsForm!: FormGroup
 
@@ -53,10 +56,25 @@ export class EditableFormField implements OnInit {
     return this.formField().id
   }
 
+  get label(): string {
+    return this.formField().label || this.defaultLabel
+  }
+
+  get defaultLabel(): string {
+    const defaultFormFieldDefiniton = this.fieldTypesService.getFormFieldDefinitions(
+      this.formField().type,
+    )
+    return defaultFormFieldDefiniton?.label ?? ''
+  }
+
+  get required(): boolean {
+    return this.formField().required || false
+  }
+
   ngOnInit(): void {
     this.controlsForm = this.ngFormBuilder.group({
-      label: [this.formField()?.label ?? ''],
-      required: [this.formField()?.required ?? ''],
+      label: [''],
+      required: [this.required],
     })
 
     this.controlsForm.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(values => {
