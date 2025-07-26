@@ -1,8 +1,7 @@
 <div [formGroup]="form()">
-  <mat-checkbox
-    class="field__input"
-    [required]="formField().required"
-    [formControlName]="formField().id"
-    >{{ formField().label }}</mat-checkbox
-  >
+  @for (value of formField().choices; track value.id) {
+    <mat-checkbox class="field__input" [formControlName]="formField().id">{{
+      value.choice
+    }}</mat-checkbox>
+  }
 </div>

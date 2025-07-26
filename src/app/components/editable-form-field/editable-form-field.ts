@@ -19,6 +19,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
 import { FieldType, FormFieldCheckboxOption, FormFieldDefinitionValue } from '@model/form-fields'
 import { FormBuilderService } from '@services/form-builder/form-builder'
 import { FieldTypesService } from '@services/field-types/field-types'
+import { MatButtonModule } from '@angular/material/button'
 
 @Component({
   selector: 'app-editable-form-field',
@@ -27,7 +28,7 @@ import { FieldTypesService } from '@services/field-types/field-types'
     MatInputModule,
     MatIconModule,
     ReactiveFormsModule,
-
+    MatButtonModule,
     MatCheckboxModule,
     NgComponentOutlet,
   ],
@@ -105,6 +106,10 @@ export class EditableFormField implements OnInit {
           //this.formBuilderService.updateFormField(this.formField().id, values)
         })
     }
+  }
+
+  addCheckboxOption(id: string) {
+    this.formBuilderService.addCheckboxOption(id)
   }
 
   onTitleChange(e: Event) {}

@@ -1,7 +1,13 @@
 import { computed, inject, Injectable, linkedSignal, signal } from '@angular/core'
 import { Router } from '@angular/router'
 
-import { FieldType, FormFieldDefinition, FormFieldDefinitionValue, Mode } from '@model/form-fields'
+import {
+  FieldType,
+  FormFieldCheckboxOption,
+  FormFieldDefinition,
+  FormFieldDefinitionValue,
+  Mode,
+} from '@model/form-fields'
 
 @Injectable({
   providedIn: 'root',
@@ -31,13 +37,7 @@ export class FormBuilderService {
     }
 
     if (field.type === FieldType.Checkbox) {
-      formFieldDefinitionContainsID.choices = [
-        {
-          choice: 'Add option 1',
-          checked: false,
-          id: crypto.randomUUID(),
-        },
-      ]
+      formFieldDefinitionContainsID.choices = [this.createPlainCheckboxChoice()]
     }
 
     this.buildedFormFieldDefinitionsList.update(prevList => {
@@ -81,5 +81,27 @@ export class FormBuilderService {
           : f,
       ),
     )
+  }
+
+  addCheckboxOption(id: string) {
+    this.buildedFormFieldDefinitionsList.update(prevList =>
+      prevList.map(f =>
+        f.id === id
+          ? {
+              ...f,
+              choices: [...(f?.choices ?? []), this.createPlainCheckboxChoice(f.choices?.length)],
+              //label: values.label?.length ? values.label : f.label,
+            }
+          : f,
+      ),
+    )
+  }
+
+  createPlainCheckboxChoice(index?: number | undefined): FormFieldCheckboxOption {
+    return {
+      choice: `Add option ${index ?? 1}`,
+      checked: false,
+      id: crypto.randomUUID(),
+    }
   }
 }

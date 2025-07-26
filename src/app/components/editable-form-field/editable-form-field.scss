@@ -80,3 +80,12 @@
   @include flex-center;
   margin-bottom: 16px;
 }
+
+.field__option-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  @include normal-text;
+}
