@@ -50,7 +50,6 @@ export class EditableFormField implements OnInit {
 
   FieldType = FieldType
   controlsForm!: FormGroup
-  checkboxControlsForm: FormGroup | null = null
 
   get id(): string {
     return this.formField().id
@@ -73,7 +72,6 @@ export class EditableFormField implements OnInit {
 
   ngOnInit(): void {
     this.addControlsFromGroup()
-    this.addCheckboxControlsForm()
   }
 
   addControlsFromGroup() {
@@ -85,31 +83,6 @@ export class EditableFormField implements OnInit {
     this.controlsForm.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(values => {
       this.formBuilderService.updateFormField(this.formField().id, values)
     })
-  }
-
-  addCheckboxControlsForm() {
-    if (this.formField().type === FieldType.Checkbox) {
-      const choicesMap: Record<string, Array<string | boolean>> = {}
-      this.formField().choices?.forEach((v: FormFieldCheckboxOption) => {
-        const key1 = `checkbox-${v.id}`
-        const key2 = `checkbox-label-${v.id}`
-        choicesMap[key1] = [v.checked]
-        choicesMap[key2] = [v.choice]
-      })
-      this.checkboxControlsForm = this.ngFormBuilder.group({
-        ...choicesMap,
-      })
-
-      this.checkboxControlsForm.valueChanges
-        .pipe(takeUntilDestroyed(this.destroyRef))
-        .subscribe(values => {
-          //this.formBuilderService.updateFormField(this.formField().id, values)
-        })
-    }
-  }
-
-  addCheckboxOption(id: string) {
-    this.formBuilderService.addCheckboxOption(id)
   }
 
   onTitleChange(e: Event) {}

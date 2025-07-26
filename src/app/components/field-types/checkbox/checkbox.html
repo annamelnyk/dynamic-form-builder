@@ -1,7 +1,33 @@
-<div [formGroup]="form()">
-  @for (value of formField().choices; track value.id) {
-    <mat-checkbox class="field__input" [formControlName]="formField().id">{{
-      value.choice
-    }}</mat-checkbox>
-  }
-</div>
+@if (buildModeService.mode() === Mode.Preview) {
+  <div [formGroup]="form()">
+    @for (value of formField().choices; track value.id) {
+      <mat-checkbox class="field__input" [formControlName]="formField().id">{{
+        value.choice
+      }}</mat-checkbox>
+    }
+  </div>
+}
+
+@if (buildModeService.mode() === Mode.Edit) {
+  <div class="field__outer" [formGroup]="checkboxControlsForm">
+    @for (choice of formField().choices; let i = $index; track choice.id) {
+      <div class="field__option-outer">
+        <mat-checkbox class="field__controls-label" formControlName="checkbox-{{ choice.id }}" />
+
+        <mat-form-field class="w-full field__input">
+          <input
+            matInput
+            class="w-full field__controls-input"
+            appea
+            type="text"
+            placeholder="Add option {{ i + 1 }}"
+            formControlName="checkbox-label-{{ choice.id }}"
+          />
+        </mat-form-field>
+      </div>
+    }
+    <div class="field__option-btn">
+      <button matButton="filled" (click)="addCheckboxOption($event)">Add option</button>
+    </div>
+  </div>
+}

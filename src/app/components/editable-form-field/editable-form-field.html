@@ -53,7 +53,7 @@
       }"
     ></ng-container>
   </div>
-  @if (formField().type === FieldType.Checkbox && checkboxControlsForm) {
+  <!-- @if (formField().type === FieldType.Checkbox && checkboxControlsForm) {
     <div class="field__footer" [formGroup]="checkboxControlsForm">
       @for (choice of formField().choices; let i = $index; track i) {
         <div class="field__option-outer">
@@ -75,5 +75,5 @@
         <button matButton="filled" (click)="addCheckboxOption(formField().id)">Add option</button>
       </div>
     </div>
-  }
+  } -->
 </div>
