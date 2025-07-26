@@ -53,5 +53,24 @@
       }"
     ></ng-container>
   </div>
-  <div class="field__footer"></div>
+  @if (formField().type === FieldType.Checkbox && checkboxControlsForm) {
+    <div class="field__footer" [formGroup]="checkboxControlsForm">
+      @for (choice of formField().choices; let i = $index; track i) {
+        <div class="field__option-outer">
+          <mat-checkbox class="field__controls-label" formControlName="checkbox-{{ choice.id }}" />
+
+          <mat-form-field class="w-full field__input">
+            <input
+              matInput
+              class="w-full field__controls-input"
+              appea
+              type="text"
+              placeholder="Add option {{ i + 1 }}"
+              formControlName="checkbox-label-{{ choice.id }}"
+            />
+          </mat-form-field>
+        </div>
+      }
+    </div>
+  }
 </div>

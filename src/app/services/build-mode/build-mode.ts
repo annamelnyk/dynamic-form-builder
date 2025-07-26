@@ -1,9 +1,8 @@
 import { inject, Injectable } from '@angular/core'
 import { toSignal } from '@angular/core/rxjs-interop'
 import { NavigationEnd, Router } from '@angular/router'
-import { filter, map, startWith, tap } from 'rxjs/operators'
-
 import { Mode } from '@model/form-fields'
+import { filter, map, startWith, tap } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
@@ -17,10 +16,14 @@ export class BuildMode {
     startWith(this.getModeFromUrlPath(this.router.url)),
     tap(url => console.log('URL Path:', url)),
   )
-  mode = toSignal<Mode | string>(this.urlPath$)
+  mode = toSignal<string>(this.urlPath$)
 
   getModeFromUrlPath(path: string): string {
     if (!path) return ''
     return path.substring(1)
+  }
+
+  isBuildModePageLoaded(): boolean {
+    return this.mode() === Mode.Edit || this.mode() === Mode.Preview
   }
 }

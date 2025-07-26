@@ -21,7 +21,23 @@ export class FormBuilderService {
     }
 
     if (field.type === FieldType.Select) {
-      formFieldDefinitionContainsID.options = [{ option: 'test', selected: true }]
+      formFieldDefinitionContainsID.options = [
+        {
+          option: 'test',
+          selected: true,
+          id: crypto.randomUUID(),
+        },
+      ]
+    }
+
+    if (field.type === FieldType.Checkbox) {
+      formFieldDefinitionContainsID.choices = [
+        {
+          choice: 'Add option 1',
+          checked: false,
+          id: crypto.randomUUID(),
+        },
+      ]
     }
 
     this.buildedFormFieldDefinitionsList.update(prevList => {

@@ -23,6 +23,7 @@ export interface FormFieldDefinition {
 export interface FormFieldSelectOption {
   option: string
   selected: boolean
+  id: string
 }
 
 export interface FormFieldSelect extends FormFieldDefinition {
@@ -32,6 +33,7 @@ export interface FormFieldSelect extends FormFieldDefinition {
 export interface FormFieldCheckboxOption {
   choice: string
   checked: boolean
+  id: string
 }
 
 export interface FormFieldCheckbox extends FormFieldDefinition {

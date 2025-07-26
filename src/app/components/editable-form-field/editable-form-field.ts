@@ -16,7 +16,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatInputModule } from '@angular/material/input'
 import { MatIcon, MatIconModule } from '@angular/material/icon'
 import { MatCheckboxModule } from '@angular/material/checkbox'
-import { FieldType, FormFieldDefinitionValue } from '@model/form-fields'
+import { FieldType, FormFieldCheckboxOption, FormFieldDefinitionValue } from '@model/form-fields'
 import { FormBuilderService } from '@services/form-builder/form-builder'
 import { FieldTypesService } from '@services/field-types/field-types'
 
@@ -49,6 +49,7 @@ export class EditableFormField implements OnInit {
 
   FieldType = FieldType
   controlsForm!: FormGroup
+  checkboxControlsForm: FormGroup | null = null
 
   get id(): string {
     return this.formField().id
@@ -70,15 +71,40 @@ export class EditableFormField implements OnInit {
   }
 
   ngOnInit(): void {
+    this.addControlsFromGroup()
+    this.addCheckboxControlsForm()
+  }
+
+  addControlsFromGroup() {
     this.controlsForm = this.ngFormBuilder.group({
       label: [this.label],
       required: [this.required],
     })
 
     this.controlsForm.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(values => {
-      console.log('value updated ', values)
       this.formBuilderService.updateFormField(this.formField().id, values)
     })
+  }
+
+  addCheckboxControlsForm() {
+    if (this.formField().type === FieldType.Checkbox) {
+      const choicesMap: Record<string, Array<string | boolean>> = {}
+      this.formField().choices?.forEach((v: FormFieldCheckboxOption) => {
+        const key1 = `checkbox-${v.id}`
+        const key2 = `checkbox-label-${v.id}`
+        choicesMap[key1] = [v.checked]
+        choicesMap[key2] = [v.choice]
+      })
+      this.checkboxControlsForm = this.ngFormBuilder.group({
+        ...choicesMap,
+      })
+
+      this.checkboxControlsForm.valueChanges
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe(values => {
+          //this.formBuilderService.updateFormField(this.formField().id, values)
+        })
+    }
   }
 
   onTitleChange(e: Event) {}
