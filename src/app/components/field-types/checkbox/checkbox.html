@@ -22,6 +22,7 @@
             formControlName="choice-{{ choice.id }}"
           />
         </mat-form-field>
+        <app-remove-button (onFieldRemove)="removeOptionHandler(choice.id)" />
       </div>
     }
     <div class="field__option-btn">

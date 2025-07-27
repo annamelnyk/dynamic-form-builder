@@ -2,7 +2,7 @@
 @use 'mixins' as *;
 
 .field__outer {
-  padding: 20px 26px 20px 56px;
+  padding: 20px 26px 20px 80px;
   border: 1px solid var(--mat-sys-outline-variant);
   background-color: var(--mat-sys-on-primary);
   border-radius: var(--mat-sys-corner-medium);
@@ -21,7 +21,7 @@
 .field__controls-aside {
   position: absolute;
   cursor: pointer;
-  left: -40px;
+  left: -55px;
   top: 0;
 
   button {

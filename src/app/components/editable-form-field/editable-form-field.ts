@@ -20,6 +20,7 @@ import { FieldType, FormFieldCheckboxOption, FormFieldDefinitionValue } from '@m
 import { FormBuilderService } from '@services/form-builder/form-builder'
 import { FieldTypesService } from '@services/field-types/field-types'
 import { MatButtonModule } from '@angular/material/button'
+import { RemoveButton } from '@components/remove-button/remove-button'
 
 @Component({
   selector: 'app-editable-form-field',
@@ -31,6 +32,7 @@ import { MatButtonModule } from '@angular/material/button'
     MatButtonModule,
     MatCheckboxModule,
     NgComponentOutlet,
+    RemoveButton,
   ],
   templateUrl: './editable-form-field.html',
   styleUrl: './editable-form-field.scss',
@@ -95,8 +97,8 @@ export class EditableFormField implements OnInit {
     this.onMoveDown.emit(e)
   }
 
-  onRemoveField(e: Event) {
-    e.stopPropagation()
-    this.formBuilderService.removeFormFieldDefinition(this.formField().id)
+  onFieldRemoveHandler(id: string) {
+    console.log('REmoove ', id)
+    this.formBuilderService.removeFormFieldDefinition(id)
   }
 }

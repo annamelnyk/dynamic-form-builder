@@ -70,6 +70,21 @@ export class FormBuilderService {
     this.buildedFormFieldDefinitionsList.update(prevList => prevList.filter(f => f.id !== id))
   }
 
+  removeCheckboxOption(firmFieldId: string, choiceId: string) {
+    this.buildedFormFieldDefinitionsList.update(prevList =>
+      prevList.map(f => {
+        if (f.id === firmFieldId) {
+          return {
+            ...f,
+            choices: f.choices?.filter(c => c.id !== choiceId),
+          }
+        }
+
+        return f
+      }),
+    )
+  }
+
   updateFormField(formFieldId: string, values: Partial<FormFieldDefinitionValue>) {
     this.buildedFormFieldDefinitionsList.update(prevList =>
       prevList.map(f =>
