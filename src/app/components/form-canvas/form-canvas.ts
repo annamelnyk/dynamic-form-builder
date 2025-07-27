@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core'
+import { Component, computed, effect, inject } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop'
 import { MatCardModule } from '@angular/material/card'
@@ -24,6 +24,12 @@ export class FormCanvas {
   )
 
   payload = ''
+
+  constructor() {
+    effect(() => {
+      console.log(this.form())
+    })
+  }
 
   onFieldTypeDropped(event: CdkDragDrop<any[]>) {
     console.log('dropped', event)

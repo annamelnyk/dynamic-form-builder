@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 
-import { FormFieldDefinitionValue } from '@model/form-fields'
+import { FieldType, FormFieldCheckboxOption, FormFieldDefinitionValue } from '@model/form-fields'
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +15,14 @@ export class FormFieldControl {
       group[f.id] = f.required
         ? new FormControl(fieldValue, Validators.required)
         : new FormControl(fieldValue, null)
+
+      if (f.type === FieldType.Checkbox) {
+        ;(f.choices as FormFieldCheckboxOption[]).forEach(c => {
+          const choice: string = c.choice
+
+          group[f.id][c.id] = new FormControl(choice, null)
+        })
+      }
     })
 
     return new FormGroup(group)

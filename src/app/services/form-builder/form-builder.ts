@@ -3,6 +3,7 @@ import { Router } from '@angular/router'
 
 import {
   FieldType,
+  FormFieldCheckbox,
   FormFieldCheckboxOption,
   FormFieldDefinition,
   FormFieldDefinitionValue,
@@ -37,7 +38,13 @@ export class FormBuilderService {
     }
 
     if (field.type === FieldType.Checkbox) {
-      formFieldDefinitionContainsID.choices = [this.createPlainCheckboxChoice()]
+      formFieldDefinitionContainsID.choices = [
+        {
+          choice: 'Option 1',
+          checked: false,
+          id: crypto.randomUUID(),
+        },
+      ]
     }
 
     this.buildedFormFieldDefinitionsList.update(prevList => {
@@ -69,10 +76,10 @@ export class FormBuilderService {
     this.buildedFormFieldDefinitionsList.update(prevList => prevList.filter(f => f.id !== id))
   }
 
-  updateFormField(id: string, values: Partial<FormFieldDefinitionValue>) {
+  updateFormField(formFieldId: string, values: Partial<FormFieldDefinitionValue>) {
     this.buildedFormFieldDefinitionsList.update(prevList =>
       prevList.map(f =>
-        f.id === id
+        f.id === formFieldId
           ? {
               ...f,
               ...values,
@@ -83,25 +90,18 @@ export class FormBuilderService {
     )
   }
 
-  addCheckboxOption(id: string) {
-    this.buildedFormFieldDefinitionsList.update(prevList =>
-      prevList.map(f =>
-        f.id === id
-          ? {
-              ...f,
-              choices: [...(f?.choices ?? []), this.createPlainCheckboxChoice(f.choices?.length)],
-              //label: values.label?.length ? values.label : f.label,
-            }
-          : f,
-      ),
-    )
-  }
+  createCheckboxOption(formField: FormFieldDefinitionValue) {
+    if (formField.type === FieldType.Checkbox) {
+      const formFieldChoices = formField.choices as FormFieldCheckboxOption[]
+      const createdOption: FormFieldCheckboxOption = {
+        choice: `Option ${formFieldChoices.length + 1}`,
+        checked: false,
+        id: crypto.randomUUID(),
+      }
 
-  createPlainCheckboxChoice(index?: number | undefined): FormFieldCheckboxOption {
-    return {
-      choice: `Add option ${index ?? 1}`,
-      checked: false,
-      id: crypto.randomUUID(),
+      this.updateFormField(formField.id, {
+        choices: [...formFieldChoices, createdOption],
+      })
     }
   }
 }
