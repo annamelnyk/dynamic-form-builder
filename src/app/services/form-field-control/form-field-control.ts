@@ -30,7 +30,7 @@ export class FormFieldControl {
     if (formField.choices) {
       formField.choices.forEach((f: FormFieldCheckboxOption) => {
         const key1 = `checked-${f.id}`
-        const key2 = `choice${f.id}`
+        const key2 = `choice-${f.id}`
 
         group[key1] = new FormControl(f.checked)
         group[key2] = new FormControl(f.choice)

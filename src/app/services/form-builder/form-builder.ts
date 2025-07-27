@@ -30,7 +30,7 @@ export class FormBuilderService {
     if (field.type === FieldType.Select) {
       formFieldDefinitionContainsID.options = [
         {
-          option: 'test',
+          option: 'Option 1',
           selected: true,
           id: crypto.randomUUID(),
         },
@@ -38,13 +38,7 @@ export class FormBuilderService {
     }
 
     if (field.type === FieldType.Checkbox) {
-      formFieldDefinitionContainsID.choices = [
-        {
-          choice: 'Option 1',
-          checked: false,
-          id: crypto.randomUUID(),
-        },
-      ]
+      formFieldDefinitionContainsID.choices = [this.createCheckboxOption(1)]
     }
 
     this.buildedFormFieldDefinitionsList.update(prevList => {
@@ -83,25 +77,28 @@ export class FormBuilderService {
           ? {
               ...f,
               ...values,
-              //label: values.label?.length ? values.label : f.label,
             }
           : f,
       ),
     )
   }
 
-  createCheckboxOption(formField: FormFieldDefinitionValue) {
+  //TODO: rewrite updateFormField() method with deep updates
+  addCheckboxOption(formField: FormFieldDefinitionValue) {
     if (formField.type === FieldType.Checkbox) {
       const formFieldChoices = formField.choices as FormFieldCheckboxOption[]
-      const createdOption: FormFieldCheckboxOption = {
-        choice: `Option ${formFieldChoices.length + 1}`,
-        checked: false,
-        id: crypto.randomUUID(),
-      }
 
       this.updateFormField(formField.id, {
-        choices: [...formFieldChoices, createdOption],
+        choices: [...formFieldChoices, this.createCheckboxOption(formFieldChoices.length + 1)],
       })
+    }
+  }
+
+  createCheckboxOption(index: number): FormFieldCheckboxOption {
+    return {
+      choice: `Option ${index}`,
+      checked: false,
+      id: crypto.randomUUID(),
     }
   }
 }

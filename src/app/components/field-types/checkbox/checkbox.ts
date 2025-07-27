@@ -69,6 +69,6 @@ export class Checkbox implements OnInit {
 
   addCheckboxOption(e: Event) {
     e.stopPropagation()
-    this.formBuilderService.createCheckboxOption(this.formField())
+    this.formBuilderService.addCheckboxOption(this.formField())
   }
 }
