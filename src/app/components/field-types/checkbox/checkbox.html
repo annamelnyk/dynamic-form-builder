@@ -9,18 +9,17 @@
 }
 
 @if (buildModeService.mode() === Mode.Edit) {
-  <div class="field__outer" [formGroup]="checkboxControlsForm">
+  <div class="field__outer" [formGroup]="checkboxControlsForm()">
     @for (choice of formField().choices; let i = $index; track choice.id) {
       <div class="field__option-outer">
-        <mat-checkbox class="field__controls-label" formControlName="checkbox-{{ choice.id }}" />
+        <mat-checkbox class="field__controls-label" formControlName="checked-{{ choice.id }}" />
 
         <mat-form-field class="w-full field__input">
           <input
             matInput
             class="w-full field__controls-input"
-            appea
             type="text"
-            formControlName="checkbox-label-{{ choice.id }}"
+            formControlName="choice-{{ choice.id }}"
           />
         </mat-form-field>
       </div>
