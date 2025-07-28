@@ -25,10 +25,6 @@
   top: 0;
 }
 
-.field__controls-label {
-  @include medium-text;
-}
-
 .field__controls-form {
   width: 100%;
   display: flex;
@@ -45,7 +41,6 @@
 }
 
 .field__controls-required {
-  &,
   label,
   input {
     cursor: pointer;

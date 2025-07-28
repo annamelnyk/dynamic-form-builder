@@ -1,13 +1,12 @@
 @use '@angular/material' as mat;
 
-html {
+:root {
   color-scheme: light dark;
   @include mat.theme(
     (
-      //color: mat.$violet-palette,
       color: mat.$magenta-palette,
-      typography: Roboto,
-      density: 0
+      typography: monospace,
+      density: 0,
     )
   );
 }
