@@ -7,6 +7,7 @@ import {
   FormFieldDefinitionValue,
   FormFieldSelectOption,
 } from '@model/form-fields'
+import { generateUniqueFieldName } from 'app/helpers/utils'
 
 @Injectable({
   providedIn: 'root',
@@ -94,7 +95,6 @@ export class FormBuilderService {
   addCheckboxOption(formField: FormFieldDefinitionValue) {
     if (formField.type === FieldType.Checkbox) {
       const formFieldChoices = formField.choices as FormFieldCheckboxOption[]
-      console.log('formFieldChoices in addCheckboxOption ', formFieldChoices)
 
       this.updateFormField(formField.id, {
         choices: [...formFieldChoices, this.createCheckboxOption()],
@@ -106,8 +106,8 @@ export class FormBuilderService {
     const formFieldChoices = formField.choices as FormFieldCheckboxOption[]
     const updatedChoices = formFieldChoices.map(c => ({
       ...c,
-      checked: values[`checked-${c.id}`],
-      choice: values[`choice-${c.id}`],
+      checked: values[generateUniqueFieldName('checked', c.id)],
+      choice: values[generateUniqueFieldName('choice', c.id)],
     }))
     this.updateFormField(formField.id, {
       choices: updatedChoices,

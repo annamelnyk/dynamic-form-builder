@@ -6,6 +6,7 @@ import {
   FormFieldDefinitionValue,
   FormFieldSelectOption,
 } from '@model/form-fields'
+import { generateUniqueFieldName } from 'app/helpers/utils'
 
 @Injectable({
   providedIn: 'root',
@@ -29,12 +30,8 @@ export class FormFieldControl {
 
     if (formField.choices) {
       formField.choices.forEach((f: FormFieldCheckboxOption) => {
-        console.log('CHeckbox choices## ', f)
-        const key1 = `checked-${f.id}`
-        const key2 = `choice-${f.id}`
-
-        group[key1] = new FormControl(f.checked)
-        group[key2] = new FormControl(f.choice)
+        group[generateUniqueFieldName('checked', f.id)] = new FormControl(f.checked)
+        group[generateUniqueFieldName('choice', f.id)] = new FormControl(f.choice)
       })
     }
 
@@ -46,11 +43,8 @@ export class FormFieldControl {
 
     if (formField.options) {
       formField.options.forEach((f: FormFieldSelectOption) => {
-        const key1 = `selected-${f.id}`
-        const key2 = `option-${f.id}`
-
-        group[key1] = new FormControl(f.selected)
-        group[key2] = new FormControl(f.option)
+        group[generateUniqueFieldName('selected', f.id)] = new FormControl(f.selected)
+        group[generateUniqueFieldName('option', f.id)] = new FormControl(f.option)
       })
     }
 

@@ -97,7 +97,6 @@ export class EditableFormField implements OnInit {
   }
 
   onFieldRemoveHandler(id: string) {
-    console.log('REmoove ', id)
     this.formBuilderService.removeFormFieldDefinition(id)
   }
 }

@@ -24,7 +24,6 @@ export class Toolbar {
   }
 
   onFieldExit(event: CdkDragDrop<FormFieldDefinition[]>): FormFieldDefinition {
-    console.log('exit', event)
     return this.buildingTools()[event.currentIndex]
   }
 }

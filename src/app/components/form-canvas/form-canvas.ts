@@ -32,8 +32,6 @@ export class FormCanvas {
   }
 
   onFieldTypeDropped(event: CdkDragDrop<any[]>) {
-    console.log('dropped', event)
-
     this.formBuilderService.addFormFieldToFromFieldDefinitionsList(
       event.item.data,
       event.currentIndex,
@@ -41,7 +39,6 @@ export class FormCanvas {
   }
 
   moveFieldPosition(fromIndex: number, toIndex: number) {
-    console.log('clicked!')
     this.formBuilderService.moveFromFieldDefinitionPosition(fromIndex, toIndex)
   }
 
