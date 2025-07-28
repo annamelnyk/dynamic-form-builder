@@ -1,13 +1,11 @@
-import { computed, inject, Injectable, linkedSignal, signal } from '@angular/core'
-import { Router } from '@angular/router'
+import { Injectable, signal } from '@angular/core'
 
 import {
   FieldType,
-  FormFieldCheckbox,
   FormFieldCheckboxOption,
   FormFieldDefinition,
   FormFieldDefinitionValue,
-  Mode,
+  FormFieldSelectOption,
 } from '@model/form-fields'
 
 @Injectable({
@@ -24,17 +22,11 @@ export class FormBuilderService {
     const formFieldDefinitionContainsID: FormFieldDefinitionValue = {
       ...field,
       required: false,
-      id: crypto.randomUUID(),
+      id: this.generateId(),
     }
 
     if (field.type === FieldType.Select) {
-      formFieldDefinitionContainsID.options = [
-        {
-          option: 'Option 1',
-          selected: true,
-          id: crypto.randomUUID(),
-        },
-      ]
+      formFieldDefinitionContainsID.options = [this.createSelectOption()]
     }
 
     if (field.type === FieldType.Checkbox) {
@@ -102,6 +94,7 @@ export class FormBuilderService {
   addCheckboxOption(formField: FormFieldDefinitionValue) {
     if (formField.type === FieldType.Checkbox) {
       const formFieldChoices = formField.choices as FormFieldCheckboxOption[]
+      console.log('formFieldChoices in addCheckboxOption ', formFieldChoices)
 
       this.updateFormField(formField.id, {
         choices: [...formFieldChoices, this.createCheckboxOption()],
@@ -109,11 +102,35 @@ export class FormBuilderService {
     }
   }
 
+  updateCheckboxOptions(formField: FormFieldDefinitionValue, values: any) {
+    const formFieldChoices = formField.choices as FormFieldCheckboxOption[]
+    const updatedChoices = formFieldChoices.map(c => ({
+      ...c,
+      checked: values[`checked-${c.id}`],
+      choice: values[`choice-${c.id}`],
+    }))
+    this.updateFormField(formField.id, {
+      choices: updatedChoices,
+    })
+  }
+
   createCheckboxOption(): FormFieldCheckboxOption {
     return {
       choice: '',
       checked: false,
-      id: crypto.randomUUID(),
+      id: this.generateId(),
     }
+  }
+
+  createSelectOption(): FormFieldSelectOption {
+    return {
+      option: '',
+      selected: true,
+      id: this.generateId(),
+    }
+  }
+
+  generateId(): string {
+    return crypto.randomUUID()
   }
 }

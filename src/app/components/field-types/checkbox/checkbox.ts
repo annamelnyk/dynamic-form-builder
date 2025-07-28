@@ -1,17 +1,18 @@
 import { Component, computed, DestroyRef, effect, inject, input, OnInit } from '@angular/core'
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
-import { MatButtonModule } from '@angular/material/button'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
+
 import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
 import { PlainButton } from '@components/plain-button/plain-button'
-
-import { FormFieldCheckboxOption, FormFieldDefinitionValue, Mode } from '@model/form-fields'
+import { FormFieldDefinitionValue, Mode } from '@model/form-fields'
 import { BuildMode } from '@services/build-mode/build-mode'
 import { FormBuilderService } from '@services/form-builder/form-builder'
 import { FormFieldControl } from '@services/form-field-control/form-field-control'
+import { Subscription } from 'rxjs'
+import { debounceTime } from 'rxjs/operators'
 
 @Component({
   selector: 'app-checkbox',
@@ -26,7 +27,7 @@ import { FormFieldControl } from '@services/form-field-control/form-field-contro
   templateUrl: './checkbox.html',
   styleUrl: './checkbox.scss',
 })
-export class Checkbox implements OnInit {
+export class Checkbox {
   form = input.required<FormGroup>()
   formField = input.required<FormFieldDefinitionValue>()
 
@@ -42,34 +43,19 @@ export class Checkbox implements OnInit {
   checkboxControlsForm = computed<FormGroup>(() =>
     this.formFieldControlService.toCheckboxFormGroup(this.formField()),
   )
-
+  private checkboxControlFormSubscription?: Subscription
   constructor() {
     effect(() => {
-      console.log('checkboxControlsForm ', this.checkboxControlsForm())
+      this.checkboxControlFormSubscription?.unsubscribe()
+
+      this.checkboxControlFormSubscription = this.checkboxControlsForm()
+        .valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(500))
+        .subscribe(values => {
+          console.log('CHeckbox updated EFFECT ', values)
+          this.formBuilderService.updateCheckboxOptions(this.formField(), values)
+        })
     })
   }
-
-  ngOnInit(): void {
-    this.checkboxControlsForm
-  }
-  // addCheckboxControlsForm() {
-  //   const choicesMap: Record<string, Array<string | boolean>> = {}
-  //   this.formField().choices?.forEach((v: FormFieldCheckboxOption) => {
-  //     const key1 = `checkbox-${v.id}`
-  //     const key2 = `checkbox-label-${v.id}`
-  //     choicesMap[key1] = [v.checked]
-  //     choicesMap[key2] = [v.choice]
-  //   })
-  //   this.checkboxControlsForm = this.ngFormBuilder.group({
-  //     ...choicesMap,
-  //   })
-
-  //   this.checkboxControlsForm.valueChanges
-  //     .pipe(takeUntilDestroyed(this.destroyRef))
-  //     .subscribe(values => {
-  //       //this.formBuilderService.updateFormField(this.formField().id, values)
-  //     })
-  // }
 
   addCheckboxOption(e: Event) {
     e.stopPropagation()

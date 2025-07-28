@@ -29,6 +29,7 @@ export class FormFieldControl {
 
     if (formField.choices) {
       formField.choices.forEach((f: FormFieldCheckboxOption) => {
+        console.log('CHeckbox choices## ', f)
         const key1 = `checked-${f.id}`
         const key2 = `choice-${f.id}`
 
