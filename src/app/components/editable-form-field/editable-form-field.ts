@@ -20,19 +20,17 @@ import { FieldType, FormFieldCheckboxOption, FormFieldDefinitionValue } from '@m
 import { FormBuilderService } from '@services/form-builder/form-builder'
 import { FieldTypesService } from '@services/field-types/field-types'
 import { MatButtonModule } from '@angular/material/button'
-import { RemoveButton } from '@components/remove-button/remove-button'
+import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
 
 @Component({
   selector: 'app-editable-form-field',
   imports: [
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule,
     ReactiveFormsModule,
-    MatButtonModule,
     MatCheckboxModule,
     NgComponentOutlet,
-    RemoveButton,
+    ButtonIcon,
   ],
   templateUrl: './editable-form-field.html',
   styleUrl: './editable-form-field.scss',
@@ -50,6 +48,7 @@ export class EditableFormField implements OnInit {
   onMoveUp = output<Event>()
   onMoveDown = output<Event>()
 
+  Icon = Icon
   FieldType = FieldType
   controlsForm!: FormGroup
 

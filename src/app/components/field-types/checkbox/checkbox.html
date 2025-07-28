@@ -23,11 +23,16 @@
             formControlName="choice-{{ choice.id }}"
           />
         </mat-form-field>
-        <app-remove-button (onFieldRemove)="removeOptionHandler(choice.id)" />
+        <app-button-icon
+          [iconType]="Icon.Delete"
+          (onButtonClick)="removeOptionHandler(choice.id)"
+        />
       </div>
     }
-    <div class="field__option-btn">
-      <button matButton="filled" (click)="addCheckboxOption($event)">Add option</button>
-    </div>
+    <app-plain-button
+      title="Add option"
+      position="end"
+      (onButtinClick)="addCheckboxOption($event)"
+    />
   </div>
 }

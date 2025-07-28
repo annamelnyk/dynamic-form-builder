@@ -1,9 +1,15 @@
 @use '@angular/material' as mat;
 @use 'mixins' as *;
 
-.field__controls-remove {
+.button__icon {
   display: flex;
   align-items: center;
   justify-content: space-between;
   @include normal-text;
+  cursor: pointer;
+
+  &.disabled {
+    opacity: 0.26;
+    cursor: not-allowed;
+  }
 }

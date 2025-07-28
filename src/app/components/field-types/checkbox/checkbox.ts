@@ -5,7 +5,8 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
-import { RemoveButton } from '@components/remove-button/remove-button'
+import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
+import { PlainButton } from '@components/plain-button/plain-button'
 
 import { FormFieldCheckboxOption, FormFieldDefinitionValue, Mode } from '@model/form-fields'
 import { BuildMode } from '@services/build-mode/build-mode'
@@ -19,8 +20,8 @@ import { FormFieldControl } from '@services/form-field-control/form-field-contro
     MatInputModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatButtonModule,
-    RemoveButton,
+    PlainButton,
+    ButtonIcon,
   ],
   templateUrl: './checkbox.html',
   styleUrl: './checkbox.scss',
@@ -36,6 +37,7 @@ export class Checkbox implements OnInit {
   destroyRef = inject(DestroyRef)
 
   Mode = Mode
+  Icon = Icon
 
   checkboxControlsForm = computed<FormGroup>(() =>
     this.formFieldControlService.toCheckboxFormGroup(this.formField()),

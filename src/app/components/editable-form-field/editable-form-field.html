@@ -1,23 +1,16 @@
 <div class="field__outer transition-all">
   <div class="field__header">
     <div class="field__controls-aside">
-      <button mat-icon-button>
-        <mat-icon
-          class="field__controls-arrow up"
-          [class.disabled]="isFirst()"
-          (click)="onClickMoveUp($event)"
-          >arrow_upward_alt</mat-icon
-        >
-      </button>
-      <button mat-icon-button>
-        <mat-icon
-          class="field__controls-arrow down"
-          [class.disabled]="isLast()"
-          (click)="onClickMoveDown($event)"
-        >
-          arrow_downward_alt
-        </mat-icon>
-      </button>
+      <app-button-icon
+        [iconType]="Icon.ArrowUp"
+        [disabled]="isFirst()"
+        (onButtonClick)="onClickMoveUp($event)"
+      />
+      <app-button-icon
+        [iconType]="Icon.ArrowDown"
+        [disabled]="isLast()"
+        (onButtonClick)="onClickMoveDown($event)"
+      />
     </div>
 
     <div [formGroup]="controlsForm" class="field__controls-form">
@@ -38,7 +31,10 @@
             >Required</mat-checkbox
           >
         </div>
-        <app-remove-button (onFieldRemove)="onFieldRemoveHandler(formField().id)" />
+        <app-button-icon
+          [iconType]="Icon.Delete"
+          (onButtonClick)="onFieldRemoveHandler(formField().id)"
+        />
       </div>
     </div>
   </div>
@@ -51,27 +47,4 @@
       }"
     ></ng-container>
   </div>
-  <!-- @if (formField().type === FieldType.Checkbox && checkboxControlsForm) {
-    <div class="field__footer" [formGroup]="checkboxControlsForm">
-      @for (choice of formField().choices; let i = $index; track i) {
-        <div class="field__option-outer">
-          <mat-checkbox class="field__controls-label" formControlName="checkbox-{{ choice.id }}" />
-
-          <mat-form-field class="w-full field__input">
-            <input
-              matInput
-              class="w-full field__controls-input"
-              appea
-              type="text"
-              placeholder="Add option {{ i + 1 }}"
-              formControlName="checkbox-label-{{ choice.id }}"
-            />
-          </mat-form-field>
-        </div>
-      }
-      <div class="field__option-btn">
-        <button matButton="filled" (click)="addCheckboxOption(formField().id)">Add option</button>
-      </div>
-    </div>
-  } -->
 </div>

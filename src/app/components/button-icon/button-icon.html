@@ -1,0 +1,8 @@
+<button
+  mat-icon-button
+  class="button__icon ml-5"
+  [class.disabled]="disabled()"
+  [disabled]="disabled()"
+>
+  <mat-icon (click)="buttonClick($event)">{{ iconType() }}</mat-icon>
+</button>

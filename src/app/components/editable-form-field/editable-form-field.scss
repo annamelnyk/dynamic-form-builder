@@ -23,23 +23,10 @@
   cursor: pointer;
   left: -55px;
   top: 0;
-
-  button {
-    display: block;
-  }
 }
 
 .field__controls-label {
   @include medium-text;
-}
-
-.field__controls-arrow {
-  cursor: pointer;
-
-  &.disabled {
-    opacity: 0.26;
-    cursor: not-allowed;
-  }
 }
 
 .field__controls-form {
@@ -50,16 +37,11 @@
 
 .field__header,
 .field__controls-end,
-.field__controls-remove,
 .field__controls-required {
   display: flex;
   align-items: center;
   justify-content: space-between;
   @include normal-text;
-}
-
-.field__controls-remove {
-  cursor: pointer;
 }
 
 .field__controls-required {

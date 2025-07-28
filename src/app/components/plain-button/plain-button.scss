@@ -1,0 +1,17 @@
+@use 'mixins' as *;
+
+.btn__outer {
+  display: flex;
+
+  &.end {
+    justify-content: flex-end;
+  }
+
+  &.center {
+    justify-content: center;
+  }
+}
+
+button {
+  @include normal-text;
+}
