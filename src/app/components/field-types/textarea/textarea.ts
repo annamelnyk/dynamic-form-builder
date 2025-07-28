@@ -1,9 +1,10 @@
-import { Component, computed, input } from '@angular/core'
+import { Component, computed, inject, input } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 
-import { FormFieldDefinitionValue } from '@model/form-fields'
+import { FormFieldDefinitionValue, Mode } from '@model/form-fields'
+import { BuildMode } from '@services/build-mode/build-mode'
 
 @Component({
   selector: 'app-textarea',
@@ -15,4 +16,7 @@ export class Textarea {
   form = input.required<FormGroup>()
   formField = input.required<FormFieldDefinitionValue>()
   placeholder = computed(() => `Enter ${this.formField().label}`)
+
+  buildModeService = inject(BuildMode)
+  Mode = Mode
 }

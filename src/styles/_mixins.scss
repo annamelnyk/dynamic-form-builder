@@ -38,6 +38,11 @@
   font-size: 1.6rem;
 }
 
+@mixin normal-bold-text {
+  @include font-bold;
+  font-size: 1.6rem;
+}
+
 @mixin small-text {
   @include font-light;
   font-size: 1.2rem;

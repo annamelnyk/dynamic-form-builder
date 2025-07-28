@@ -53,6 +53,7 @@
 }
 
 .field__controls-input {
+  @include normal-bold-text;
   &:focus {
     outline: none;
   }
