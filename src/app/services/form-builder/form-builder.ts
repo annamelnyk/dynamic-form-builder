@@ -38,7 +38,7 @@ export class FormBuilderService {
     }
 
     if (field.type === FieldType.Checkbox) {
-      formFieldDefinitionContainsID.choices = [this.createCheckboxOption(1)]
+      formFieldDefinitionContainsID.choices = [this.createCheckboxOption()]
     }
 
     this.buildedFormFieldDefinitionsList.update(prevList => {
@@ -104,14 +104,14 @@ export class FormBuilderService {
       const formFieldChoices = formField.choices as FormFieldCheckboxOption[]
 
       this.updateFormField(formField.id, {
-        choices: [...formFieldChoices, this.createCheckboxOption(formFieldChoices.length + 1)],
+        choices: [...formFieldChoices, this.createCheckboxOption()],
       })
     }
   }
 
-  createCheckboxOption(index: number): FormFieldCheckboxOption {
+  createCheckboxOption(): FormFieldCheckboxOption {
     return {
-      choice: `Option ${index}`,
+      choice: '',
       checked: false,
       id: crypto.randomUUID(),
     }
