@@ -31,10 +31,9 @@ export class Checkbox {
   protected form = input.required<FormGroup>()
   formField = input.required<FormFieldDefinitionValue>()
 
-  buildModeService = inject(BuildMode)
+  protected buildModeService = inject(BuildMode)
   formBuilderService = inject(FormBuilderService)
   formFieldControlService = inject(FormFieldControl)
-  ngFormBuilder = inject(FormBuilder)
   private destroyRef = inject(DestroyRef)
 
   Mode = Mode
@@ -64,6 +63,6 @@ export class Checkbox {
   }
 
   removeOptionHandler(choiceId: string) {
-    this.formBuilderService.removeCheckboxOption(this.formField().id, choiceId)
+    this.formBuilderService.removeCheckboxOrSelectOption(this.formField(), choiceId)
   }
 }

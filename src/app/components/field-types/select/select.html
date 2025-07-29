@@ -1,10 +1,53 @@
-<mat-form-field [formGroup]="form()" class="field__input">
-  <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
-  <mat-select [formControlName]="formField().id" [id]="formField().id" class="field__select">
-    @for (selection of formField().options; track selection.option) {
-      <mat-option class="field__select__option" [value]="selection.option">{{
-        selection.option
-      }}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+@if (buildModeService.mode() === Mode.Preview) {
+  <mat-form-field [formGroup]="form()" class="field__input">
+    <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
+    <mat-select [formControlName]="formField().id" [id]="formField().id" class="field__select">
+      @for (selection of formField().options; track selection.option) {
+        <mat-option class="field__select__option" [value]="selection.option">{{
+          selection.option
+        }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+}
+
+@if (buildModeService.mode() === Mode.Edit) {
+  <mat-form-field class="field__input" [formGroup]="form()">
+    <!-- <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label> -->
+    <mat-select [id]="formField().id" class="field__select">
+      @for (selection of formField().options; track selection.option) {
+        <mat-option class="field__select__option" [value]="selection.option">{{
+          selection.option
+        }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <div class="field__outer" [formGroup]="selectControlsForm()">
+    <mat-radio-group aria-label="Select option">
+      @for (option of formField().options; let i = $index; track option.id) {
+        <div class="field__option-outer">
+          <mat-radio-button
+            formControlName="selected-{{ option.id }}"
+            value="{{ option.id }}"
+          ></mat-radio-button>
+
+          <mat-form-field class="w-full field__input">
+            <input
+              matInput
+              class="w-full field__controls-input"
+              type="text"
+              placeholder="Option {{ i + 1 }}"
+              formControlName="option-{{ option.id }}"
+            />
+          </mat-form-field>
+          <app-button-icon
+            [iconType]="Icon.Delete"
+            (onButtonClick)="removeOptionHandler(option.id)"
+          />
+        </div>
+      }
+    </mat-radio-group>
+    <app-plain-button title="Add option" position="end" (onButtinClick)="addSelectOption($event)" />
+  </div>
+}

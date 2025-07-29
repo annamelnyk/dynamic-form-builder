@@ -10,3 +10,8 @@
     )
   );
 }
+
+.field__selection-outer {
+  @include flex-center;
+  margin-bottom: 16px;
+}
