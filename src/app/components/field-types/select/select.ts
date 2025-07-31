@@ -12,16 +12,19 @@ import { FormBuilderService } from '@services/form-builder/form-builder'
 import { FormFieldControl } from '@services/form-field-control/form-field-control'
 import { debounceTime, Subscription } from 'rxjs'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { NgTemplateOutlet } from '@angular/common'
 
 @Component({
   selector: 'app-select',
   imports: [
     MatFormFieldModule,
+    MatInputModule,
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
     PlainButton,
     ButtonIcon,
+    NgTemplateOutlet,
   ],
   templateUrl: './select.html',
   styleUrl: './select.scss',

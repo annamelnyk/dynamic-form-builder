@@ -6,7 +6,6 @@ import {
   inject,
   input,
   linkedSignal,
-  OnInit,
   output,
   signal,
 } from '@angular/core'
@@ -35,7 +34,7 @@ import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
   templateUrl: './editable-form-field.html',
   styleUrl: './editable-form-field.scss',
 })
-export class EditableFormField implements OnInit {
+export class EditableFormField {
   formBuilderService = inject(FormBuilderService)
   fieldTypesService = inject(FieldTypesService)
   ngFormBuilder = inject(FormBuilder)

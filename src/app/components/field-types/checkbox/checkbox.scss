@@ -1,7 +1,1 @@
-@use '@angular/material' as mat;
-@use 'mixins' as *;
 
-.field__option-outer {
-  @include flex-center;
-  margin-bottom: 16px;
-}

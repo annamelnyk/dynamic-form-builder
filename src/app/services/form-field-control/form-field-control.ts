@@ -43,7 +43,7 @@ export class FormFieldControl {
 
     if (formField.options) {
       formField.options.forEach((f: FormFieldSelectOption) => {
-        group[generateUniqueFieldName('selected', f.id)] = new FormControl(f.selected)
+        //group[generateUniqueFieldName('selected', f.id)] = new FormControl(f.selected)
         group[generateUniqueFieldName('option', f.id)] = new FormControl(f.option)
       })
     }

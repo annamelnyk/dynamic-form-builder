@@ -65,12 +65,18 @@ body {
   transition: height 0.2s ease-in;
 }
 
+// Style to fix the weird border with angular material
+.mdc-notched-outline__notch {
+  border-right: none !important;
+}
+
+// form-fields #region
 mat-form-field.field__input,
 .field__input mat-label {
   @include normal-text;
 }
 
-// Style to fix the weird border with angular material
-.mdc-notched-outline__notch {
-  border-right: none !important;
+.field__option-outer {
+  @include flex-center;
+  margin-bottom: 16px;
 }
