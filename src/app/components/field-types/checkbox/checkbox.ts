@@ -9,7 +9,7 @@ import { debounceTime } from 'rxjs/operators'
 
 import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
 import { PlainButton } from '@components/plain-button/plain-button'
-import { FormFieldDefinitionValue, Mode } from '@model/form-fields'
+import { DEBOUNCE_TIME, FormFieldDefinitionValue, Mode } from '@model/form-fields'
 import { BuildMode } from '@services/build-mode/build-mode'
 import { FormBuilderService } from '@services/form-builder/form-builder'
 import { FormFieldControl } from '@services/form-field-control/form-field-control'
@@ -51,7 +51,7 @@ export class Checkbox {
     this.checkboxControlFormSubscription?.unsubscribe()
 
     this.checkboxControlFormSubscription = this.checkboxControlsForm()
-      .valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(500))
+      .valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(DEBOUNCE_TIME))
       .subscribe(values => {
         this.formBuilderService.updateCheckboxOptions(this.formField(), values)
       })

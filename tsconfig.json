@@ -9,7 +9,8 @@
       "@pages/*": ["app/pages/*"],
       "@directives/*": ["app/directives/*"],
       "@services/*": ["app/services/*"],
-      "@model/*": ["app/model/*"]
+      "@model/*": ["app/model/*"],
+      "@helpers/*": ["app/helpers/*"]
     },
     "strict": true,
     "noImplicitOverride": true,

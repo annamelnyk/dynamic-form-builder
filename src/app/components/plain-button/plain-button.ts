@@ -10,13 +10,13 @@ import { MatButtonModule } from '@angular/material/button'
 export class PlainButton {
   title = input.required<string>()
   position = input<'start' | 'center' | 'end'>('start')
-  onButtinClick = output<Event>()
+  onButtonClick = output<Event>()
 
   buttonClasses = {
     position: this.position,
   }
 
   clickButton(e: Event) {
-    this.onButtinClick.emit(e)
+    this.onButtonClick.emit(e)
   }
 }

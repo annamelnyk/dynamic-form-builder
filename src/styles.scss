@@ -5,7 +5,9 @@
 
 :root {
   --h-header: 65px;
-  //font-family: monospace;
+  --mat-option-label-text-size: 1.6rem;
+  --mat-sys-body-large-size: 1.6rem;
+  --mat-form-field-outlined-label-text-populated-size: 1.6rem;
 }
 
 html {
@@ -13,9 +15,9 @@ html {
 
   @include mat.checkbox-overrides(
     (
-      //label-text-font: inherit,
+      label-text-font: inherit,
       label-text-size: 1.6rem,
-      label-text-weight: 400
+      label-text-weight: 400,
     )
   );
 }

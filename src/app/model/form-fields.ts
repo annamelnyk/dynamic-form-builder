@@ -1,5 +1,15 @@
 import { Type } from '@angular/core'
 
+export const DEBOUNCE_TIME: number = 500
+export enum FormFieldName {
+  Checked = 'checked',
+  Option = 'option',
+  Options = 'options',
+  Selected = 'selected',
+  Choice = 'choice',
+  Choices = 'choices',
+}
+
 export enum Mode {
   Edit = 'edit',
   Preview = 'preview',

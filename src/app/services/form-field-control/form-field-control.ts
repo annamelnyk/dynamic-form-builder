@@ -4,9 +4,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 import {
   FormFieldCheckboxOption,
   FormFieldDefinitionValue,
+  FormFieldName,
   FormFieldSelectOption,
 } from '@model/form-fields'
-import { generateUniqueFieldName } from 'app/helpers/utils'
+import { generateUniqueFieldName } from '@helpers/utils'
 
 @Injectable({
   providedIn: 'root',
@@ -30,8 +31,8 @@ export class FormFieldControl {
 
     if (formField.choices) {
       formField.choices.forEach((f: FormFieldCheckboxOption) => {
-        group[generateUniqueFieldName('checked', f.id)] = new FormControl(f.checked)
-        group[generateUniqueFieldName('choice', f.id)] = new FormControl(f.choice)
+        group[generateUniqueFieldName(FormFieldName.Checked, f.id)] = new FormControl(f.checked)
+        group[generateUniqueFieldName(FormFieldName.Choice, f.id)] = new FormControl(f.choice)
       })
     }
 
@@ -44,7 +45,7 @@ export class FormFieldControl {
     if (formField.options) {
       formField.options.forEach((f: FormFieldSelectOption) => {
         //group[generateUniqueFieldName('selected', f.id)] = new FormControl(f.selected)
-        group[generateUniqueFieldName('option', f.id)] = new FormControl(f.option)
+        group[generateUniqueFieldName(FormFieldName.Option, f.id)] = new FormControl(f.option)
       })
     }
 

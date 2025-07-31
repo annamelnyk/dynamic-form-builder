@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatSelectModule } from '@angular/material/select'
 import { MatRadioModule } from '@angular/material/radio'
-import { FormFieldDefinitionValue, Mode } from '@model/form-fields'
+import { DEBOUNCE_TIME, FormFieldDefinitionValue, Mode } from '@model/form-fields'
 import { BuildMode } from '@services/build-mode/build-mode'
 import { PlainButton } from '@components/plain-button/plain-button'
 import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
@@ -53,10 +53,10 @@ export class Select {
     this.selectControlFormSubscription?.unsubscribe()
 
     this.selectControlFormSubscription = this.selectControlsForm()
-      .valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(500))
+      .valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(DEBOUNCE_TIME))
       .subscribe(values => {
         console.log('Select values', values)
-        //this.formBuilderService.updateSelectOptions(this.formField(), values)
+        this.formBuilderService.updateSelectOptions(this.formField(), values)
       })
   }
 

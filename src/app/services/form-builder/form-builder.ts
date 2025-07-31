@@ -5,9 +5,10 @@ import {
   FormFieldCheckboxOption,
   FormFieldDefinition,
   FormFieldDefinitionValue,
+  FormFieldName,
   FormFieldSelectOption,
 } from '@model/form-fields'
-import { generateUniqueFieldName } from 'app/helpers/utils'
+import { generateUniqueFieldName } from '@helpers/utils'
 
 @Injectable({
   providedIn: 'root',
@@ -64,14 +65,14 @@ export class FormBuilderService {
   }
 
   removeCheckboxOrSelectOption(formField: FormFieldDefinitionValue, optionId: string) {
-    let fieldName: 'choices' | 'options'
+    let fieldName: FormFieldName.Choices | FormFieldName.Options
 
     switch (formField.type) {
       case FieldType.Checkbox:
-        fieldName = 'choices'
+        fieldName = FormFieldName.Choices
         break
       case FieldType.Select:
-        fieldName = 'options'
+        fieldName = FormFieldName.Options
         break
       default:
         return
@@ -119,8 +120,8 @@ export class FormBuilderService {
     const formFieldChoices = formField.choices as FormFieldCheckboxOption[]
     const updatedChoices = formFieldChoices.map(c => ({
       ...c,
-      checked: values[generateUniqueFieldName('checked', c.id)],
-      choice: values[generateUniqueFieldName('choice', c.id)],
+      checked: values[generateUniqueFieldName(FormFieldName.Checked, c.id)],
+      choice: values[generateUniqueFieldName(FormFieldName.Choice, c.id)],
     }))
     this.updateFormField(formField.id, {
       choices: updatedChoices,
@@ -158,8 +159,8 @@ export class FormBuilderService {
     const formFieldOptions = formField.options as FormFieldSelectOption[]
     const updatedOptions = formFieldOptions.map(o => ({
       ...o,
-      selected: values[generateUniqueFieldName('selected', o.id)],
-      option: values[generateUniqueFieldName('otpion', o.id)],
+      selected: values[generateUniqueFieldName(FormFieldName.Selected, o.id)],
+      option: values[generateUniqueFieldName(FormFieldName.Option, o.id)],
     }))
     this.updateFormField(formField.id, {
       options: updatedOptions,
