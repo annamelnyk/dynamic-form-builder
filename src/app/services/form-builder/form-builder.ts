@@ -9,13 +9,50 @@ import {
   FormFieldSelectOption,
 } from '@model/form-fields'
 import { generateUniqueFieldName } from '@helpers/utils'
+import { first } from 'rxjs'
+import { TEXT_FORM_DEFINITION, TEXTAREA_FORM_DEFINITION } from '@services/field-types/field-types'
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormBuilderService {
+  #initialFormFieldDefinitionsList = signal<FormFieldDefinitionValue[]>([])
+  initialFormFieldDefinitionsList = this.#initialFormFieldDefinitionsList.asReadonly()
+
   buildedFormFieldDefinitionsList = signal<FormFieldDefinitionValue[]>([])
   formFieldsList = this.buildedFormFieldDefinitionsList.asReadonly()
+
+  constructor() {
+    this.addInitialFormDescriptionFields()
+  }
+
+  addInitialFormDescriptionFields() {
+    const title: FormFieldDefinitionValue = {
+      ...TEXT_FORM_DEFINITION,
+      label: 'Form Title',
+      required: false,
+      id: this.generateId(),
+    }
+
+    const description: FormFieldDefinitionValue = {
+      ...TEXTAREA_FORM_DEFINITION,
+      value: '',
+      label: 'Form Description',
+      required: false,
+      id: this.generateId(),
+    }
+
+    this.#initialFormFieldDefinitionsList.set([title, description])
+  }
+
+  updateAboutFormField(values: Record<string, string>) {
+    this.#initialFormFieldDefinitionsList.update(prevList =>
+      prevList.map(f => ({
+        ...f,
+        value: values[f.id],
+      })),
+    )
+  }
 
   addFormFieldToFromFieldDefinitionsList(
     field: FormFieldDefinition,

@@ -56,6 +56,7 @@ export class Select {
       .valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(DEBOUNCE_TIME))
       .subscribe(values => {
         console.log('Select values', values)
+        console.log('Form look ', this.form())
         this.formBuilderService.updateSelectOptions(this.formField(), values)
       })
   }

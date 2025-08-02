@@ -6,14 +6,14 @@ import { Textarea } from '@components/field-types/textarea/textarea'
 
 import { FieldType, FormFieldDefinition } from '@model/form-fields'
 
-const TEXT_FORM_DEFINITION: FormFieldDefinition = {
+export const TEXT_FORM_DEFINITION: FormFieldDefinition = {
   icon: 'text_fields',
   type: FieldType.Text,
   label: `New ${FieldType.Text} field`,
   component: FieldInput,
 }
 
-const TEXTAREA_FORM_DEFINITION: FormFieldDefinition = {
+export const TEXTAREA_FORM_DEFINITION: FormFieldDefinition = {
   icon: 'local_parking',
   type: FieldType.Textarea,
   label: `New ${FieldType.Textarea} field`,

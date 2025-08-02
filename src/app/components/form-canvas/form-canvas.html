@@ -1,10 +1,37 @@
 <mat-card class="form__card" appearance="outlined">
-  <form [formGroup]="form()">
-    <mat-card-header class="form__card__header">
-      <div contenteditable="true" class="form__header_field">Form Title</div>
-      <div contenteditable="true" class="form__header_field">Form Description</div>
-    </mat-card-header>
-    <mat-card-content class="form__card__content">
+  <mat-card-header class="form__card__header">
+    <form [formGroup]="aboutForm()">
+      @for (formField of formBuilderService.initialFormFieldDefinitionsList(); track formField.id) {
+        @if (formField.type === FieldType.Text) {
+          <div class="form__header_field">
+            <input
+              matInput
+              [id]="formField.id"
+              class="w-full field__controls-input"
+              type="text"
+              [placeholder]="formField.label"
+              [formControlName]="formField.id"
+            />
+          </div>
+        }
+
+        @if (formField.type === FieldType.Textarea) {
+          <div class="form__header_field">
+            <textarea
+              class="w-full field__controls-input"
+              type="text"
+              [placeholder]="formField.label"
+              [formControlName]="formField.id"
+              [id]="formField.id"
+              rows="5"
+            ></textarea>
+          </div>
+        }
+      }
+    </form>
+  </mat-card-header>
+  <mat-card-content class="form__card__content">
+    <form [formGroup]="form()">
       <ul
         cdkDropList
         [cdkDropListData]="formBuilderService.buildedFormFieldDefinitionsList()"
@@ -34,6 +61,6 @@
           }
         }
       </ul>
-    </mat-card-content>
-  </form>
+    </form>
+  </mat-card-content>
 </mat-card>
