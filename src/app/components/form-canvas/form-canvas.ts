@@ -9,11 +9,13 @@ import { EditableFormField } from '@components/editable-form-field/editable-form
 import { FieldTypesService } from '@services/field-types/field-types'
 import { FormBuilderService } from '@services/form-builder/form-builder'
 import { FormFieldControl } from '@services/form-field-control/form-field-control'
-import { DEBOUNCE_TIME, FieldType } from '@model/form-fields'
+import { DEBOUNCE_TIME, FieldType, Mode } from '@model/form-fields'
+import { PlainButton } from '@components/plain-button/plain-button'
+import { BuildMode } from '@services/build-mode/build-mode'
 
 @Component({
   selector: 'app-form-canvas',
-  imports: [MatCardModule, EditableFormField, DragDropModule, ReactiveFormsModule],
+  imports: [MatCardModule, EditableFormField, DragDropModule, ReactiveFormsModule, PlainButton],
   templateUrl: './form-canvas.html',
   styleUrl: './form-canvas.scss',
 })
@@ -21,8 +23,11 @@ export class FormCanvas {
   formBuilderService = inject(FormBuilderService)
   fieldTypesService = inject(FieldTypesService)
   formFieldControlService = inject(FormFieldControl)
+  buildModeService = inject(BuildMode)
+
   private destroyRef = inject(DestroyRef)
   protected FieldType = FieldType
+  protected Mode = Mode
 
   form = computed<FormGroup>(() =>
     this.formFieldControlService.toFormGroup(this.formBuilderService.formFieldsList()),

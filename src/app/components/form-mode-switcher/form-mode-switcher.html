@@ -3,7 +3,10 @@
     <mat-button-toggle [value]="Mode.Edit" [routerLink]="[`../${Mode.Edit}`]"
       >{{ Mode.Edit | titlecase }}
     </mat-button-toggle>
-    <mat-button-toggle [value]="Mode.Preview" [routerLink]="[`../${Mode.Preview}`]"
+    <mat-button-toggle
+      [value]="Mode.Preview"
+      [routerLink]="[`../${Mode.Preview}`]"
+      [disabled]="!formBuilderService.previewFormEnabled()"
       >{{ Mode.Preview | titlecase }}
     </mat-button-toggle>
   </mat-button-toggle-group>

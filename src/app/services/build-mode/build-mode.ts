@@ -11,6 +11,7 @@ export class BuildMode {
   router = inject(Router)
 
   urlPath$ = this.router.events.pipe(
+    tap(e => console.log('router event:', e)),
     filter(event => event instanceof NavigationEnd),
     map((event: NavigationEnd) => this.getModeFromUrlPath(event.urlAfterRedirects)),
     startWith(this.getModeFromUrlPath(this.router.url)),

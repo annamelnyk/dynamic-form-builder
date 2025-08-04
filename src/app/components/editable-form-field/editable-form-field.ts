@@ -1,24 +1,14 @@
 import { NgComponentOutlet } from '@angular/common'
-import {
-  Component,
-  computed,
-  DestroyRef,
-  inject,
-  input,
-  linkedSignal,
-  output,
-  signal,
-} from '@angular/core'
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
+import { Component, DestroyRef, inject, input, output } from '@angular/core'
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatInputModule } from '@angular/material/input'
-import { MatIcon, MatIconModule } from '@angular/material/icon'
 import { MatCheckboxModule } from '@angular/material/checkbox'
-import { FieldType, FormFieldCheckboxOption, FormFieldDefinitionValue } from '@model/form-fields'
+
+import { FieldType, FormFieldDefinitionValue } from '@model/form-fields'
 import { FormBuilderService } from '@services/form-builder/form-builder'
 import { FieldTypesService } from '@services/field-types/field-types'
-import { MatButtonModule } from '@angular/material/button'
 import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
 
 @Component({
@@ -47,8 +37,8 @@ export class EditableFormField {
   onMoveUp = output<Event>()
   onMoveDown = output<Event>()
 
-  Icon = Icon
-  FieldType = FieldType
+  protected Icon = Icon
+  protected FieldType = FieldType
   controlsForm!: FormGroup
 
   get id(): string {
