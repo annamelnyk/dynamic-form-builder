@@ -20,6 +20,13 @@ html {
       label-text-weight: 400,
     )
   );
+
+  @include mat.card-overrides(
+    (
+      title-text-size: 2.4rem,
+      subtitle-text-size: 1.8rem,
+    )
+  );
 }
 
 body {
@@ -72,7 +79,7 @@ body {
   border-right: none !important;
 }
 
-// form-fields #region
+// form fields #region
 mat-form-field.field__input,
 .field__input mat-label {
   @include normal-text;
@@ -81,4 +88,16 @@ mat-form-field.field__input,
 .field__option-outer {
   @include flex-center;
   margin-bottom: 16px;
+}
+
+// form canvas #region
+.form__card {
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.form__card__header {
+  flex-direction: column;
+  border-bottom: 1px solid var(--mat-sys-primary);
+  background-color: var(--mat-sys-on-primary);
 }

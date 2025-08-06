@@ -1,17 +1,6 @@
 @use '@angular/material' as mat;
 @use 'mixins' as *;
 
-.form__card {
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-
-.form__card__header {
-  flex-direction: column;
-  border-bottom: 1px solid var(--mat-sys-primary);
-  background-color: var(--mat-sys-on-primary);
-}
-
 .form__header_field {
   padding: 16px;
   @include medium-text;

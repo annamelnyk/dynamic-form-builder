@@ -1,0 +1,14 @@
+<mat-card class="form__card" appearance="outlined">
+  <mat-card-header class="form__card__header">
+    @for (formInfo of formBuilder.initialFormFieldDefinitionsList(); track formInfo.id) {
+      @if (formInfo.type === FieldType.Text) {
+        <mat-card-title>{{ formInfo.value || 'Untitled Form' }}</mat-card-title>
+      }
+
+      @if (formInfo.type === FieldType.Textarea && formInfo.value) {
+        <mat-card-subtitle>{{ formInfo.value }}</mat-card-subtitle>
+      }
+    }
+  </mat-card-header>
+  <mat-card-content> </mat-card-content>
+</mat-card>
