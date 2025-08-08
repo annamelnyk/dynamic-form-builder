@@ -5,3 +5,25 @@
 .mat-mdc-card-subtitle {
   margin-bottom: 25px;
 }
+
+.form__card__content {
+  padding: 0;
+  background: var(--mat-sys-surface);
+
+  &:last-child {
+    padding: 0;
+  }
+}
+
+.form__card__list__item {
+  padding: 20px;
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+  background-color: var(--mat-sys-on-primary);
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

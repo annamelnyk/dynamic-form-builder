@@ -10,5 +10,21 @@
       }
     }
   </mat-card-header>
-  <mat-card-content> </mat-card-content>
+  <mat-card-content class="form__card__content">
+    <form>
+      <ul>
+        @for (formField of formBuilder.formFieldsList(); track formField.id) {
+          <li class="form__card__list__item">
+            <ng-container
+              [ngComponentOutlet]="formField.component"
+              [ngComponentOutletInputs]="{
+                form: form(),
+                formField,
+              }"
+            ></ng-container>
+          </li>
+        }
+      </ul>
+    </form>
+  </mat-card-content>
 </mat-card>
