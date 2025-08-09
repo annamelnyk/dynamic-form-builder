@@ -81,7 +81,7 @@ body {
 
 // form fields #region
 mat-form-field.field__input,
-.field__input mat-label {
+mat-label {
   @include normal-text;
 }
 

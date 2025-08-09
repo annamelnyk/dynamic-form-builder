@@ -1,9 +1,11 @@
 @if (buildModeService.mode() === Mode.Preview) {
+  <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
   <div [formGroup]="form()">
     @for (value of formField().choices; track value.id) {
       <mat-checkbox class="field__input" [formControlName]="formField().id">{{
         value.choice
       }}</mat-checkbox>
+      <br />
     }
   </div>
 }

@@ -19,9 +19,6 @@
   padding: 20px;
   border-bottom: 1px solid var(--mat-sys-outline-variant);
   background-color: var(--mat-sys-on-primary);
-  min-height: 150px;
-  display: flex;
-  align-items: center;
 
   &:last-child {
     border-bottom: none;

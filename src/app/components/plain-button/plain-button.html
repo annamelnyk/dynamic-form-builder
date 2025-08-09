@@ -1,3 +1,5 @@
 <div class="btn__outer" [class]="position()">
-  <button matButton="filled" (click)="clickButton($event)">{{ title() }}</button>
+  <button matButton="filled" (click)="clickButton($event)" [disabled]="disabled()">
+    {{ title() }}
+  </button>
 </div>

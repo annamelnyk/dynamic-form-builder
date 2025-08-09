@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button'
 export class PlainButton {
   title = input.required<string>()
   position = input<'start' | 'center' | 'end'>('start')
+  disabled = input<boolean>(false)
+
   onButtonClick = output<Event>()
 
   buttonClasses = {
