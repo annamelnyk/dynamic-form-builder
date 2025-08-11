@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 
+import { generateUniqueFieldName } from '@helpers/utils'
 import {
   FormFieldCheckboxOption,
   FormFieldDefinitionValue,
   FormFieldName,
   FormFieldSelectOption,
 } from '@model/form-fields'
-import { generateUniqueFieldName } from '@helpers/utils'
 
 @Injectable({
   providedIn: 'root',
