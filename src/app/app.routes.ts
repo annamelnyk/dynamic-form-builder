@@ -8,8 +8,6 @@ import {
   Routes,
 } from '@angular/router'
 import { BuildForm } from '@pages/build-form/build-form'
-import { EditForm } from '@pages/edit-form/edit-form'
-import { PreviewForm } from '@pages/preview-form/preview-form'
 import { FormBuilderService } from '@services/form-builder/form-builder'
 
 const previewGuard: CanActivateChildFn = (
@@ -39,12 +37,12 @@ export const routes: Routes = [
       {
         path: 'edit',
         title: 'Edit Form',
-        component: EditForm,
+        loadComponent: () => import('./pages/edit-form/edit-form').then(m => m.EditForm),
       },
       {
         path: 'preview',
         title: 'Preview Form',
-        component: PreviewForm,
+        loadComponent: () => import('./pages/preview-form/preview-form').then(m => m.PreviewForm),
         canActivate: [previewGuard],
       },
     ],

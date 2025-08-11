@@ -29,7 +29,13 @@
 <ng-template #selectField>
   <mat-form-field class="field__input select" [formGroup]="form()">
     <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
-    <mat-select [id]="formField().id" class="field__select" [required]="formField().required">
+    <mat-select
+      [id]="formField().id"
+      class="field__select"
+      [required]="formField().required"
+      [(value)]="selectedValue"
+    >
+      <mat-option>-</mat-option>
       @for (selection of formField().options; track selection.id) {
         @if (selection.option) {
           <mat-option class="field__select__option" [value]="selection.option">{{

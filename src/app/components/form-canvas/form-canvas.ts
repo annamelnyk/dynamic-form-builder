@@ -1,5 +1,13 @@
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop'
-import { Component, computed, DestroyRef, inject, signal } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  effect,
+  inject,
+  signal,
+} from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatCardModule } from '@angular/material/card'
@@ -17,6 +25,7 @@ import { FormFieldControl } from '@services/form-field-control/form-field-contro
   imports: [MatCardModule, EditableFormField, DragDropModule, ReactiveFormsModule],
   templateUrl: './form-canvas.html',
   styleUrl: './form-canvas.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormCanvas {
   formBuilderService = inject(FormBuilderService)
@@ -37,7 +46,13 @@ export class FormCanvas {
     ),
   )
 
-  ngOnInit(): void {
+  constructor() {
+    effect(() => {
+      console.log(this.form())
+    })
+  }
+
+  ngOnInit() {
     this.subscribeToAboutForm()
   }
 
@@ -45,6 +60,7 @@ export class FormCanvas {
     this.aboutForm()
       .valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(DEBOUNCE_TIME))
       .subscribe(values => {
+        console.log({ values })
         this.formBuilderService.updateAboutFormField(values)
       })
   }

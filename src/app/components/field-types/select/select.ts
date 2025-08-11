@@ -1,18 +1,18 @@
+import { NgTemplateOutlet } from '@angular/common'
 import { Component, computed, DestroyRef, effect, inject, input } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
-import { MatSelectModule } from '@angular/material/select'
 import { MatRadioModule } from '@angular/material/radio'
+import { MatSelectModule } from '@angular/material/select'
+import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
+import { PlainButton } from '@components/plain-button/plain-button'
 import { DEBOUNCE_TIME, FormFieldDefinitionValue, Mode } from '@model/form-fields'
 import { BuildMode } from '@services/build-mode/build-mode'
-import { PlainButton } from '@components/plain-button/plain-button'
-import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
 import { FormBuilderService } from '@services/form-builder/form-builder'
 import { FormFieldControl } from '@services/form-field-control/form-field-control'
 import { debounceTime, Subscription } from 'rxjs'
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-import { NgTemplateOutlet } from '@angular/common'
 
 @Component({
   selector: 'app-select',
@@ -32,6 +32,7 @@ import { NgTemplateOutlet } from '@angular/common'
 export class Select {
   form = input.required<FormGroup>()
   formField = input.required<FormFieldDefinitionValue>()
+  selectedValue = ''
 
   protected buildModeService = inject(BuildMode)
   formBuilderService = inject(FormBuilderService)
@@ -47,6 +48,10 @@ export class Select {
   )
   constructor() {
     effect(() => this.observeSelectControlFormChanges())
+  }
+
+  ngOnInit() {
+    console.log('Select form ', this.form())
   }
 
   observeSelectControlFormChanges() {
