@@ -35,7 +35,6 @@ export class Select {
   form = input.required<FormGroup>()
   formField = input.required<FormFieldDefinitionValue>()
   removeOptionEnabled = computed<boolean>(() => (this.formField().options as string[]).length > 1)
-  selectedValue = ''
 
   protected buildModeService = inject(BuildMode)
   formBuilderService = inject(FormBuilderService)

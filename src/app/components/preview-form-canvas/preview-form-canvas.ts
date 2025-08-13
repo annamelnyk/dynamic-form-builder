@@ -27,5 +27,6 @@ export class PreviewFormCanvas {
   onSubmit() {
     this.payload = JSON.stringify(this.form().getRawValue())
     console.log('payload ', this.payload)
+    console.log('form ', this.form())
   }
 }

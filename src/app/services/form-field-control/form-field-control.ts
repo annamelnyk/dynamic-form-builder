@@ -11,6 +11,7 @@ export class FormFieldControl {
   toFormGroup(formFields: FormFieldDefinitionValue[]) {
     const group: any = {}
     formFields.forEach(f => {
+      console.log('toFormGroup FIELD: ', f)
       const fieldValue = f?.value ?? ''
 
       group[f.id] = f.required
