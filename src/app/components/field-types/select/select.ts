@@ -8,6 +8,7 @@ import { MatRadioModule } from '@angular/material/radio'
 import { MatSelectModule } from '@angular/material/select'
 import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
 import { PlainButton } from '@components/plain-button/plain-button'
+import { Autofocus } from '@directives/autofocus'
 import { DEBOUNCE_TIME, FormFieldDefinitionValue, Mode } from '@model/form-fields'
 import { BuildMode } from '@services/build-mode/build-mode'
 import { FormBuilderService } from '@services/form-builder/form-builder'
@@ -25,6 +26,7 @@ import { debounceTime, Subscription } from 'rxjs'
     PlainButton,
     ButtonIcon,
     NgTemplateOutlet,
+    Autofocus,
   ],
   templateUrl: './select.html',
   styleUrl: './select.scss',

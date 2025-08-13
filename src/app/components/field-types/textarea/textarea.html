@@ -3,6 +3,7 @@
     <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
   }
   <textarea
+    appAutofocus
     matInput
     [formControlName]="formField().id"
     [id]="formField().id"

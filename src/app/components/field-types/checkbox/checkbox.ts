@@ -9,6 +9,7 @@ import { debounceTime } from 'rxjs/operators'
 
 import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
 import { PlainButton } from '@components/plain-button/plain-button'
+import { Autofocus } from '@directives/autofocus'
 import { DEBOUNCE_TIME, FormFieldDefinitionValue, Mode } from '@model/form-fields'
 import { BuildMode } from '@services/build-mode/build-mode'
 import { FormBuilderService } from '@services/form-builder/form-builder'
@@ -23,6 +24,7 @@ import { FormFieldControl } from '@services/form-field-control/form-field-contro
     MatFormFieldModule,
     PlainButton,
     ButtonIcon,
+    Autofocus,
   ],
   templateUrl: './checkbox.html',
   styleUrl: './checkbox.scss',
