@@ -34,6 +34,7 @@ import { debounceTime, Subscription } from 'rxjs'
 export class Select {
   form = input.required<FormGroup>()
   formField = input.required<FormFieldDefinitionValue>()
+  removeOptionEnabled = computed<boolean>(() => (this.formField().options as string[]).length > 1)
   selectedValue = ''
 
   protected buildModeService = inject(BuildMode)
@@ -46,7 +47,7 @@ export class Select {
 
   private selectControlFormSubscription?: Subscription
   selectControlsForm = computed<FormGroup>(() =>
-    this.formFieldControlService.toSelectFormGroup(this.formField()),
+    this.formFieldControlService.toFieldWithOptionsFormGroup(this.formField()),
   )
   constructor() {
     effect(() => this.observeSelectControlFormChanges())
@@ -62,16 +63,16 @@ export class Select {
     this.selectControlFormSubscription = this.selectControlsForm()
       .valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(DEBOUNCE_TIME))
       .subscribe(values => {
-        this.formBuilderService.updateSelectOptions(this.formField(), values)
+        this.formBuilderService.updateFormFieldOptions(this.formField(), values)
       })
   }
 
   addSelectOption(e: Event) {
     e.stopPropagation()
-    this.formBuilderService.addSelectOption(this.formField())
+    this.formBuilderService.addFormFieldOption(this.formField())
   }
 
-  removeOptionHandler(choiceId: string) {
-    this.formBuilderService.removeCheckboxOrSelectOption(this.formField(), choiceId)
+  removeOptionHandler(optionIndex: number) {
+    this.formBuilderService.removeFieldOption(this.formField(), optionIndex)
   }
 }

@@ -2,12 +2,7 @@ import { Injectable } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { generateUniqueFieldName } from '@helpers/utils'
-import {
-  FormFieldCheckboxOption,
-  FormFieldDefinitionValue,
-  FormFieldName,
-  FormFieldSelectOption,
-} from '@model/form-fields'
+import { FormFieldDefinitionValue, FormFieldName } from '@model/form-fields'
 
 @Injectable({
   providedIn: 'root',
@@ -26,26 +21,15 @@ export class FormFieldControl {
     return new FormGroup(group)
   }
 
-  toCheckboxFormGroup(formField: FormFieldDefinitionValue) {
-    const group: any = {}
-
-    if (formField.choices) {
-      formField.choices.forEach((f: FormFieldCheckboxOption) => {
-        group[generateUniqueFieldName(FormFieldName.Checked, f.id)] = new FormControl(f.checked)
-        group[generateUniqueFieldName(FormFieldName.Choice, f.id)] = new FormControl(f.choice)
-      })
-    }
-
-    return new FormGroup(group)
-  }
-
-  toSelectFormGroup(formField: FormFieldDefinitionValue) {
+  toFieldWithOptionsFormGroup(formField: FormFieldDefinitionValue) {
     const group: any = {}
 
     if (formField.options) {
-      formField.options.forEach((f: FormFieldSelectOption) => {
+      formField.options.forEach((option: string, index: number) => {
         //group[generateUniqueFieldName('selected', f.id)] = new FormControl(f.selected)
-        group[generateUniqueFieldName(FormFieldName.Option, f.id)] = new FormControl(f.option)
+        group[generateUniqueFieldName(FormFieldName.Option, formField.id, index)] = new FormControl(
+          option,
+        )
       })
     }
 

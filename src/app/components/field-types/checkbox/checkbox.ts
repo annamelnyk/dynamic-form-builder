@@ -32,6 +32,7 @@ import { FormFieldControl } from '@services/form-field-control/form-field-contro
 export class Checkbox {
   protected form = input.required<FormGroup>()
   formField = input.required<FormFieldDefinitionValue>()
+  removeOptionEnabled = computed<boolean>(() => (this.formField().options as string[]).length > 1)
 
   protected buildModeService = inject(BuildMode)
   formBuilderService = inject(FormBuilderService)
@@ -43,7 +44,7 @@ export class Checkbox {
 
   private checkboxControlFormSubscription?: Subscription
   checkboxControlsForm = computed<FormGroup>(() =>
-    this.formFieldControlService.toCheckboxFormGroup(this.formField()),
+    this.formFieldControlService.toFieldWithOptionsFormGroup(this.formField()),
   )
   constructor() {
     effect(() => this.observeCheckboxControlFormChanges())
@@ -55,16 +56,16 @@ export class Checkbox {
     this.checkboxControlFormSubscription = this.checkboxControlsForm()
       .valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(DEBOUNCE_TIME))
       .subscribe(values => {
-        this.formBuilderService.updateCheckboxOptions(this.formField(), values)
+        this.formBuilderService.updateFormFieldOptions(this.formField(), values)
       })
   }
 
   addCheckboxOption(e: Event) {
     e.stopPropagation()
-    this.formBuilderService.addCheckboxOption(this.formField())
+    this.formBuilderService.addFormFieldOption(this.formField())
   }
 
-  removeOptionHandler(choiceId: string) {
-    this.formBuilderService.removeCheckboxOrSelectOption(this.formField(), choiceId)
+  removeOptionHandler(optionIndex: number) {
+    this.formBuilderService.removeFieldOption(this.formField(), optionIndex)
   }
 }

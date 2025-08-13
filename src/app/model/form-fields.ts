@@ -2,12 +2,8 @@ import { Type } from '@angular/core'
 
 export const DEBOUNCE_TIME: number = 500
 export enum FormFieldName {
-  Checked = 'checked',
   Option = 'option',
   Options = 'options',
-  Selected = 'selected',
-  Choice = 'choice',
-  Choices = 'choices',
 }
 
 export enum Mode {
@@ -30,30 +26,11 @@ export interface FormFieldDefinition {
   component: Type<unknown>
 }
 
-export interface FormFieldSelectOption {
-  option: string
-  selected: boolean
-  id: string
+export interface FormFieldWithOptions extends FormFieldDefinition {
+  options?: string[]
 }
 
-export interface FormFieldSelect extends FormFieldDefinition {
-  options?: FormFieldSelectOption[]
-}
-
-export interface FormFieldCheckboxOption {
-  choice: string
-  checked: boolean
-  id: string
-}
-
-export interface FormFieldCheckbox extends FormFieldDefinition {
-  choices?: FormFieldCheckboxOption[]
-}
-
-export interface FormFieldDefinitionValue
-  extends FormFieldDefinition,
-    FormFieldSelect,
-    FormFieldCheckbox {
+export interface FormFieldDefinitionValue extends FormFieldDefinition, FormFieldWithOptions {
   id: string
   required: boolean
 }

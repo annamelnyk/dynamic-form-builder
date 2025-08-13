@@ -1,15 +1,12 @@
 import { computed, Injectable, signal } from '@angular/core'
 
+import { generateUniqueFieldName } from '@helpers/utils'
 import {
   FieldType,
-  FormFieldCheckboxOption,
   FormFieldDefinition,
   FormFieldDefinitionValue,
   FormFieldName,
-  FormFieldSelectOption,
 } from '@model/form-fields'
-import { generateUniqueFieldName } from '@helpers/utils'
-import { first } from 'rxjs'
 import { TEXT_FORM_DEFINITION, TEXTAREA_FORM_DEFINITION } from '@services/field-types/field-types'
 
 @Injectable({
@@ -65,12 +62,8 @@ export class FormBuilderService {
       id: this.generateId(),
     }
 
-    if (field.type === FieldType.Select) {
-      formFieldDefinitionContainsID.options = [this.createSelectOption()]
-    }
-
-    if (field.type === FieldType.Checkbox) {
-      formFieldDefinitionContainsID.choices = [this.createCheckboxOption()]
+    if (field.type === FieldType.Select || field.type === FieldType.Checkbox) {
+      formFieldDefinitionContainsID[FormFieldName.Options] = ['']
     }
 
     this.buildedFormFieldDefinitionsList.update(prevList => {
@@ -88,13 +81,11 @@ export class FormBuilderService {
     const formFieldToBeReplaced = {
       ...this.buildedFormFieldDefinitionsList()[fromIndex],
     }
-
     const updatedOrder = this.buildedFormFieldDefinitionsList().filter(
       f => f.id !== formFieldToBeReplaced.id,
     )
 
     updatedOrder.splice(toIndex, 0, formFieldToBeReplaced)
-
     this.buildedFormFieldDefinitionsList.set([...updatedOrder])
   }
 
@@ -102,26 +93,18 @@ export class FormBuilderService {
     this.buildedFormFieldDefinitionsList.update(prevList => prevList.filter(f => f.id !== id))
   }
 
-  removeCheckboxOrSelectOption(formField: FormFieldDefinitionValue, optionId: string) {
-    let fieldName: FormFieldName.Choices | FormFieldName.Options
-
-    switch (formField.type) {
-      case FieldType.Checkbox:
-        fieldName = FormFieldName.Choices
-        break
-      case FieldType.Select:
-        fieldName = FormFieldName.Options
-        break
-      default:
-        return
-    }
-
+  removeFieldOption(formField: FormFieldDefinitionValue, optionIndex: number) {
     this.buildedFormFieldDefinitionsList.update(prevList =>
       prevList.map(f => {
         if (f.id === formField.id) {
+          const formFieldOptions = f[FormFieldName.Options] as string[]
+          if (formFieldOptions.length === 1) return f
           return {
             ...f,
-            [fieldName]: f[fieldName]?.filter(c => c.id !== optionId),
+            [FormFieldName.Options]: [
+              ...formFieldOptions.slice(0, optionIndex),
+              ...formFieldOptions.slice(optionIndex + 1),
+            ],
           }
         }
 
@@ -144,64 +127,21 @@ export class FormBuilderService {
   }
 
   //TODO: rewrite updateFormField() method with deep updates
-  addCheckboxOption(formField: FormFieldDefinitionValue) {
-    if (formField.type === FieldType.Checkbox) {
-      const formFieldChoices = formField.choices as FormFieldCheckboxOption[]
+  addFormFieldOption(formField: FormFieldDefinitionValue) {
+    if (formField.type !== FieldType.Select && formField.type !== FieldType.Checkbox) return
 
-      this.updateFormField(formField.id, {
-        choices: [...formFieldChoices, this.createCheckboxOption()],
-      })
-    }
-  }
-
-  updateCheckboxOptions(formField: FormFieldDefinitionValue, values: any) {
-    const formFieldChoices = formField.choices as FormFieldCheckboxOption[]
-    const updatedChoices = formFieldChoices.map(c => ({
-      ...c,
-      checked: values[generateUniqueFieldName(FormFieldName.Checked, c.id)],
-      choice: values[generateUniqueFieldName(FormFieldName.Choice, c.id)],
-    }))
     this.updateFormField(formField.id, {
-      choices: updatedChoices,
+      [FormFieldName.Options]: [...(formField[FormFieldName.Options] as string[]), ''],
     })
   }
 
-  createCheckboxOption(): FormFieldCheckboxOption {
-    return {
-      choice: '',
-      checked: false,
-      id: this.generateId(),
-    }
-  }
-
-  createSelectOption(): FormFieldSelectOption {
-    return {
-      option: '',
-      selected: false,
-      id: this.generateId(),
-    }
-  }
-
-  //TODO: rewrite updateFormField() method with deep updates
-  addSelectOption(formField: FormFieldDefinitionValue) {
-    if (formField.type === FieldType.Select) {
-      const formFieldOptions = formField.options as FormFieldSelectOption[]
-
-      this.updateFormField(formField.id, {
-        options: [...formFieldOptions, this.createSelectOption()],
-      })
-    }
-  }
-
-  updateSelectOptions(formField: FormFieldDefinitionValue, values: any) {
-    const formFieldOptions = formField.options as FormFieldSelectOption[]
-    const updatedOptions = formFieldOptions.map(o => ({
-      ...o,
-      selected: values[generateUniqueFieldName(FormFieldName.Selected, o.id)],
-      option: values[generateUniqueFieldName(FormFieldName.Option, o.id)],
-    }))
+  updateFormFieldOptions(formField: FormFieldDefinitionValue, values: any) {
+    const formFieldOptions = formField[FormFieldName.Options] as string[]
+    const updatedOptions = formFieldOptions.map(
+      (o, index) => values[generateUniqueFieldName(FormFieldName.Option, formField.id, index)],
+    )
     this.updateFormField(formField.id, {
-      options: updatedOptions,
+      [FormFieldName.Options]: updatedOptions,
     })
   }
 

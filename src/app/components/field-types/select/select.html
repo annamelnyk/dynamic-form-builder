@@ -5,7 +5,7 @@
 @if (buildModeService.mode() === Mode.Edit) {
   <ng-container [ngTemplateOutlet]="selectField"></ng-container>
   <div class="field__outer mt-6" [formGroup]="selectControlsForm()">
-    @for (option of formField().options; let i = $index; track option.id) {
+    @for (option of formField().options; let i = $index; track i) {
       <div class="field__option-outer">
         <mat-form-field class="w-full field__input">
           <input
@@ -14,12 +14,13 @@
             class="w-full field__controls-input"
             type="text"
             placeholder="Option {{ i + 1 }}"
-            formControlName="option-{{ option.id }}"
+            formControlName="option-{{ formField().id }}-{{ i }}"
           />
         </mat-form-field>
         <app-button-icon
           [iconType]="Icon.Delete"
-          (onButtonClick)="removeOptionHandler(option.id)"
+          [disabled]="!removeOptionEnabled()"
+          (onButtonClick)="removeOptionHandler(i)"
         />
       </div>
     }
@@ -37,11 +38,9 @@
       [(value)]="selectedValue"
     >
       <mat-option>-</mat-option>
-      @for (selection of formField().options; track selection.id) {
-        @if (selection.option) {
-          <mat-option class="field__select__option" [value]="selection.option">{{
-            selection.option
-          }}</mat-option>
+      @for (selection of formField().options; track selection) {
+        @if (selection) {
+          <mat-option class="field__select__option" [value]="selection">{{ selection }}</mat-option>
         }
       }
     </mat-select>

@@ -1,10 +1,10 @@
-import { inject } from '@angular/core'
-import { FormBuilderService } from '@services/form-builder/form-builder'
-
 /**
  * Dynamic unique object fields combined with field name and unique id
  * @param {string} value object field name
- * @param {string} uuid
+ * @param {string} id
+ * @param {number} index
  * @returns {string}
  */
-export const generateUniqueFieldName = (value: string, uuid: string): string => `${value}-${uuid}`
+
+export const generateUniqueFieldName = (value: string, id: string, index?: number): string =>
+  typeof index === 'number' ? `${value}-${id}-${index}` : `${value}-${id}`
