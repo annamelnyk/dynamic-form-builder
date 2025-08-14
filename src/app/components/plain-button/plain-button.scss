@@ -1,14 +1,18 @@
 @use 'mixins' as *;
 
-.btn__outer {
+:host {
   display: flex;
-
-  &.end {
-    justify-content: flex-end;
-  }
 
   &.center {
     justify-content: center;
+  }
+
+  &.start {
+    justify-content: start;
+  }
+
+  &.end {
+    justify-content: end;
   }
 }
 
