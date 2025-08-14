@@ -1,46 +1,44 @@
-<div class="field__outer transition-all">
-  <div class="field__header">
-    <div class="field__controls-aside">
-      <app-button-icon
-        [iconType]="Icon.ArrowUp"
-        [disabled]="isFirst()"
-        (onButtonClick)="onClickMoveUp($event)"
-      />
-      <app-button-icon
-        [iconType]="Icon.ArrowDown"
-        [disabled]="isLast()"
-        (onButtonClick)="onClickMoveDown($event)"
-      />
-    </div>
+<div class="field__header">
+  <div class="field__controls-aside">
+    <app-button-icon
+      [iconType]="Icon.ArrowUp"
+      [disabled]="isFirst()"
+      (onButtonClick)="onClickMoveUp($event)"
+    />
+    <app-button-icon
+      [iconType]="Icon.ArrowDown"
+      [disabled]="isLast()"
+      (onButtonClick)="onClickMoveDown($event)"
+    />
+  </div>
 
-    <div [formGroup]="controlsForm" class="field__controls-form">
-      <input
-        matInput
-        class="w-full field__controls-input"
-        type="text"
-        [placeholder]="label"
-        formControlName="label"
-      />
-      <div class="field__controls-end">
-        <div class="field__controls-required">
-          <mat-checkbox id="required-{{ id }}" name="required-{{ id }}" formControlName="required"
-            >Required</mat-checkbox
-          >
-        </div>
-        <app-button-icon
-          [iconType]="Icon.Delete"
-          (onButtonClick)="onFieldRemoveHandler(formField().id)"
-        />
+  <div [formGroup]="controlsForm" class="field__controls-form">
+    <input
+      matInput
+      class="w-full field__controls-input"
+      type="text"
+      [placeholder]="label"
+      formControlName="label"
+    />
+    <div class="field__controls-end">
+      <div class="field__controls-required">
+        <mat-checkbox id="required-{{ id }}" name="required-{{ id }}" formControlName="required"
+          >Required</mat-checkbox
+        >
       </div>
+      <app-button-icon
+        [iconType]="Icon.Delete"
+        (onButtonClick)="onFieldRemoveHandler(formField().id)"
+      />
     </div>
   </div>
-  <div class="field__body">
-    <ng-container
-      [ngComponentOutlet]="formField().component"
-      [ngComponentOutletInputs]="{
-        form: form(),
-        formField: formField(),
-      }"
-    ></ng-container>
-  </div>
+</div>
+<div class="field__body">
+  <ng-container
+    [ngComponentOutlet]="formField().component"
+    [ngComponentOutletInputs]="{
+      form: form(),
+      formField: formField(),
+    }"
+  ></ng-container>
 </div>

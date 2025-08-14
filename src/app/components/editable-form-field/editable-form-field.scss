@@ -1,12 +1,14 @@
 @use '@angular/material' as mat;
 @use 'mixins' as *;
 
-.field__outer {
+:host {
   padding: 20px 26px 20px 80px;
   border: 1px solid var(--mat-sys-outline-variant);
   background-color: var(--mat-sys-on-primary);
   border-radius: var(--mat-sys-corner-medium);
   min-height: 150px;
+  @include transition-all;
+  display: block;
 
   &:hover {
     border-color: var(--mat-sys-primary);

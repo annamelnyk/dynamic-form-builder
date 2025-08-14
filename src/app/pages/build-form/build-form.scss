@@ -1,5 +1,11 @@
 @use 'mixins' as *;
 
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+
 .button__outer {
   padding-top: 3rem;
   @include flex-center;

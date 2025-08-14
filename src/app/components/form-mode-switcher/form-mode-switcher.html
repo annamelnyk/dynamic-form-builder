@@ -1,13 +1,11 @@
-<div class="form__mode__outer">
-  <mat-button-toggle-group aria-label="Form mode" [value]="buildModeService.mode()">
-    <mat-button-toggle [value]="Mode.Edit" [routerLink]="[`../${Mode.Edit}`]"
-      >{{ Mode.Edit | titlecase }}
-    </mat-button-toggle>
-    <mat-button-toggle
-      [value]="Mode.Preview"
-      [routerLink]="[`../${Mode.Preview}`]"
-      [disabled]="!formBuilderService.previewFormEnabled()"
-      >{{ Mode.Preview | titlecase }}
-    </mat-button-toggle>
-  </mat-button-toggle-group>
-</div>
+<mat-button-toggle-group aria-label="Form mode" [value]="buildModeService.mode()">
+  <mat-button-toggle [value]="Mode.Edit" [routerLink]="[`../${Mode.Edit}`]"
+    >{{ Mode.Edit | titlecase }}
+  </mat-button-toggle>
+  <mat-button-toggle
+    [value]="Mode.Preview"
+    [routerLink]="[`../${Mode.Preview}`]"
+    [disabled]="!formBuilderService.previewFormEnabled()"
+    >{{ Mode.Preview | titlecase }}
+  </mat-button-toggle>
+</mat-button-toggle-group>
