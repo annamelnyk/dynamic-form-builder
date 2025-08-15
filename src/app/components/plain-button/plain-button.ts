@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 
 @Component({
@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button'
   imports: [MatButtonModule],
   templateUrl: './plain-button.html',
   styleUrl: './plain-button.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlainButton {
   title = input.required<string>()

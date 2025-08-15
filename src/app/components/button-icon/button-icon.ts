@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 
@@ -13,6 +13,7 @@ export enum Icon {
   imports: [MatIconModule, MatButtonModule],
   templateUrl: './button-icon.html',
   styleUrl: './button-icon.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonIcon {
   iconType = input.required<Icon>()

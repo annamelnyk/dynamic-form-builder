@@ -1,4 +1,12 @@
-import { Component, computed, DestroyRef, effect, inject, input } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  effect,
+  inject,
+  input,
+} from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatCheckboxModule } from '@angular/material/checkbox'
@@ -28,6 +36,7 @@ import { FormFieldControl } from '@services/form-field-control/form-field-contro
   ],
   templateUrl: './checkbox.html',
   styleUrl: './checkbox.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Checkbox {
   protected form = input.required<FormGroup>()

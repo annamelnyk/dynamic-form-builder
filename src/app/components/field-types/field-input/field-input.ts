@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
@@ -12,6 +12,7 @@ import { BuildMode } from '@services/build-mode/build-mode'
   imports: [MatInputModule, MatFormFieldModule, ReactiveFormsModule, Autofocus],
   templateUrl: './field-input.html',
   styleUrl: './field-input.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FieldInput {
   form = input.required<FormGroup>()

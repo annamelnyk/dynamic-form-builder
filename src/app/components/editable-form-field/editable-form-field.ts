@@ -1,15 +1,22 @@
 import { NgComponentOutlet } from '@angular/common'
-import { Component, DestroyRef, inject, input, output } from '@angular/core'
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
-import { MatFormFieldModule } from '@angular/material/form-field'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  inject,
+  input,
+  output,
+} from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-import { MatInputModule } from '@angular/material/input'
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
 
-import { FieldType, FormFieldDefinitionValue } from '@model/form-fields'
-import { FormBuilderService } from '@services/form-builder/form-builder'
-import { FieldTypesService } from '@services/field-types/field-types'
 import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
+import { FieldType, FormFieldDefinitionValue } from '@model/form-fields'
+import { FieldTypesService } from '@services/field-types/field-types'
+import { FormBuilderService } from '@services/form-builder/form-builder'
 
 @Component({
   selector: 'app-editable-form-field',
@@ -23,6 +30,7 @@ import { ButtonIcon, Icon } from '@components/button-icon/button-icon'
   ],
   templateUrl: './editable-form-field.html',
   styleUrl: './editable-form-field.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditableFormField {
   formBuilderService = inject(FormBuilderService)

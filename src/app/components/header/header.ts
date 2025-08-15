@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core'
-import { ReactiveFormsModule, FormControl } from '@angular/forms'
+import { FormControl, ReactiveFormsModule } from '@angular/forms'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatIconModule } from '@angular/material/icon'
 
-import { AppTheme, Theme } from '@services/theme'
-import { MatToolbar } from '@angular/material/toolbar'
-import { OnWindowScroll } from '@directives/on-window-scroll'
-import { Router, RouterLink } from '@angular/router'
 import { NgTemplateOutlet } from '@angular/common'
+import { MatToolbar } from '@angular/material/toolbar'
+import { Router, RouterLink } from '@angular/router'
+import { OnWindowScroll } from '@directives/on-window-scroll'
+import { AppTheme, Theme } from '@services/theme'
 
 @Component({
   selector: 'app-header',

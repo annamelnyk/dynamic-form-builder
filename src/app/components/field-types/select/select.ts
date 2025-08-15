@@ -1,5 +1,13 @@
 import { NgTemplateOutlet } from '@angular/common'
-import { Component, computed, DestroyRef, effect, inject, input } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  effect,
+  inject,
+  input,
+} from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -30,6 +38,7 @@ import { debounceTime, Subscription } from 'rxjs'
   ],
   templateUrl: './select.html',
   styleUrl: './select.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Select {
   form = input.required<FormGroup>()

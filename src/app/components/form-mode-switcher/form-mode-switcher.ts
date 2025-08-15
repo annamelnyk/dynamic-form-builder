@@ -1,5 +1,5 @@
-import { Component, computed, inject, signal } from '@angular/core'
 import { TitleCasePipe } from '@angular/common'
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { RouterLink } from '@angular/router'
 import { Mode } from '@model/form-fields'
@@ -11,6 +11,7 @@ import { FormBuilderService } from '@services/form-builder/form-builder'
   imports: [MatButtonToggleModule, RouterLink, TitleCasePipe],
   templateUrl: './form-mode-switcher.html',
   styleUrl: './form-mode-switcher.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormModeSwitcher {
   buildModeService = inject(BuildMode)
