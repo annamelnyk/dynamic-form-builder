@@ -1,9 +1,9 @@
 @if (buildModeService.mode() === Mode.Preview) {
   <mat-label [attr.for]="formField().id">{{ formField().label }}</mat-label>
   <div [formGroup]="form()">
-    @for (value of formField().options; let i = $index; track value) {
-      <mat-checkbox class="field__input" [formControlName]="formField().id">{{
-        value
+    @for (option of formField().options; let i = $index; track i) {
+      <mat-checkbox class="field__input" formControlName="option-{{ formField().id }}-{{ i }}">{{
+        option
       }}</mat-checkbox>
       <br />
     }

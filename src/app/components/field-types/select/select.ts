@@ -55,7 +55,7 @@ export class Select {
 
   private selectControlFormSubscription?: Subscription
   selectControlsForm = computed<FormGroup>(() =>
-    this.formFieldControlService.toFieldWithOptionsFormGroup(this.formField()),
+    this.formFieldControlService.toSelectFormGroup(this.formField()),
   )
   constructor() {
     effect(() => this.observeSelectControlFormChanges())
