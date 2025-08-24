@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from '@angular/core'
+import { computed, Injectable, linkedSignal, signal } from '@angular/core'
 
 import { generateUniqueFieldName } from '@helpers/utils'
 import {
@@ -18,6 +18,7 @@ export class FormBuilderService {
 
   buildedFormFieldDefinitionsList = signal<FormFieldDefinitionValue[]>([])
   formFieldsList = this.buildedFormFieldDefinitionsList.asReadonly()
+
   previewFormEnabled = computed<boolean>(() => this.buildedFormFieldDefinitionsList().length > 0)
 
   constructor() {
@@ -147,5 +148,20 @@ export class FormBuilderService {
 
   generateId(): string {
     return crypto.randomUUID()
+  }
+
+  updateBuilderListForPreview() {
+    this.buildedFormFieldDefinitionsList.update(prevList =>
+      prevList.map(f => {
+        if (f.type === FieldType.Checkbox) {
+          return {
+            ...f,
+            options: f[FormFieldName.Options]?.filter(o => o),
+          }
+        }
+
+        return f
+      }),
+    )
   }
 }
