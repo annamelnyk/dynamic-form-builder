@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { generateUniqueFieldName } from '@helpers/utils'
 import { FieldType, FormFieldDefinitionValue, FormFieldName, Mode } from '@model/form-fields'
 import { BuildMode } from '@services/build-mode/build-mode'
-import { FormBuilderService } from '@services/form-builder/form-builder'
 
 @Injectable({
   providedIn: 'root',
@@ -18,22 +17,12 @@ export class FormFieldControl {
       const fieldValue = f?.value ?? ''
 
       if (f.type === FieldType.Checkbox && f.options) {
-        console.log('CHECKBOXXX ', f)
-        if (this.formBuildMode.mode() === Mode.Edit) {
-          f.options.forEach((option, index) => {
-            group[generateUniqueFieldName(FormFieldName.Option, f.id, index)] = f.required
-              ? new FormControl(option, Validators.required)
-              : new FormControl(option)
-          })
-        }
-
-        if (this.formBuildMode.mode() === Mode.Preview) {
-          f.options.forEach((option, index) => {
-            group[generateUniqueFieldName(FormFieldName.Option, f.id, index)] = f.required
-              ? new FormControl(false, Validators.required)
-              : new FormControl(false)
-          })
-        }
+        const initialControlValue = this.formBuildMode.mode() === Mode.Edit ? null : false
+        f.options.forEach((option, index) => {
+          group[generateUniqueFieldName(FormFieldName.Option, f.id, index)] = f.required
+            ? new FormControl(initialControlValue ?? option, Validators.required)
+            : new FormControl(initialControlValue ?? option)
+        })
       } else {
         group[f.id] = f.required
           ? new FormControl(fieldValue, Validators.required)

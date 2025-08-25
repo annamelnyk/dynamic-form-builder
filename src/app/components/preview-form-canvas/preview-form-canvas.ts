@@ -1,5 +1,5 @@
 import { NgComponentOutlet } from '@angular/common'
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject, linkedSignal } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatCardModule } from '@angular/material/card'
 import { PlainButton } from '@components/plain-button/plain-button'
@@ -20,7 +20,11 @@ export class PreviewFormCanvas {
   FieldType = FieldType
   payload = ''
 
-  form = computed<FormGroup>(() =>
+  constructor() {
+    this.formBuilder.updateBuilderListForPreview()
+  }
+
+  form = linkedSignal<FormGroup>(() =>
     this.formFieldControlService.toFormGroup(this.formBuilder.formFieldsList()),
   )
 

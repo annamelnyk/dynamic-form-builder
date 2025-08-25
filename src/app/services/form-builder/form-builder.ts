@@ -1,4 +1,4 @@
-import { computed, Injectable, linkedSignal, signal } from '@angular/core'
+import { computed, Injectable, signal } from '@angular/core'
 
 import { generateUniqueFieldName } from '@helpers/utils'
 import {
@@ -19,7 +19,9 @@ export class FormBuilderService {
   buildedFormFieldDefinitionsList = signal<FormFieldDefinitionValue[]>([])
   formFieldsList = this.buildedFormFieldDefinitionsList.asReadonly()
 
-  previewFormEnabled = computed<boolean>(() => this.buildedFormFieldDefinitionsList().length > 0)
+  previewFormEnabled = computed<boolean>(() => {
+    return this.buildedFormFieldDefinitionsList().length > 0
+  })
 
   constructor() {
     this.addInitialFormDescriptionFields()
