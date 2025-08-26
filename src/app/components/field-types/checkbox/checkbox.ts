@@ -22,6 +22,7 @@ import { DEBOUNCE_TIME, FormFieldDefinitionValue, FormFieldName, Mode } from '@m
 import { BuildMode } from '@services/build-mode/build-mode'
 import { FormBuilderService } from '@services/form-builder/form-builder'
 import { FormFieldControl } from '@services/form-field-control/form-field-control'
+import { SemicolonPipe } from 'app/pipes/semicolon-pipe'
 
 @Component({
   selector: 'app-checkbox',
@@ -33,6 +34,7 @@ import { FormFieldControl } from '@services/form-field-control/form-field-contro
     PlainButton,
     ButtonIcon,
     Autofocus,
+    SemicolonPipe,
   ],
   templateUrl: './checkbox.html',
   styleUrl: './checkbox.scss',
