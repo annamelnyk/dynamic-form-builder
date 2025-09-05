@@ -4,7 +4,6 @@ import {
   Component,
   computed,
   DestroyRef,
-  effect,
   inject,
   signal,
 } from '@angular/core'
@@ -46,12 +45,6 @@ export class FormCanvas {
     ),
   )
 
-  constructor() {
-    effect(() => {
-      console.log(this.form())
-    })
-  }
-
   ngOnInit() {
     this.subscribeToAboutForm()
   }
@@ -59,10 +52,7 @@ export class FormCanvas {
   subscribeToAboutForm() {
     this.aboutForm()
       .valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(DEBOUNCE_TIME))
-      .subscribe(values => {
-        console.log({ values })
-        this.formBuilderService.updateAboutFormField(values)
-      })
+      .subscribe(values => this.formBuilderService.updateAboutFormField(values))
   }
 
   onFieldTypeDropped(event: CdkDragDrop<any[]>) {

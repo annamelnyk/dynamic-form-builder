@@ -67,10 +67,7 @@ export class Checkbox {
 
     this.checkboxControlFormSubscription = this.checkboxControlsForm()
       .valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(DEBOUNCE_TIME))
-      .subscribe(values => {
-        console.log('OBSERVE checkbpx values ', values)
-        this.formBuilderService.updateFormFieldOptions(this.formField(), values)
-      })
+      .subscribe(values => this.formBuilderService.updateFormFieldOptions(this.formField(), values))
   }
 
   addCheckboxOption(e: Event) {

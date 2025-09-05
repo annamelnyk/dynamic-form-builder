@@ -1,5 +1,5 @@
 import { NgComponentOutlet } from '@angular/common'
-import { ChangeDetectionStrategy, Component, inject, linkedSignal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject, linkedSignal, signal } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatCardModule } from '@angular/material/card'
 import { PlainButton } from '@components/plain-button/plain-button'
@@ -19,6 +19,7 @@ export class PreviewFormCanvas {
   formFieldControlService = inject(FormFieldControl)
   FieldType = FieldType
   payload: Record<string, unknown> = {}
+  isFormSubmitted = signal(false)
 
   constructor() {
     this.formBuilder.updateBuilderListForPreview()
@@ -43,29 +44,29 @@ export class PreviewFormCanvas {
 
         if (value && checkboxOptionValue) {
           if (this.payload.hasOwnProperty(payloadKey)) {
-            this.payload = {
-              ...this.payload,
-              [payloadKey]: [...(this.payload[payloadKey] as string[]), checkboxOptionValue],
-            }
+            const checkboxValues = [...(this.payload[payloadKey] as string[]), checkboxOptionValue]
+            this.updatePayload(payloadKey, checkboxValues)
           } else {
-            this.payload = {
-              ...this.payload,
-              [payloadKey]: [checkboxOptionValue],
-            }
+            this.updatePayload(payloadKey, [checkboxOptionValue])
           }
         }
       } else {
-        this.payload = {
-          ...this.payload,
-          [payloadKey]: value,
-        }
+        this.updatePayload(payloadKey, value)
       }
     })
+  }
+
+  private updatePayload(payloadKey: string, value: unknown) {
+    this.payload = {
+      ...this.payload,
+      [payloadKey]: value,
+    }
   }
 
   onSubmit() {
     this.buildMainFormPayload()
     const payloadStringified = JSON.stringify(this.payload)
+    this.isFormSubmitted.set(true)
     console.log('payload ', payloadStringified)
   }
 }

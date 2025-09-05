@@ -61,10 +61,6 @@ export class Select {
     effect(() => this.observeSelectControlFormChanges())
   }
 
-  ngOnInit() {
-    console.log('Select form ', this.form())
-  }
-
   observeSelectControlFormChanges() {
     this.selectControlFormSubscription?.unsubscribe()
 

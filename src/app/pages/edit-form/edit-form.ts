@@ -34,7 +34,6 @@ export class EditForm {
   formBuilderService = inject(FormBuilderService)
 
   addFormField(formField: FormFieldDefinition) {
-    console.log({ formField })
     this.formBuilderService.addFormFieldToFromFieldDefinitionsList(formField)
   }
 }
