@@ -18,7 +18,7 @@ export class PreviewFormCanvas {
   formBuilder = inject(FormBuilderService)
   formFieldControlService = inject(FormFieldControl)
   FieldType = FieldType
-  payload = ''
+  payload: Record<string, unknown> = {}
 
   constructor() {
     this.formBuilder.updateBuilderListForPreview()
@@ -28,9 +28,44 @@ export class PreviewFormCanvas {
     this.formFieldControlService.toFormGroup(this.formBuilder.formFieldsList()),
   )
 
+  buildMainFormPayload() {
+    const formFieldKeys = Object.entries(this.form().value)
+
+    formFieldKeys.forEach(([key, value]) => {
+      const formField = this.formBuilder.formFieldsList().find(f => key.includes(f.id))
+
+      if (!formField) return
+      const payloadKey = formField.label || formField.id
+
+      if (formField?.type === FieldType.Checkbox) {
+        const optionIndex = Number(key.split('').pop())
+        const checkboxOptionValue: string | null = formField.options?.[optionIndex] ?? null
+
+        if (value && checkboxOptionValue) {
+          if (this.payload.hasOwnProperty(payloadKey)) {
+            this.payload = {
+              ...this.payload,
+              [payloadKey]: [...(this.payload[payloadKey] as string[]), checkboxOptionValue],
+            }
+          } else {
+            this.payload = {
+              ...this.payload,
+              [payloadKey]: [checkboxOptionValue],
+            }
+          }
+        }
+      } else {
+        this.payload = {
+          ...this.payload,
+          [payloadKey]: value,
+        }
+      }
+    })
+  }
+
   onSubmit() {
-    this.payload = JSON.stringify(this.form().getRawValue())
-    console.log('payload ', this.payload)
-    console.log('form from service ', this.formBuilder.formFieldsList())
+    this.buildMainFormPayload()
+    const payloadStringified = JSON.stringify(this.payload)
+    console.log('payload ', payloadStringified)
   }
 }
