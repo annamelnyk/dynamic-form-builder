@@ -1,0 +1,19 @@
+<mat-card class="form__card" appearance="outlined">
+  <mat-card-header class="form__card__header"> </mat-card-header>
+  <mat-card-content class="form__card__content">
+    <ul>
+      @for (field of payload() | keyvalue; track field.value) {
+        <li class="form__card__list__item">
+          <span class="form__field__label">{{ field.key | semicolon }}</span>
+          @if (field.value | isArray) {
+            @for (value of field.value; track value) {
+              <span class="form__field__value">{{ value }}</span>
+            }
+          } @else {
+            <span class="form__field__value">{{ field.value }}</span>
+          }
+        </li>
+      }
+    </ul>
+  </mat-card-content>
+</mat-card>

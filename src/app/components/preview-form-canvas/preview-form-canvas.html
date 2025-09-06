@@ -1,18 +1,19 @@
-<mat-card class="form__card" appearance="outlined">
-  <mat-card-header class="form__card__header">
-    @for (formInfo of formBuilder.initialFormFieldDefinitionsList(); track formInfo.id) {
-      @if (formInfo.type === FieldType.Text) {
-        <mat-card-title>{{ formInfo.value || 'Untitled Form' }}</mat-card-title>
-      }
+@if (isFormSubmitted()) {
+  <app-preview-form-submitted [payload]="payload" />
+} @else {
+  <mat-card class="form__card" appearance="outlined">
+    <mat-card-header class="form__card__header">
+      @for (formInfo of formBuilder.initialFormFieldDefinitionsList(); track formInfo.id) {
+        @if (formInfo.type === FieldType.Text) {
+          <mat-card-title>{{ formInfo.value || 'Untitled Form' }}</mat-card-title>
+        }
 
-      @if (formInfo.type === FieldType.Textarea && formInfo.value) {
-        <mat-card-subtitle>{{ formInfo.value }}</mat-card-subtitle>
+        @if (formInfo.type === FieldType.Textarea && formInfo.value) {
+          <mat-card-subtitle>{{ formInfo.value }}</mat-card-subtitle>
+        }
       }
-    }
-  </mat-card-header>
-  <mat-card-content class="form__card__content">
-    @if (isFormSubmitted()) {
-    } @else {
+    </mat-card-header>
+    <mat-card-content class="form__card__content">
       <form [formGroup]="form()" (ngSubmit)="onSubmit()">
         <ul>
           @for (formField of formBuilder.formFieldsList(); track formField.id) {
@@ -28,10 +29,8 @@
           }
         </ul>
       </form>
-    }
-  </mat-card-content>
-</mat-card>
-@if (!isFormSubmitted()) {
+    </mat-card-content>
+  </mat-card>
   <app-plain-button
     class="center"
     title="Submit"

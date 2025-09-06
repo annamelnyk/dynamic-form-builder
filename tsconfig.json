@@ -10,7 +10,8 @@
       "@directives/*": ["app/directives/*"],
       "@services/*": ["app/services/*"],
       "@model/*": ["app/model/*"],
-      "@helpers/*": ["app/helpers/*"]
+      "@helpers/*": ["app/helpers/*"],
+      "@pipes/*": ["app/pipes/*"]
     },
     "strict": true,
     "noImplicitOverride": true,

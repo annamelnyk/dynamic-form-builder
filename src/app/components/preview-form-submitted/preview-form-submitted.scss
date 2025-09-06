@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+@use 'mixins' as *;
+
+.form__field__label {
+  @include normal-bold-text;
+  text-decoration: underline;
+}
+
+.form__field__value {
+  @include normal-text;
+}
