@@ -8,3 +8,23 @@
 .form__field__value {
   @include normal-text;
 }
+
+.form__card__header .form__card__list__item {
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 15px;
+  }
+}
+
+.form__card__content .form__card__list__item {
+  margin-top: 10px;
+
+  &:first-child {
+    margin-top: 15px;
+  }
+}
+
+mat-spinner {
+  margin: 25px auto;
+}

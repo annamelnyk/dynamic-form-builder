@@ -25,6 +25,7 @@ export class PreviewFormCanvas {
   formBuilder = inject(FormBuilderService)
   formFieldControlService = inject(FormFieldControl)
   FieldType = FieldType
+  formInfoPayload: Record<string, string | string[]> = {}
   payload: Record<string, string | string[]> = {}
   isFormSubmitted = signal(false)
 
@@ -63,6 +64,15 @@ export class PreviewFormCanvas {
     })
   }
 
+  buildFormInfoPayload() {
+    this.formBuilder.initialFormFieldDefinitionsList().forEach(formField => {
+      this.formInfoPayload = {
+        ...this.formInfoPayload,
+        [formField.label]: formField.value as string,
+      }
+    })
+  }
+
   private updatePayload(payloadKey: string, value: string | string[]) {
     this.payload = {
       ...this.payload,
@@ -71,9 +81,12 @@ export class PreviewFormCanvas {
   }
 
   onSubmit() {
+    this.buildFormInfoPayload()
     this.buildMainFormPayload()
     const payloadStringified = JSON.stringify(this.payload)
+    const formInfoPayload = JSON.stringify(this.formInfoPayload)
     this.isFormSubmitted.set(true)
     console.log('payload ', payloadStringified)
+    console.log('formInfoPayload ', formInfoPayload)
   }
 }
