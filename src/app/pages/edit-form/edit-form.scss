@@ -1,0 +1,16 @@
+@use 'media' as media;
+
+.section {
+  flex-direction: column;
+  @include media.sm {
+    flex-direction: row;
+  }
+}
+
+.toolbar {
+  width: 100%;
+
+  @include media.sm {
+    width: 80rem;
+  }
+}

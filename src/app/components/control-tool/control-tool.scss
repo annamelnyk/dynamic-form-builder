@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use 'media' as media;
 @use 'mixins' as *;
 
 .control__card {
@@ -18,6 +19,10 @@
   border-radius: var(--mat-sys-corner-small);
   border: 1px solid var(--mat-sys-primary);
   background-color: var(--mat-sys-surface);
-  margin-right: 15px;
-  padding: 10px;
+  padding: 7px;
+
+  @include media.sm {
+    margin-right: 15px;
+    padding: 10px;
+  }
 }

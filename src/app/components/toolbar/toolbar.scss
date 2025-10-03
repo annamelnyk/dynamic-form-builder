@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use 'media' as media;
 @use 'mixins' as *;
 
 .card__toolbar__title {
@@ -6,4 +7,14 @@
   text-align: center;
   padding-bottom: 15px;
   width: 100%;
+}
+
+.card__toolbar__outer {
+  display: flex;
+  justify-content: space-between;
+
+  @include media.sm {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }

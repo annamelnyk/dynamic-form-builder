@@ -1,6 +1,7 @@
 @use '@angular/material' as mat;
 @use 'themes';
 @use 'mixins' as *;
+@use 'media' as media;
 @use 'tailwind';
 
 :root {
@@ -11,7 +12,11 @@
 }
 
 html {
-  font-size: 10px;
+  font-size: 9px;
+
+  @include media.md {
+    font-size: 10px;
+  }
 
   @include mat.checkbox-overrides(
     (
